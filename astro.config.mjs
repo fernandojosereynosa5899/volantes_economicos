@@ -3,5 +3,14 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://volanteseconomicos.net'
+  site: 'https://volanteseconomicos.net',
+  server: {
+    host: true,
+    port: 4321,
+  },
+  vite: {
+    server: {
+      allowedHosts: true,
+    },
+  },
 });
