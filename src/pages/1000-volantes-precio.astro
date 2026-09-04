@@ -80,17 +80,24 @@ const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${e
         <!-- Closing CTA -->
         <div class="closing-cta-card">
           <p class="closing-text">
-            ¡Cotiza tus 1,000 volantes al instante! <strong>CONTACTENOS</strong>
+            ¡Cotiza tus 1,000 volantes al instante!<br/>
+            <strong>CONTACTENOS</strong>
           </p>
-          <a 
-            href={whatsappUrl} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="btn btn-whatsapp btn-lg"
-          >
-            <Icon name="whatsapp" size={22} />
-            <span>Consultar Precio de 1000 Volantes por WhatsApp</span>
-          </a>
+          <div class="closing-cta-action">
+            <a 
+              href={whatsappUrl} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="closing-whatsapp-btn"
+              title="Cotizar 1000 volantes por WhatsApp"
+            >
+              <Icon name="whatsapp" size={28} />
+              <div class="closing-btn-text">
+                <span class="closing-btn-subtitle">Cotizar 1000 Volantes</span>
+                <strong class="closing-btn-number" data-bind="general.phoneNumber">{siteConfig.general.phoneNumber}</strong>
+              </div>
+            </a>
+          </div>
         </div>
       </article>
 

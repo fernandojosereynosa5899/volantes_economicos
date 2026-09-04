@@ -84,17 +84,24 @@ const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${e
         <!-- Closing CTA -->
         <div class="closing-cta-card">
           <p class="closing-text">
-            ¿Requieres otra medida, cantidad o papel especial? <strong>CONTACTANOS PARA COTIZAR POR WHATSAPP</strong>
+            ¿Requieres otra medida, cantidad o papel especial?<br/>
+            <strong>CONTACTANOS PARA COTIZAR POR WHATSAPP</strong>
           </p>
-          <a 
-            href={whatsappUrl} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="btn btn-whatsapp btn-lg"
-          >
-            <Icon name="whatsapp" size={22} />
-            <span>Enviar mensaje al WhatsApp: {siteConfig.general.phoneNumber}</span>
-          </a>
+          <div class="closing-cta-action">
+            <a 
+              href={whatsappUrl} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="closing-whatsapp-btn"
+              title="Cotizar por WhatsApp"
+            >
+              <Icon name="whatsapp" size={28} />
+              <div class="closing-btn-text">
+                <span class="closing-btn-subtitle">Cotizar por WhatsApp</span>
+                <strong class="closing-btn-number" data-bind="general.phoneNumber">{siteConfig.general.phoneNumber}</strong>
+              </div>
+            </a>
+          </div>
         </div>
       </article>
 
