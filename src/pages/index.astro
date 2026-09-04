@@ -1,6 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Sidebar from '../components/Sidebar.astro';
+import HeroSlider from '../components/HeroSlider.astro';
+import WhyChooseUs from '../components/WhyChooseUs.astro';
+import ProductsGrid from '../components/ProductsGrid.astro';
 import { getActiveConfig } from '../scripts/content-loader';
 import Icon from '../components/Icon.astro';
 
@@ -9,11 +12,21 @@ const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${e
 ---
 
 <Layout 
-  title="Volantes Económicos - Volantes Publicitarios Económicos" 
-  description="En Volantes Económicos nos interesa su negocio por eso realizamos sus folletos con todo el profesionalismo. Porque Sabemos que sus volantes publicitarios son muy importante para usted y su negocio."
+  title="Volantes Económicos - Impresión Offset y Volantes Publicitarios en México" 
+  description="En Volantes Económicos nos interesa su negocio por eso realizamos sus folletos con todo el profesionalismo. Alta calidad en impresión al mejor precio."
   currentPath="/"
 >
-  <div class="container" style="padding-top: 3rem; padding-bottom: 4rem;">
+  <!-- 1. Carrusel Hero Slider Banners de Pagina (VOL1, VOL2, VOL3) -->
+  <HeroSlider />
+
+  <!-- 2. ¿Por Qué Elegirnos? (Captura 164411 - Ubicado arriba, inmediatamente abajo del Hero) -->
+  <WhyChooseUs />
+
+  <!-- 3. Nuestros Productos con Imágenes Generadas y Filtros Interactivos -->
+  <ProductsGrid />
+
+  <!-- 4. Contenido Editorial Auténtico y Metodología de 11 Pasos con Sidebar -->
+  <div class="container" style="padding-top: 3.5rem; padding-bottom: 4rem;">
     <div class="page-layout-grid">
       <!-- Main Editorial Content Column -->
       <article class="page-content-area original-content-typography">
@@ -176,25 +189,18 @@ const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${e
           </div>
         </div>
 
-        <!-- Closing CTA Box -->
-        <div class="closing-cta-card">
-          <p class="closing-text">
-            En volantes económicos diseñamos los mejores y más económicos folletos.<br/>
-            <strong>CONTACTENOS PARA HACER SU PEDIDO</strong>
+        <!-- Closing CTA Box (Elegante y no invasivo) -->
+        <div class="closing-cta-card" style="background: #ffffff; border: 1px solid #e2e8f0; border-top: 4px solid #E3000F; border-radius: 8px; padding: 1.75rem 1.25rem; text-align: center; margin-top: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+          <p style="font-size: 1.05rem; color: #111827; margin-bottom: 1.1rem; font-family: 'Montserrat', sans-serif; line-height: 1.5;">
+            En Volantes Económicos diseñamos los mejores y más económicos folletos.<br/>
+            <strong style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; color: #E3000F; text-transform: uppercase;">Contáctanos para hacer tu pedido</strong>
           </p>
-          <div class="closing-cta-action">
-            <a 
-              href={whatsappUrl} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              class="closing-whatsapp-btn"
-              title="Cotizar directamente por WhatsApp"
-            >
-              <Icon name="whatsapp" size={28} />
-              <div class="closing-btn-text">
-                <span class="closing-btn-subtitle">Cotizar por WhatsApp</span>
-                <strong class="closing-btn-number" data-bind="general.phoneNumber">{siteConfig.general.phoneNumber}</strong>
-              </div>
+          <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+            <a href="/contacto" class="btn-hero-primary" style="padding: 11px 26px; font-size: 1.05rem;">
+              <i class="fas fa-file-invoice" style="margin-right: 6px;"></i> Solicitar Cotización
+            </a>
+            <a href="tel:+525540421232" class="btn-hero-primary" style="padding: 11px 24px; font-size: 1.05rem; background: #111827;">
+              <i class="fas fa-phone-alt" style="margin-right: 6px;"></i> {siteConfig.general.phoneNumber}
             </a>
           </div>
         </div>

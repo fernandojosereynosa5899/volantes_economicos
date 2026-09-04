@@ -1,0 +1,912 @@
+/* ==========================================================================
+   ESTILOS DE LA PÁGINA REFERENCIA (MUSEO.HTML / ESTILOS.CSS)
+   Adaptado e integrado para Astro con colores oficiales: Rojo (#E3000F) y Amarillo (#FFC107)
+   ========================================================================== */
+
+:root {
+  --color-pagina-primary: #E3000F;
+  --color-pagina-secondary: #FFC107;
+  --color-pagina-accent: #111827;
+  --color-pagina-cyan: #00AEEF;
+  --color-pagina-magenta: #EC008C;
+  --font-display-pagina: 'Oswald', sans-serif;
+  --font-body-pagina: 'Montserrat', sans-serif;
+}
+
+/* Títulos de sección estilo Pagina con barra amarilla */
+.pagina-section-title {
+  text-align: center;
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-family: var(--font-display-pagina);
+  font-weight: 700;
+  color: var(--color-pagina-primary);
+  margin-bottom: 3.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  position: relative;
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.06);
+}
+
+.pagina-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 75px;
+  height: 4px;
+  background: var(--color-pagina-secondary);
+  border-radius: 2px;
+}
+
+/* ==========================================================================
+   1. HERO SLIDER
+   ========================================================================== */
+.hero-slider-section {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  overflow: hidden;
+  background: #111827;
+}
+
+@media (min-width: 768px) {
+  .hero-slider-section {
+    height: 540px;
+  }
+}
+
+.hero-slider-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.hero-slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.6) 100%);
+}
+
+.hero-slider-content-box {
+  position: relative;
+  z-index: 5;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.5rem;
+}
+
+.hero-glass-card {
+  max-width: 750px;
+  text-align: center;
+  padding: 2.5rem 2rem;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 12px;
+  border-bottom: 5px solid var(--color-pagina-primary);
+  border-top: 2px solid rgba(255, 193, 7, 0.5);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+}
+
+.hero-glass-card h2 {
+  font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+  font-family: var(--font-display-pagina);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--color-pagina-secondary);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
+  line-height: 1.1;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.hero-glass-card p {
+  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  margin-bottom: 1.75rem;
+  font-weight: 500;
+  color: #ffffff;
+  font-family: var(--font-body-pagina);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-hero-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 14px 36px;
+  background: var(--color-pagina-primary);
+  color: #ffffff !important;
+  text-decoration: none;
+  font-family: var(--font-display-pagina);
+  font-weight: 600;
+  font-size: 1.15rem;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(227, 0, 15, 0.45);
+}
+
+.btn-hero-primary:hover {
+  background: var(--color-pagina-secondary);
+  color: #111827 !important;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 193, 7, 0.5);
+}
+
+.btn-hero-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 14px 32px;
+  background: #25d366;
+  color: #ffffff !important;
+  text-decoration: none;
+  font-family: var(--font-display-pagina);
+  font-weight: 600;
+  font-size: 1.15rem;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.45);
+}
+
+.btn-hero-whatsapp:hover {
+  background: #1ea952;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+}
+
+/* Controles de slider */
+.slider-control-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--color-pagina-primary);
+  border: 2px solid white;
+  color: white;
+  font-size: 1.25rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.slider-control-btn:hover {
+  background: var(--color-pagina-secondary);
+  color: #111827;
+  border-color: #111827;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.slider-control-btn.prev { left: 18px; }
+.slider-control-btn.next { right: 18px; }
+
+.slider-dots-box {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.slider-dot-btn {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid white;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.slider-dot-btn.active, .slider-dot-btn:hover {
+  background: var(--color-pagina-secondary);
+  border-color: var(--color-pagina-secondary);
+  transform: scale(1.25);
+}
+
+/* ==========================================================================
+   2. ACERCA DE NOSOTROS (ACCORDION & TALLER)
+   ========================================================================== */
+.about-grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .about-grid-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+  }
+}
+
+.about-img-box {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  border: 5px solid var(--color-pagina-secondary);
+  position: relative;
+}
+
+.about-img-box img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.about-img-box:hover img {
+  transform: scale(1.04);
+}
+
+.about-badge {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: var(--color-pagina-primary);
+  color: white;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-family: var(--font-display-pagina);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+.accordion-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pagina-accordion-item {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  transition: border-color 0.2s ease;
+}
+
+.pagina-accordion-item:hover {
+  border-color: #cbd5e1;
+}
+
+.pagina-accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 1.1rem 1.4rem;
+  background: #ffffff;
+  transition: background 0.25s ease;
+  width: 100%;
+  border: none;
+  text-align: left;
+}
+
+.pagina-accordion-header:hover {
+  background: #f8fafc;
+}
+
+.pagina-accordion-header h3 {
+  font-family: var(--font-display-pagina);
+  font-size: 1.25rem;
+  color: #111827;
+  text-transform: uppercase;
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.pagina-accordion-header i {
+  color: var(--color-pagina-primary);
+  transition: transform 0.3s ease, color 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.pagina-accordion-header.active {
+  background: var(--color-pagina-secondary);
+}
+
+.pagina-accordion-header.active h3 {
+  color: #111827;
+}
+
+.pagina-accordion-header.active i {
+  transform: rotate(180deg);
+  color: #111827;
+}
+
+.pagina-accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+  background: #ffffff;
+  padding: 0 1.4rem;
+}
+
+.pagina-accordion-body.active {
+  max-height: 220px;
+  padding: 1.2rem 1.4rem 1.4rem;
+}
+
+.pagina-accordion-body p {
+  margin: 0;
+  color: #4b5563;
+  line-height: 1.6;
+  font-size: 0.98rem;
+}
+
+/* ==========================================================================
+   3. NUESTROS PRODUCTOS (SALAS GRID & TOOLTIPS)
+   ========================================================================== */
+.filter-pills-row {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-pill-btn {
+  padding: 8px 24px;
+  border: 2px solid var(--color-pagina-primary);
+  background: #ffffff;
+  color: var(--color-pagina-primary);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: var(--font-display-pagina);
+  font-size: 1rem;
+  border-radius: 25px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.filter-pill-btn:hover, .filter-pill-btn.active {
+  background: var(--color-pagina-primary);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(227, 0, 15, 0.25);
+}
+
+.products-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.pagina-product-card {
+  background: #ffffff;
+  padding: 1.25rem 1.25rem 1.75rem;
+  text-align: center;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.pagina-product-image {
+  width: 100%;
+  height: 190px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1.2rem;
+  background: #f1f5f9;
+}
+
+.pagina-product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.pagina-product-card:hover .pagina-product-image img {
+  transform: scale(1.06);
+}
+
+.pagina-product-icon {
+  font-size: 2.8rem;
+  color: var(--color-pagina-secondary);
+  margin-bottom: 1.25rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.pagina-product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+  border-color: var(--color-pagina-primary);
+}
+
+.pagina-product-card:hover .pagina-product-icon {
+  color: var(--color-pagina-primary);
+  transform: scale(1.15);
+}
+
+.pagina-product-card h3 {
+  font-family: var(--font-display-pagina);
+  font-size: 1.45rem;
+  color: #111827;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.pagina-product-card p {
+  font-weight: 500;
+  color: #64748b;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.pagina-product-tooltip {
+  position: absolute;
+  bottom: -80px;
+  left: 0;
+  right: 0;
+  background: var(--color-pagina-primary);
+  color: #ffffff;
+  padding: 14px 18px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  opacity: 0;
+  transition: bottom 0.3s ease, opacity 0.3s ease;
+  line-height: 1.4;
+}
+
+.pagina-product-card:hover .pagina-product-tooltip {
+  bottom: 0;
+  opacity: 1;
+}
+
+/* ==========================================================================
+   4. ¿POR QUÉ ELEGIRNOS? (SERVICIOS)
+   ========================================================================== */
+.why-us-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.75rem;
+}
+
+.why-us-item {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  border-bottom: 4px solid #e2e8f0;
+}
+
+.why-us-item:hover {
+  transform: translateY(-6px);
+  border-bottom-color: var(--color-pagina-secondary);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.1);
+}
+
+.why-us-item .why-us-icon {
+  font-size: 2.75rem;
+  color: var(--color-pagina-primary);
+  margin-bottom: 1.25rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.why-us-item:hover .why-us-icon {
+  color: var(--color-pagina-cyan);
+  transform: scale(1.15);
+}
+
+.why-us-item h3 {
+  font-family: var(--font-display-pagina);
+  font-size: 1.3rem;
+  color: #111827;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.why-us-item p {
+  color: #64748b;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* ==========================================================================
+   5. INFORMACIÓN Y UBICACIÓN (TABS)
+   ========================================================================== */
+.info-tabs-container {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.info-tabs-header {
+  display: flex;
+  background: var(--color-pagina-primary);
+  flex-wrap: wrap;
+}
+
+.info-tab-btn {
+  flex: 1;
+  min-width: 180px;
+  padding: 1.1rem 1.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-display-pagina);
+  font-size: 1.1rem;
+  color: #ffffff;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.info-tab-btn:hover {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.info-tab-btn.active {
+  background: var(--color-pagina-secondary);
+  color: #111827;
+}
+
+.info-tabs-body {
+  padding: 2.5rem;
+}
+
+.info-tab-panel {
+  display: none;
+}
+
+.info-tab-panel.active {
+  display: block;
+  animation: panelFadeIn 0.35s ease;
+}
+
+@keyframes panelFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.visitante-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.75rem;
+}
+
+.visitante-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  align-items: center;
+}
+
+.visitante-card {
+  background: #ffffff;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+.visitante-card .icon-large {
+  font-size: 2.75rem;
+  color: var(--color-pagina-secondary);
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.visitante-card h3 {
+  font-family: var(--font-display-pagina);
+  font-size: 1.35rem;
+  color: var(--color-pagina-primary);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.visitante-card p {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #4b5563;
+  font-size: 0.95rem;
+}
+
+.mapa-box {
+  background: #f8fafc;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #cbd5e1;
+  min-height: 250px;
+  text-decoration: none;
+  color: inherit;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.mapa-box:hover {
+  background: #f1f5f9;
+  border-color: var(--color-pagina-primary);
+  transform: translateY(-4px);
+}
+
+.mapa-box i {
+  font-size: 3.5rem;
+  color: var(--color-pagina-secondary);
+  margin-bottom: 1rem;
+}
+
+.mapa-box p {
+  font-weight: 700;
+  color: var(--color-pagina-primary);
+  font-size: 1.1rem;
+  font-family: var(--font-display-pagina);
+}
+
+/* ==========================================================================
+   6. NUESTROS TRABAJOS (GALERÍA RESOLVIENDO CAPTURA 152335)
+   ========================================================================== */
+.galeria-filter-row {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.galeria-trabajos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 320px));
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.trabajo-card-item {
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  border: 2px solid #e2e8f0;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
+}
+
+.trabajo-card-item img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.trabajo-card-item:hover {
+  border-color: var(--color-pagina-primary);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  transform: translateY(-4px);
+}
+
+.trabajo-card-item:hover img {
+  transform: scale(1.08);
+}
+
+.trabajo-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(227, 0, 15, 0.88);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.trabajo-overlay i {
+  font-size: 2.4rem;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+  transition: transform 0.3s ease;
+}
+
+.trabajo-overlay p {
+  color: #ffffff;
+  font-weight: 700;
+  font-family: var(--font-display-pagina);
+  text-transform: uppercase;
+  font-size: 1.15rem;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.trabajo-card-item:hover .trabajo-overlay {
+  opacity: 1;
+}
+
+.trabajo-card-item:hover .trabajo-overlay i {
+  transform: scale(1.15);
+}
+
+.trabajo-card-footer {
+  padding: 1rem;
+  text-align: center;
+  background: #ffffff;
+  border-top: 1px solid #f1f5f9;
+}
+
+.trabajo-card-footer p {
+  font-family: var(--font-display-pagina);
+  font-weight: 700;
+  color: #111827;
+  font-size: 1.05rem;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   7. LIGHTBOX MODAL PARA TRABAJOS
+   ========================================================================== */
+.pagina-lightbox-modal {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.92);
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  backdrop-filter: blur(5px);
+}
+
+.pagina-lightbox-modal.active {
+  display: flex;
+}
+
+.pagina-lightbox-close {
+  position: absolute;
+  top: 25px;
+  right: 35px;
+  color: #ffffff;
+  font-size: 42px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1;
+  background: transparent;
+  border: none;
+}
+
+.pagina-lightbox-close:hover {
+  color: var(--color-pagina-secondary);
+  transform: scale(1.15);
+}
+
+.pagina-lightbox-container {
+  max-width: 900px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pagina-lightbox-container img {
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  border: 4px solid var(--color-pagina-secondary);
+  border-radius: 8px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+}
+
+.pagina-lightbox-caption {
+  margin-top: 1.25rem;
+  color: #ffffff;
+  font-family: var(--font-display-pagina);
+  font-size: 1.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.pagina-lightbox-cta {
+  margin-top: 1rem;
+}
+
+/* Botón Flotante Scroll To Top */
+.pagina-scroll-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 48px;
+  height: 48px;
+  background: var(--color-pagina-secondary);
+  color: #111827;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 999;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+}
+
+.pagina-scroll-top-btn:hover {
+  background: var(--color-pagina-primary);
+  color: #ffffff;
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(227, 0, 15, 0.35);
+}

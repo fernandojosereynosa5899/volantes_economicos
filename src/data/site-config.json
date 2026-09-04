@@ -8,11 +8,11 @@
     "email": "moyrivera100@gmail.com",
     "facebookUrl": "https://www.facebook.com/share/p/1NEQ4stvVk/",
     "messengerName": "Volantes Económicos CDMX",
-    "address": "Poniente 54 # 3915, Col. Obrero popular, Ciudad de México, C.P. 02840",
+    "address": "Pte 54 3915, Obrero Popular, Azcapotzalco, 02840 Ciudad de México, CDMX",
     "topBannerText": "Envíos a toda la República Mexicana • Contáctenos: 55 4042 1232",
     "schedule": {
-      "weekdays": "Lunes a Viernes: 9:00 a. m. – 6:00 p. m.",
-      "saturday": "Sábado: 9:00 a. m. – 2:00 p. m.",
+      "weekdays": "Lunes a Sábado: 9:00 - 18:00 hrs",
+      "saturday": "Lunes a Sábado: 9:00 - 18:00 hrs",
       "sunday": "Domingo: Cerrado"
     }
   },
@@ -178,7 +178,7 @@
     },
     {
       "question": "¿Dónde se encuentran ubicados?",
-      "answer": "Nos encontramos en Poniente 54 # 3915, Col. Obrero popular, Ciudad de México, C.P. 02840."
+      "answer": "Nos encontramos en Pte 54 3915, Obrero Popular, Azcapotzalco, 02840 Ciudad de México, CDMX."
     },
     {
       "question": "¿Qué servicios adicionales ofrecen?",

@@ -1,0 +1,99 @@
+---
+// Componente Acerca de Nosotros con Acordeón interactivo y fotografía del taller
+---
+
+<section id="conoce" class="section" style="background-color: #ffffff; padding: 5rem 0;">
+  <div class="container">
+    <h2 class="pagina-section-title">ACERCA DE NOSOTROS</h2>
+    
+    <div class="about-grid-container">
+      <!-- Columna Izquierda: Imagen del taller de imprenta -->
+      <div class="about-img-box reveal-item">
+        <img 
+          src="/images/imprenta_taller.jpg" 
+          alt="Taller de impresión offset de Volantes Económicos" 
+          loading="lazy"
+          width="600"
+          height="400"
+        />
+        <span class="about-badge">
+          <i class="fas fa-check-circle" style="margin-right: 6px;"></i>
+          Taller Offset Propio
+        </span>
+      </div>
+
+      <!-- Columna Derecha: Acordeón Interactivo -->
+      <div class="accordion-group reveal-item">
+        <!-- Item 1 -->
+        <div class="pagina-accordion-item">
+          <button class="pagina-accordion-header active" type="button" aria-expanded="true">
+            <h3>Quiénes Somos</h3>
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="pagina-accordion-body active">
+            <p>
+              Somos una empresa con años de experiencia especializada en la impresión offset y digital de alto volumen en México. Nuestro enfoque principal es ofrecer publicidad impresa accesible, nítida y durable sin sacrificar la calidad de cada tiraje.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="pagina-accordion-item">
+          <button class="pagina-accordion-header" type="button" aria-expanded="false">
+            <h3>Nuestra Promesa</h3>
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="pagina-accordion-body">
+            <p>
+              Garantizamos tiempos de entrega rápidos, colores vibrantes en cada impresión bajo estándar CMYK estricto y los precios más competitivos del mercado para potenciar el alcance de tu negocio, pyme o franquicia.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="pagina-accordion-item">
+          <button class="pagina-accordion-header" type="button" aria-expanded="false">
+            <h3>Tecnología</h3>
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="pagina-accordion-body">
+            <p>
+              Contamos con maquinaria de última generación, desde prensas offset para tirajes largos de miles de unidades hasta equipos de impresión digital para entregas urgentes en 24 horas y acabados especiales con barniz a registro.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initAccordion() {
+    const headers = document.querySelectorAll<HTMLButtonElement>('.pagina-accordion-header');
+
+    headers.forEach((header) => {
+      header.addEventListener('click', () => {
+        const body = header.nextElementSibling as HTMLElement | null;
+        const isOpen = header.classList.contains('active');
+
+        // Cierra todos
+        headers.forEach((h) => {
+          h.classList.remove('active');
+          h.setAttribute('aria-expanded', 'false');
+          const b = h.nextElementSibling as HTMLElement | null;
+          b?.classList.remove('active');
+        });
+
+        // Abre el clickeado si estaba cerrado
+        if (!isOpen && body) {
+          header.classList.add('active');
+          header.setAttribute('aria-expanded', 'true');
+          body.classList.add('active');
+        }
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initAccordion);
+  document.addEventListener('astro:page-load', initAccordion);
+</script>

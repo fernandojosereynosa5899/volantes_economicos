@@ -1,0 +1,41 @@
+---
+// Componente ¿Por Qué Elegirnos? con 4 pilares y efectos hover
+const features = [
+  {
+    title: 'Envíos Express',
+    desc: 'Entregas en 24 horas y logística a todo México',
+    icon: 'fas fa-shipping-fast'
+  },
+  {
+    title: 'Diseño Gráfico',
+    desc: 'Armamos tu idea y asesoramos tu archivo publicitario',
+    icon: 'fas fa-paint-brush'
+  },
+  {
+    title: 'Alto Volumen',
+    desc: 'Capacidad industrial offset para millares con ahorro garantizado',
+    icon: 'fas fa-boxes'
+  },
+  {
+    title: 'Calidad Premium',
+    desc: 'Materiales duraderos y colores vivos bajo estándar CMYK',
+    icon: 'fas fa-medal'
+  }
+];
+---
+
+<section id="servicios" class="section" style="background-color: #ffffff; padding: 5rem 0;">
+  <div class="container">
+    <h2 class="pagina-section-title">¿POR QUÉ ELEGIRNOS?</h2>
+    
+    <div class="why-us-grid">
+      {features.map((feat) => (
+        <div class="why-us-item reveal-item">
+          <i class:list={[feat.icon, 'why-us-icon']} aria-hidden="true"></i>
+          <h3>{feat.title}</h3>
+          <p>{feat.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

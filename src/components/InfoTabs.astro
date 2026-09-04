@@ -1,0 +1,154 @@
+---
+const googleMapsUrl = 'https://maps.app.goo.gl/EnpYZEobB2J1ZGxe9';
+---
+
+<section id="info" class="section" style="background-color: #f9f9f9; padding: 5rem 0;">
+  <div class="container">
+    <h2 class="pagina-section-title">INFORMACIÓN Y UBICACIÓN</h2>
+    
+    <div class="info-tabs-container reveal-item">
+      <!-- Encabezado de Pestañas (Idéntico a Capturas 154744, 154804, 154812) -->
+      <div class="info-tabs-header" role="tablist">
+        <button class="info-tab-btn active" data-tab="horarios" type="button" role="tab" aria-selected="true">
+          Horarios de Atención
+        </button>
+        <button class="info-tab-btn" data-tab="llegar" type="button" role="tab" aria-selected="false">
+          Cómo Llegar
+        </button>
+        <button class="info-tab-btn" data-tab="archivos" type="button" role="tab" aria-selected="false">
+          Guía de Archivos
+        </button>
+      </div>
+      
+      <!-- Contenido de Pestañas -->
+      <div class="info-tabs-body" style="padding: 2.5rem 2rem;">
+        <!-- Panel 1: Horarios de Atención (Captura 154744) -->
+        <div class="info-tab-panel active" id="tab-horarios" role="tabpanel">
+          <div class="visitante-grid-3">
+            <div class="visitante-card">
+              <i class="fas fa-clock icon-large" style="color: #FFC107; font-size: 3rem; margin-bottom: 1rem;" aria-hidden="true"></i>
+              <h3 style="color: #E3000F; font-family: 'Oswald', sans-serif; font-size: 1.45rem; margin-bottom: 1rem; text-transform: uppercase;">
+                Horario Comercial
+              </h3>
+              <p style="color: #4b5563; margin-bottom: 0.4rem; font-weight: 600;">Lunes a Sábado: 9:00 - 18:00 hrs</p>
+              <p style="color: #4b5563; margin-bottom: 0.4rem; font-weight: 500;">Azcapotzalco, Ciudad de México</p>
+              <p style="color: #4b5563; margin-bottom: 0.4rem; font-weight: 500;">Domingo: Cerrado</p>
+            </div>
+            
+            <div class="visitante-card">
+              <i class="fas fa-truck icon-large" style="color: #FFC107; font-size: 3rem; margin-bottom: 1rem;" aria-hidden="true"></i>
+              <h3 style="color: #E3000F; font-family: 'Oswald', sans-serif; font-size: 1.45rem; margin-bottom: 1rem; text-transform: uppercase;">
+                Entregas
+              </h3>
+              <p style="color: #4b5563; margin-bottom: 0.4rem; font-weight: 500;">Recepción de archivos antes de las 12:00 PM</p>
+              <p style="color: #4b5563; margin-bottom: 0.4rem; font-weight: 500;">Entregas programadas al día siguiente.</p>
+            </div>
+            
+            <div class="visitante-card">
+              <i class="fas fa-credit-card icon-large" style="color: #FFC107; font-size: 3rem; margin-bottom: 1rem;" aria-hidden="true"></i>
+              <h3 style="color: #E3000F; font-family: 'Oswald', sans-serif; font-size: 1.45rem; margin-bottom: 1rem; text-transform: uppercase;">
+                Pagos
+              </h3>
+              <p style="color: #4b5563; margin-bottom: 0.4rem; font-weight: 500;">Efectivo, Transferencia SPEI</p>
+              <p style="color: #4b5563; margin-bottom: 0.4rem; font-weight: 500;">Tarjetas de Crédito/Débito</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 2: Cómo Llegar (Captura 154804) -->
+        <div class="info-tab-panel" id="tab-llegar" role="tabpanel">
+          <div class="visitante-grid-2">
+            <div class="visitante-card" style="text-align: center; padding: 2.5rem 1.5rem;">
+              <i class="fas fa-map-marker-alt icon-large" style="color: #FFC107; font-size: 3rem; margin-bottom: 1rem;" aria-hidden="true"></i>
+              <h3 style="color: #E3000F; font-family: 'Oswald', sans-serif; font-size: 1.45rem; margin-bottom: 1rem; text-transform: uppercase;">
+                Ubicación
+              </h3>
+              <p style="font-size: 1.05rem; font-weight: 600; color: #111827; margin-bottom: 0.5rem;">
+                Pte 54 3915, Obrero Popular, Azcapotzalco, 02840 Ciudad de México, CDMX
+              </p>
+              <p style="color: #4b5563; margin-bottom: 1.75rem; font-size: 0.95rem;">
+                Estamos ubicados en Azcapotzalco, en una zona de fácil acceso para recolección de pedidos en vehículo.
+              </p>
+              <div>
+                <a 
+                  href={googleMapsUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="btn-hero-primary"
+                  style="font-size: 1rem; padding: 12px 30px; background: #E3000F; border-radius: 30px;"
+                >
+                  ABRIR EN GOOGLE MAPS
+                </a>
+              </div>
+            </div>
+
+            <a 
+              href={googleMapsUrl} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="mapa-box"
+              style="border: 2px dashed #cbd5e1; min-height: 280px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; border-radius: 10px;"
+              title="Haz clic para ver el mapa en Google Maps"
+            >
+              <i class="fas fa-map-marked-alt" style="color: #FFC107; font-size: 3.5rem; margin-bottom: 1rem;" aria-hidden="true"></i>
+              <p style="color: #4b5563; font-size: 1.15rem; font-weight: 500; margin: 0; font-family: 'Montserrat', sans-serif;">
+                Haz clic para ver el mapa
+              </p>
+            </a>
+          </div>
+        </div>
+
+        <!-- Panel 3: Guía de Archivos (Captura 154812) -->
+        <div class="info-tab-panel" id="tab-archivos" role="tabpanel">
+          <div class="visitante-card" style="max-width: 700px; margin: 0 auto; text-align: center; padding: 3rem 2rem;">
+            <i class="fas fa-file-pdf icon-large" style="color: #FFC107; font-size: 3.5rem; margin-bottom: 1.25rem;" aria-hidden="true"></i>
+            <h3 style="color: #E3000F; font-family: 'Oswald', sans-serif; font-size: 1.6rem; margin-bottom: 1.25rem; text-transform: uppercase;">
+              ¿Cómo enviar tus diseños?
+            </h3>
+            <p style="color: #374151; font-size: 1.05rem; margin-bottom: 1rem; font-weight: 500;">
+              Para asegurar la mejor calidad, te pedimos enviar tus archivos en:
+            </p>
+            <p style="color: #4b5563; font-size: 1rem; margin-bottom: 0.6rem; font-weight: 500;">
+              - Formato: PDF, Illustrator (.ai) o JPG de alta resolución.
+            </p>
+            <p style="color: #4b5563; font-size: 1rem; margin-bottom: 0.6rem; font-weight: 500;">
+              - Color: CMYK (no RGB).
+            </p>
+            <p style="color: #4b5563; font-size: 1rem; margin-bottom: 0; font-weight: 500;">
+              - Margen: Deja 3mm de rebase por cada lado para el corte.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initInfoTabs() {
+    const tabBtns = document.querySelectorAll<HTMLButtonElement>('.info-tab-btn');
+    const tabPanels = document.querySelectorAll<HTMLElement>('.info-tab-panel');
+
+    tabBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach((b) => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        tabPanels.forEach((p) => p.classList.remove('active'));
+
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+
+        const tabId = btn.getAttribute('data-tab');
+        const activePanel = document.getElementById(`tab-${tabId}`);
+        if (activePanel) {
+          activePanel.classList.add('active');
+        }
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initInfoTabs);
+  document.addEventListener('astro:page-load', initInfoTabs);
+</script>

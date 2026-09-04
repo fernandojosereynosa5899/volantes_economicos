@@ -1,0 +1,147 @@
+---
+import { getActiveConfig } from '../scripts/content-loader';
+import Icon from './Icon.astro';
+
+const siteConfig = getActiveConfig();
+const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${encodeURIComponent('¡Hola! Me gustaría cotizar con Volantes Económicos.')}`;
+
+const slides = [
+  {
+    image: '/images/VOL1.jpg',
+    alt: 'Velocidad de Entrega - Envío Exprés y Alta Calidad'
+  },
+  {
+    image: '/images/VOL2.jpg',
+    alt: 'Gran Alcance, Bajo Costo - Millares por un Súper Precio'
+  },
+  {
+    image: '/images/VOL3.jpg',
+    alt: 'Diseños que Atrapan - ¡Impacta a tus clientes!'
+  }
+];
+---
+
+<section class="hero-slider-section" aria-label="Carrusel de promociones">
+  <div class="hero-slider-container" id="hero-slider">
+    {slides.map((slide, idx) => (
+      <div 
+        class:list={['hero-slide', { active: idx === 0 }]}
+        style={`background-image: url('${slide.image}');`}
+        data-slide-index={idx}
+        role="group"
+        aria-roledescription="slide"
+        aria-label={`${idx + 1} de ${slides.length}: ${slide.alt}`}
+      >
+        <div class="hero-slide-overlay"></div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Botones de Navegación del Slider -->
+  <button class="slider-control-btn prev" id="slider-prev-btn" aria-label="Diapositiva anterior">
+    <i class="fas fa-chevron-left" aria-hidden="true"></i>
+  </button>
+  <button class="slider-control-btn next" id="slider-next-btn" aria-label="Diapositiva siguiente">
+    <i class="fas fa-chevron-right" aria-hidden="true"></i>
+  </button>
+
+  <!-- Puntos Indicadores -->
+  <div class="slider-dots-box" role="tablist" aria-label="Puntos del carrusel">
+    {slides.map((_, idx) => (
+      <button 
+        class:list={['slider-dot-btn', { active: idx === 0 }]}
+        data-dot-index={idx}
+        role="tab"
+        aria-selected={idx === 0 ? 'true' : 'false'}
+        aria-label={`Ir a diapositiva ${idx + 1}`}
+      ></button>
+    ))}
+  </div>
+
+  <!-- Contenido Central Hero (Idéntico a captura 154355) -->
+  <div class="hero-slider-content-box">
+    <div class="hero-glass-card">
+      <h2 data-bind="home.title">VOLANTES ECONÓMICOS<br/>PARA SU NEGOCIO</h2>
+      <p data-bind="home.intro">
+        En Volantes Económicos nos interesa su negocio por eso realizamos sus folletos con todo el profesionalismo. Porque Sabemos que sus volantes publicitarios son muy importante para usted y su negocio.
+      </p>
+      <div class="hero-actions">
+        <a href="#productos" class="btn-hero-primary">
+          <i class="fas fa-th-large" aria-hidden="true"></i>
+          <span>VER CATÁLOGO</span>
+        </a>
+        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" class="btn-hero-whatsapp">
+          <i class="fab fa-whatsapp" aria-hidden="true"></i>
+          <span>COTIZAR POR WHATSAPP</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initHeroSlider() {
+    const slides = document.querySelectorAll<HTMLElement>('.hero-slide');
+    const dots = document.querySelectorAll<HTMLElement>('.slider-dot-btn');
+    const prevBtn = document.getElementById('slider-prev-btn');
+    const nextBtn = document.getElementById('slider-next-btn');
+
+    if (!slides.length) return;
+
+    let currentIndex = 0;
+    let autoInterval: number | null = null;
+
+    function goToSlide(index: number) {
+      slides.forEach((s) => s.classList.remove('active'));
+      dots.forEach((d) => {
+        d.classList.remove('active');
+        d.setAttribute('aria-selected', 'false');
+      });
+
+      currentIndex = (index + slides.length) % slides.length;
+      slides[currentIndex].classList.add('active');
+      dots[currentIndex].classList.add('active');
+      dots[currentIndex].setAttribute('aria-selected', 'true');
+    }
+
+    function startAutoSlide() {
+      stopAutoSlide();
+      autoInterval = window.setInterval(() => {
+        goToSlide(currentIndex + 1);
+      }, 5500);
+    }
+
+    function stopAutoSlide() {
+      if (autoInterval !== null) {
+        clearInterval(autoInterval);
+        autoInterval = null;
+      }
+    }
+
+    nextBtn?.addEventListener('click', () => {
+      goToSlide(currentIndex + 1);
+      startAutoSlide();
+    });
+
+    prevBtn?.addEventListener('click', () => {
+      goToSlide(currentIndex - 1);
+      startAutoSlide();
+    });
+
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => {
+        goToSlide(idx);
+        startAutoSlide();
+      });
+    });
+
+    const sliderContainer = document.getElementById('hero-slider');
+    sliderContainer?.addEventListener('mouseenter', stopAutoSlide);
+    sliderContainer?.addEventListener('mouseleave', startAutoSlide);
+
+    startAutoSlide();
+  }
+
+  document.addEventListener('DOMContentLoaded', initHeroSlider);
+  document.addEventListener('astro:page-load', initHeroSlider);
+</script>

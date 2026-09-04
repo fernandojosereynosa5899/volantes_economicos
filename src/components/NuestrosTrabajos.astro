@@ -1,0 +1,193 @@
+---
+import { getActiveConfig } from '../scripts/content-loader';
+
+const siteConfig = getActiveConfig();
+const baseWa = `https://wa.me/${siteConfig.general.whatsappNumber}?text=`;
+
+const trabajos = [
+  {
+    id: 'volante-restaurante',
+    title: 'Volantes para Restaurante',
+    alt: 'Volante para restaurante',
+    category: 'vol',
+    image: '/images/trabajos/volante_restaurante.jpg',
+    description: 'Volante publicitario impreso a todo color para restaurantes, menús y promociones de comida.'
+  },
+  {
+    id: 'tarjetas-barniz',
+    title: 'Tarjetas Barniz a Registro',
+    alt: 'Tarjetas con barniz',
+    category: 'tarjetas',
+    image: '/images/trabajos/tarjetas_barniz.jpg',
+    description: 'Tarjetas de presentación premium con acabado selectivo brillante UV sobre fondo mate.'
+  },
+  {
+    id: 'volante-gimnasio',
+    title: 'Flyers Deportivos',
+    alt: 'Volante gimnasio',
+    category: 'vol',
+    image: '/images/trabajos/volante_gimnasio.jpg',
+    description: 'Volante deportivo publicitario de alto impacto visual para gimnasios y crossfit.'
+  },
+  {
+    id: 'diptico-corporativo',
+    title: 'Dípticos Corporativos',
+    alt: 'Díptico',
+    category: 'vol',
+    image: '/images/trabajos/diptico_corporativo.jpg',
+    description: 'Díptico corporativo plegable con 4 caras para presentación de servicios empresariales.'
+  }
+];
+---
+
+<section id="galeria" class="section" style="background-color: #ffffff; padding: 5rem 0;">
+  <div class="container">
+    <h2 class="pagina-section-title">NUESTROS TRABAJOS</h2>
+    
+    <!-- Filtros de Galería: TODO, VOLANTES, TARJETAS (Idéntico a captura de pantalla 152335) -->
+    <div class="galeria-filter-row" role="tablist" aria-label="Filtros de trabajos">
+      <button class="filter-pill-btn active" data-filter-gallery="all" type="button">Todo</button>
+      <button class="filter-pill-btn" data-filter-gallery="vol" type="button">Volantes</button>
+      <button class="filter-pill-btn" data-filter-gallery="tarjetas" type="button">Tarjetas</button>
+    </div>
+    
+    <!-- Grid de Trabajos -->
+    <div class="galeria-trabajos-grid" id="galeriaTrabajosGrid">
+      {trabajos.map((item) => (
+        <div 
+          class="trabajo-card-item reveal-item" 
+          data-category-gallery={item.category}
+          data-img={item.image}
+          data-title={item.title}
+          data-desc={item.description}
+          role="button"
+          tabindex="0"
+          aria-label={`Ver muestra de ${item.title}`}
+        >
+          <img 
+            src={item.image} 
+            alt={item.alt} 
+            loading="lazy"
+            width="400"
+            height="260"
+          />
+          <div class="trabajo-overlay">
+            <i class="fas fa-search-plus" aria-hidden="true"></i>
+            <p>{item.title}</p>
+          </div>
+          <div class="trabajo-card-footer">
+            <p>{item.title}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Lightbox Modal estilo Pagina -->
+  <div class="pagina-lightbox-modal" id="trabajos-lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+    <button class="pagina-lightbox-close" id="close-trabajos-lightbox" aria-label="Cerrar vista previa">
+      &times;
+    </button>
+    
+    <div class="pagina-lightbox-container">
+      <img id="lb-target-image" src="" alt="Vista previa de trabajo" />
+      <div class="pagina-lightbox-caption" id="lb-target-caption"></div>
+      
+      <div class="pagina-lightbox-cta">
+        <a 
+          href="#" 
+          id="lb-whatsapp-cta" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="btn-hero-whatsapp"
+          style="display: inline-flex; align-items: center; gap: 8px;"
+        >
+          <i class="fab fa-whatsapp"></i>
+          <span>Cotizar este trabajo por WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initTrabajosGallery() {
+    const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-pill-btn[data-filter-gallery]');
+    const cards = document.querySelectorAll<HTMLElement>('.trabajo-card-item');
+    const lightbox = document.getElementById('trabajos-lightbox');
+    const lbImg = document.getElementById('lb-target-image') as HTMLImageElement | null;
+    const lbCaption = document.getElementById('lb-target-caption');
+    const lbCta = document.getElementById('lb-whatsapp-cta') as HTMLAnchorElement | null;
+    const closeBtn = document.getElementById('close-trabajos-lightbox');
+
+    // 1. Filtrado
+    filterBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter-gallery');
+        cards.forEach((card) => {
+          const category = card.getAttribute('data-category-gallery');
+          if (filter === 'all' || category === filter) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // 2. Lightbox Modal
+    cards.forEach((card) => {
+      const openModal = () => {
+        const imgSrc = card.getAttribute('data-img') || '';
+        const title = card.getAttribute('data-title') || '';
+        
+        if (lbImg && lightbox) {
+          lbImg.src = imgSrc;
+          lbImg.alt = title;
+          if (lbCaption) lbCaption.textContent = title;
+          if (lbCta) {
+            lbCta.href = `https://wa.me/525540421232?text=${encodeURIComponent('Hola, me interesa cotizar un trabajo similar a: ' + title)}`;
+          }
+          lightbox.classList.add('active');
+          lightbox.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        }
+      };
+
+      card.addEventListener('click', openModal);
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openModal();
+        }
+      });
+    });
+
+    const closeModal = () => {
+      if (lightbox) {
+        lightbox.classList.remove('active');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+    };
+
+    closeBtn?.addEventListener('click', closeModal);
+    lightbox?.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox?.classList.contains('active')) {
+        closeModal();
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initTrabajosGallery);
+  document.addEventListener('astro:page-load', initTrabajosGallery);
+</script>

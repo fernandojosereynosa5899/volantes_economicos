@@ -1,0 +1,119 @@
+---
+import { getActiveConfig } from '../scripts/content-loader';
+
+const siteConfig = getActiveConfig();
+const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${encodeURIComponent('¡Hola! Me gustaría cotizar el producto: ')}`;
+
+const products = [
+  {
+    id: 'media-carta',
+    category: 'volantes',
+    title: 'Media Carta',
+    subtitle: 'Millares en papel couché',
+    tooltip: 'Ideal para menús, promociones de impacto y eventos masivos.',
+    image: '/images/productos/media_carta.jpg'
+  },
+  {
+    id: 'cuarto-carta',
+    category: 'volantes',
+    title: 'Cuarto de Carta',
+    subtitle: 'Formato económico',
+    tooltip: 'El tamaño más popular y accesible para buzoneo y entrega en mano.',
+    image: '/images/productos/cuarto_carta.jpg'
+  },
+  {
+    id: 'tarjetas-presentacion',
+    category: 'papeleria',
+    title: 'Tarjetas de Presentación',
+    subtitle: 'Barniz UV o Mate',
+    tooltip: 'Da una excelente primera impresión profesional y duradera a tus clientes.',
+    image: '/images/productos/tarjetas.jpg'
+  },
+  {
+    id: 'dipticos-tripticos',
+    category: 'papeleria',
+    title: 'Dípticos y Trípticos',
+    subtitle: 'Para información detallada',
+    tooltip: 'Perfectos para folletos corporativos, catálogos y guías de servicios.',
+    image: '/images/productos/dipticos.jpg'
+  },
+  {
+    id: 'notas-remisiones',
+    category: 'papeleria',
+    title: 'Notas y Remisiones',
+    subtitle: 'Papel autocopiante',
+    tooltip: 'Control administrativo para tus ventas y notas con folios y copia al carbón.',
+    image: '/images/productos/notas.jpg'
+  },
+  {
+    id: 'lonas-posters',
+    category: 'volantes',
+    title: 'Lonas y Posters',
+    subtitle: 'Gran formato exterior',
+    tooltip: 'Atrae las miradas desde lejos con impresión exterior de máxima resolución.',
+    image: '/images/productos/lonas.jpg'
+  }
+];
+---
+
+<section id="productos" class="section" style="background-color: #f8fafc; padding: 5rem 0;">
+  <div class="container">
+    <h2 class="pagina-section-title">NUESTROS PRODUCTOS</h2>
+    
+    <!-- Filtros por categoría -->
+    <div class="filter-pills-row" role="tablist" aria-label="Filtros de productos">
+      <button class="filter-pill-btn active" data-filter="all" type="button">Todos</button>
+      <button class="filter-pill-btn" data-filter="volantes" type="button">Volantes</button>
+      <button class="filter-pill-btn" data-filter="papeleria" type="button">Papelería</button>
+    </div>
+
+    <!-- Grid de productos -->
+    <div class="products-cards-grid" id="products-container">
+      {products.map((prod) => (
+        <a 
+          href={`${whatsappUrl}${encodeURIComponent(prod.title)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="pagina-product-card reveal-item" 
+          data-category={prod.category}
+          title={`Cotizar ${prod.title} por WhatsApp`}
+        >
+          <div class="pagina-product-image">
+            <img src={prod.image} alt={prod.title} loading="lazy" />
+          </div>
+          <h3>{prod.title}</h3>
+          <p>{prod.subtitle}</p>
+          <div class="pagina-product-tooltip">{prod.tooltip}</div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  function initProductFilter() {
+    const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-pill-btn[data-filter]');
+    const cards = document.querySelectorAll<HTMLElement>('.pagina-product-card');
+
+    filterBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        cards.forEach((card) => {
+          const category = card.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initProductFilter);
+  document.addEventListener('astro:page-load', initProductFilter);
+</script>

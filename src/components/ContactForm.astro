@@ -1,152 +1,344 @@
 ---
-import '../styles/components/contact.css';
 import { getActiveConfig } from '../scripts/content-loader';
-import Icon from './Icon.astro';
 
 const siteConfig = getActiveConfig();
-
-const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${encodeURIComponent('¡Hola! Me gustaría cotizar volantes para mi negocio.')}`;
+const emailTo = siteConfig.general.email || 'moyrivera100@gmail.com';
+const phone = siteConfig.general.phoneNumber || '55-4042-1232';
+const facebookUrl = siteConfig.general.facebookUrl || 'https://www.facebook.com/profile.php?id=100068111139741';
+const instagramUrl = 'https://www.instagram.com';
 ---
 
-<section class="section" id="contacto">
+<section id="contacto" class="section" style="background-color: #f9f9f9; padding: 5rem 0;">
   <div class="container">
-    <div class="section-header reveal-item">
-      <span class="section-tag">{siteConfig.contacto.title}</span>
-      <h2 class="section-title" data-bind="contacto.subtitle">
-        {siteConfig.contacto.subtitle}
-      </h2>
-      <p class="section-subtitle">
-        Contáctanos para hacer tu pedido o resolver cualquier duda sobre tus impresiones publicitarias.
-      </p>
-    </div>
-
-    <div class="contact-layout reveal-item delay-100">
-      <!-- Contact Info Cards -->
-      <div class="contact-info-cards">
-        <!-- WhatsApp Principal -->
-        <div class="contact-card-item whatsapp-featured">
-          <div class="contact-icon-box">
-            <Icon name="whatsapp" size={26} />
-          </div>
-          <div class="contact-card-text">
-            <h4>WhatsApp Principal</h4>
-            <p>Atención directa para pedidos y cotizaciones.</p>
-            <a 
-              href={whatsappUrl} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              class="contact-link whatsapp-link"
-            >
-              Enviar mensaje: <span data-bind="general.phoneNumber">{siteConfig.general.phoneNumber}</span> →
+    <h2 class="pagina-section-title">COTIZA TU PROYECTO</h2>
+    
+    <div class="contacto-grid-2">
+      <!-- Columna Izquierda: Información de Atención al Cliente y Redes -->
+      <div class="contacto-info-col reveal-item">
+        <h3 class="contacto-subheading">Atención al Cliente</h3>
+        
+        <div class="contacto-links-list">
+          <p>
+            <a href="tel:+525540421232" class="contacto-link-item">
+              <i class="fas fa-phone" aria-hidden="true"></i>
+              <span>Teléfono: {phone}</span>
             </a>
-          </div>
-        </div>
-
-        <!-- Facebook & Messenger -->
-        <div class="contact-card-item" style="border-color: rgba(24, 119, 242, 0.3);">
-          <div class="contact-icon-box" style="background: rgba(24, 119, 242, 0.15); color: #1877f2;">
-            <Icon name="facebook" size={24} />
-          </div>
-          <div class="contact-card-text">
-            <h4>Facebook & Messenger</h4>
-            <p>{siteConfig.general.messengerName}</p>
-            <a href={siteConfig.general.facebookUrl} target="_blank" rel="noopener noreferrer" class="contact-link" style="color: #1877f2;">
-              Visitar Página de Facebook →
+          </p>
+          
+          <p>
+            <a href="https://wa.me/525540421232?text=Hola,%20me%20gustar%C3%ADa%20una%20cotizaci%C3%B3n" target="_blank" rel="noopener noreferrer" class="contacto-link-item">
+              <i class="fab fa-whatsapp" aria-hidden="true" style="color: #25d366;"></i>
+              <span>WhatsApp: {phone}</span>
             </a>
-          </div>
-        </div>
-
-        <!-- Correo Electrónico -->
-        <div class="contact-card-item">
-          <div class="contact-icon-box">
-            <Icon name="mail" size={24} />
-          </div>
-          <div class="contact-card-text">
-            <h4>Correo Electrónico</h4>
-            <p>Envía tus archivos o solicitudes por correo.</p>
-            <a href={`mailto:${siteConfig.general.email}`} class="contact-link">
-              {siteConfig.general.email} →
+          </p>
+          
+          <p>
+            <a href={`mailto:${emailTo}?subject=Cotización%20de%20Imprenta`} class="contacto-link-item">
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+              <span>{emailTo}</span>
             </a>
-          </div>
+          </p>
+          
+          <p>
+            <a href="https://maps.app.goo.gl/EnpYZEobB2J1ZGxe9" target="_blank" rel="noopener noreferrer" class="contacto-link-item">
+              <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+              <span>Pte 54 3915, Obrero Popular, Azcapotzalco, CDMX</span>
+            </a>
+          </p>
         </div>
 
-        <!-- Ubicación / Dirección Física -->
-        <div class="contact-card-item">
-          <div class="contact-icon-box">
-            <Icon name="map-pin" size={24} />
-          </div>
-          <div class="contact-card-text">
-            <h4>Ubicación</h4>
-            <p>{siteConfig.general.address}</p>
-          </div>
-        </div>
-
-        <!-- Horarios de Atención -->
-        <div class="contact-card-item">
-          <div class="contact-icon-box">
-            <Icon name="clock" size={24} />
-          </div>
-          <div class="contact-card-text">
-            <h4>Horarios de Atención</h4>
-            <p style="margin: 0; line-height: 1.6;">
-              • {siteConfig.general.schedule.weekdays}<br/>
-              • {siteConfig.general.schedule.saturday}<br/>
-              • {siteConfig.general.schedule.sunday}
-            </p>
-          </div>
+        <h3 class="contacto-subheading" style="margin-top: 2.5rem;">Síguenos en Redes</h3>
+        <div class="contacto-social-row">
+          <a href={facebookUrl} target="_blank" rel="noopener noreferrer" class="social-badge-btn facebook">
+            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+            <span>Facebook</span>
+          </a>
+          
+          <a href={instagramUrl} target="_blank" rel="noopener noreferrer" class="social-badge-btn instagram">
+            <i class="fab fa-instagram" aria-hidden="true"></i>
+            <span>Instagram</span>
+          </a>
         </div>
       </div>
 
-      <!-- Quick Quote Form -->
-      <div class="contact-form-box">
-        <h3>Formulario de Contacto</h3>
-        <p>Escríbenos y con gusto te atenderemos para tu cotización.</p>
-
-        <form id="quick-quote-form">
-          <div class="form-grid">
-            <div class="form-group">
-              <label for="contact-name">Nombre *</label>
-              <input type="text" id="contact-name" class="form-input" placeholder="Tu nombre" required />
+      <!-- Columna Derecha: Formulario de Cotización -->
+      <div class="contacto-form-col reveal-item">
+        <div class="contacto-card-box">
+          <h3 class="form-card-title">SOLICITAR COTIZACIÓN</h3>
+          
+          <form id="paginaContactForm" class="pagina-contact-form">
+            <div class="form-field-group">
+              <input 
+                type="text" 
+                id="nombre" 
+                placeholder="Nombre o Empresa" 
+                required 
+                class="contacto-input"
+              />
             </div>
 
-            <div class="form-group">
-              <label for="contact-phone">Teléfono / WhatsApp *</label>
-              <input type="tel" id="contact-phone" class="form-input" placeholder="Tu teléfono" required />
+            <div class="form-field-group">
+              <input 
+                type="email" 
+                id="email" 
+                placeholder="Correo electrónico" 
+                required 
+                class="contacto-input"
+              />
             </div>
 
-            <div class="form-group">
-              <label for="contact-email">Correo Electrónico</label>
-              <input type="email" id="contact-email" class="form-input" placeholder="correo@ejemplo.com" />
-            </div>
-
-            <div class="form-group">
-              <label for="contact-service">Servicio</label>
-              <select id="contact-service" class="form-select">
-                {siteConfig.services.map(s => (
-                  <option value={s}>{s}</option>
-                ))}
+            <div class="form-field-group">
+              <select id="asunto" required class="contacto-select">
+                <option value="">¿Qué necesitas imprimir?</option>
+                <option value="Millares de Volantes">Millares de Volantes</option>
+                <option value="Tarjetas de Presentación">Tarjetas de Presentación</option>
+                <option value="Lonas / Gran formato">Lonas / Gran formato</option>
+                <option value="Dípticos o Folletos">Dípticos o Folletos</option>
+                <option value="Otro servicio">Otro servicio</option>
               </select>
             </div>
 
-            <div class="form-group full-width">
-              <label for="contact-message">Mensaje</label>
-              <textarea id="contact-message" class="form-textarea" placeholder="Escribe aquí tu mensaje o detalles de lo que necesitas..."></textarea>
+            <div class="form-field-group">
+              <textarea 
+                id="mensaje" 
+                placeholder="Detalles (Cantidad, tamaño, ¿tienes diseño?)" 
+                rows="4" 
+                required 
+                class="contacto-textarea"
+              ></textarea>
             </div>
-          </div>
 
-          <button type="submit" class="btn btn-whatsapp btn-lg form-submit-btn">
-            <Icon name="whatsapp" size={22} />
-            <span>Enviar por WhatsApp</span>
-          </button>
-        </form>
+            <button type="submit" class="btn-enviar-cotizacion">
+              ENVIAR COTIZACIÓN
+            </button>
+          </form>
+
+          <div id="contactoFormMsg" class="form-feedback-msg" style="display: none;"></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<style>
+  .contacto-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: flex-start;
+  }
+
+  @media (min-width: 850px) {
+    .contacto-grid-2 {
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+    }
+  }
+
+  .contacto-subheading {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.8rem;
+    color: #E3000F;
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .contacto-links-list p {
+    margin-bottom: 1.1rem;
+    font-size: 1.05rem;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .contacto-link-item {
+    color: #2c2c2c;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 500;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+
+  .contacto-link-item i {
+    color: #E3000F;
+    font-size: 1.25rem;
+    width: 24px;
+    text-align: center;
+    transition: transform 0.2s ease;
+  }
+
+  .contacto-link-item:hover {
+    color: #E3000F;
+    transform: translateX(4px);
+  }
+
+  .contacto-link-item:hover i {
+    transform: scale(1.2);
+  }
+
+  .contacto-social-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .social-badge-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 24px;
+    color: #ffffff !important;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .social-badge-btn.facebook {
+    background: #1877f2;
+    box-shadow: 0 4px 12px rgba(24, 119, 242, 0.3);
+  }
+
+  .social-badge-btn.instagram {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    box-shadow: 0 4px 12px rgba(220, 39, 67, 0.3);
+  }
+
+  .social-badge-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+  }
+
+  /* Tarjeta del Formulario */
+  .contacto-card-box {
+    background: #ffffff;
+    padding: 2.5rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    border-top: 5px solid #FFC107;
+    border-left: 1px solid #e2e8f0;
+    border-right: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .form-card-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.8rem;
+    color: #111827;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .pagina-contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+
+  .contacto-input, .contacto-select, .contacto-textarea {
+    width: 100%;
+    padding: 13px 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: #111827;
+    background: #ffffff;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  .contacto-input:focus, .contacto-select:focus, .contacto-textarea:focus {
+    outline: none;
+    border-color: #E3000F;
+    box-shadow: 0 0 0 3px rgba(227, 0, 15, 0.12);
+  }
+
+  .contacto-textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .btn-enviar-cotizacion {
+    width: 100%;
+    padding: 16px;
+    background: #E3000F;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-transform: uppercase;
+    box-shadow: 0 4px 14px rgba(227, 0, 15, 0.35);
+  }
+
+  .btn-enviar-cotizacion:hover {
+    background: #111827;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  }
+
+  .form-feedback-msg {
+    margin-top: 1rem;
+    padding: 14px;
+    border-radius: 6px;
+    font-size: 0.92rem;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .form-feedback-msg.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+</style>
+
 <script>
-  import { initContactForm } from '../scripts/contact';
-  document.addEventListener('DOMContentLoaded', () => {
-    initContactForm();
-  });
+  function initContactForm() {
+    const form = document.getElementById('paginaContactForm') as HTMLFormElement | null;
+    const msgBox = document.getElementById('contactoFormMsg');
+
+    if (!form) return;
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const nombre = (document.getElementById('nombre') as HTMLInputElement)?.value || '';
+      const email = (document.getElementById('email') as HTMLInputElement)?.value || '';
+      const select = document.getElementById('asunto') as HTMLSelectElement | null;
+      const asunto = select ? select.options[select.selectedIndex]?.text : 'Cotización';
+      const detalles = (document.getElementById('mensaje') as HTMLTextAreaElement)?.value || '';
+
+      const cuerpo = `Nombre/Empresa: ${nombre}%0D%0A` +
+                     `Correo de contacto: ${email}%0D%0A` +
+                     `Servicio requerido: ${asunto}%0D%0A%0D%0A` +
+                     `Detalles del pedido:%0D%0A${detalles}`;
+
+      // Abre la aplicación de correo
+      window.location.href = `mailto:moyrivera100@gmail.com?subject=Solicitud de Cotización: ${encodeURIComponent(asunto)}&body=${cuerpo}`;
+
+      if (msgBox) {
+        msgBox.style.display = 'block';
+        msgBox.className = 'form-feedback-msg success';
+        msgBox.textContent = '¡Gracias! Abriendo tu aplicación de correo para enviar los detalles.';
+        form.reset();
+        setTimeout(() => {
+          msgBox.style.display = 'none';
+        }, 6000);
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initContactForm);
+  document.addEventListener('astro:page-load', initContactForm);
 </script>

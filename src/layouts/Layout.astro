@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import '../styles/animations.css';
 import '../styles/layout.css';
+import '../styles/components/pagina-estilos.css';
 
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -42,7 +43,7 @@ const schemaOrgJSONLD = {
   "paymentAccepted": "Efectivo, Transferencia Electrónica, Tarjetas, Depósito Bancario",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Poniente 54 # 3915, Col. Obrero Popular",
+    "streetAddress": "Pte 54 3915, Obrero Popular",
     "addressLocality": "Azcapotzalco, Ciudad de México",
     "postalCode": "02840",
     "addressCountry": "MX"
@@ -55,15 +56,9 @@ const schemaOrgJSONLD = {
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
       "opens": "09:00",
       "closes": "18:00"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": "Saturday",
-      "opens": "09:00",
-      "closes": "14:00"
     }
   ],
   "sameAs": [
@@ -86,10 +81,13 @@ const schemaOrgJSONLD = {
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <link rel="canonical" href={canonicalURL} />
 
-  <!-- Google Fonts Preconnect & Josefin Sans -->
+  <!-- Google Fonts Preconnect & Typographies (Oswald, Montserrat, Josefin Sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Oswald:wght@400;600;700&family=Josefin+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
@@ -123,15 +121,38 @@ const schemaOrgJSONLD = {
 
   <Footer />
 
+  <!-- Botón Scroll to Top flotante -->
+  <button class="pagina-scroll-top-btn" id="scrollToTop" aria-label="Volver al inicio de página" type="button">
+    <i class="fas fa-arrow-up" aria-hidden="true"></i>
+  </button>
+
   <script>
     import { initNavbar } from '../scripts/navbar';
     import { initAnimations } from '../scripts/animations';
     import { applyConfigToDOM } from '../scripts/content-loader';
 
+    function initScrollToTop() {
+      const scrollBtn = document.getElementById('scrollToTop');
+      if (!scrollBtn) return;
+
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 350) {
+          scrollBtn.style.display = 'flex';
+        } else {
+          scrollBtn.style.display = 'none';
+        }
+      });
+
+      scrollBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
     function bootstrap() {
       applyConfigToDOM();
       initNavbar();
       initAnimations();
+      initScrollToTop();
     }
 
     document.addEventListener('DOMContentLoaded', bootstrap);
