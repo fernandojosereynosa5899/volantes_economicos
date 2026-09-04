@@ -6,7 +6,6 @@ import Icon from './Icon.astro';
 const siteConfig = getActiveConfig();
 
 const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${encodeURIComponent('¡Hola! Me gustaría cotizar volantes para mi negocio.')}`;
-const secondaryWhatsappUrl = `https://wa.me/52${siteConfig.general.secondaryPhone.replace(/\s+/g, '')}?text=${encodeURIComponent('¡Hola! Me gustaría cotizar volantes para mi negocio.')}`;
 ---
 
 <section class="section" id="contacto">
@@ -39,20 +38,6 @@ const secondaryWhatsappUrl = `https://wa.me/52${siteConfig.general.secondaryPhon
               class="contact-link whatsapp-link"
             >
               Enviar mensaje: <span data-bind="general.phoneNumber">{siteConfig.general.phoneNumber}</span> →
-            </a>
-          </div>
-        </div>
-
-        <!-- WhatsApp Secundario / Alternativo -->
-        <div class="contact-card-item">
-          <div class="contact-icon-box">
-            <Icon name="phone" size={24} />
-          </div>
-          <div class="contact-card-text">
-            <h4>Teléfono Alternativo</h4>
-            <p>Línea secundaria de atención y WhatsApp.</p>
-            <a href={secondaryWhatsappUrl} target="_blank" rel="noopener noreferrer" class="contact-link">
-              {siteConfig.general.secondaryPhone} →
             </a>
           </div>
         </div>
