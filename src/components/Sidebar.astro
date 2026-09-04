@@ -4,50 +4,114 @@ import Icon from './Icon.astro';
 
 const siteConfig = getActiveConfig();
 
-const sidebarLinks = [
-  { label: 'Volantes para Pizzas', href: '/volantes-para-pizzas' },
-  { label: 'Impresión de Volantes Monterrey', href: '/impresion-de-volantes-monterrey' },
-  { label: 'Volantes Publicitarios Guadalajara', href: '/volantes-publicitarios-guadalajara' },
-  { label: 'Impresión de Flyers Precio', href: '/impresion-de-flyers-precio' },
-  { label: 'Imprenta Volantes Baratos', href: '/imprenta-volantes-baratos' },
-  { label: '1000 Volantes Precio', href: '/1000-volantes-precio' },
-  { label: 'Volantes Folletos', href: '/volantes-folletos' },
-  { label: 'Impresión de Volantes Baratos DF', href: '/impresion-de-volantes-baratos-df' },
-  { label: 'Volantes Económicos', href: '/' }
+// Catálogo completo de productos, servicios, medidas y páginas en venta
+const siteCatalog = [
+  { label: '1,000 Volantes Económicos', href: '/1000-volantes-precio', type: 'Paquete', keywords: '1000 mil volantes precio costo promocion flyers baratos oferta' },
+  { label: 'Volantes para Pizzas y Restaurantes', href: '/volantes-para-pizzas', type: 'Producto', keywords: 'pizzas pizzeria restaurantes comida menus volantes flyers alimentos tacos sushi' },
+  { label: 'Volantes 1/4 de Carta (10 x 14 cm)', href: '/precios', type: 'Medida', keywords: 'cuarto carta medidas tamanos volantes offset 10x14 economica chicos pequenos' },
+  { label: 'Volantes 1/2 Carta (14 x 21 cm)', href: '/precios', type: 'Medida', keywords: 'media carta medidas tamanos volantes folletos 14x21 medianos' },
+  { label: 'Volantes Carta Completa (21 x 28 cm)', href: '/precios', type: 'Medida', keywords: 'carta completa medidas 21x28 posters hojas grandes' },
+  { label: 'Paquetes de 2,500 y 5,000 Volantes', href: '/precios', type: 'Paquete', keywords: '2500 5000 volantes mayoreo paquetes precios offset paquetes economicos' },
+  { label: 'Paquetes de 10,000 y 20,000 Volantes', href: '/precios', type: 'Paquete', keywords: '10000 20000 volantes masivos campanas grandes precios volumen' },
+  { label: 'Tarjetas de Presentación', href: '/contacto', type: 'Servicio', keywords: 'tarjetas presentacion negocio corporativas impresion personalizadas' },
+  { label: 'Lonas Impresas', href: '/contacto', type: 'Servicio', keywords: 'lonas impresas gran formato publicidad banners letreros' },
+  { label: 'Menús para Restaurantes', href: '/volantes-para-pizzas', type: 'Servicio', keywords: 'menus carta restaurantes comida alimentos cafeteria listas plastificados' },
+  { label: 'Comandas para Restaurantes', href: '/contacto', type: 'Servicio', keywords: 'comandas notas remision restaurantes folios notas pedido' },
+  { label: 'Imanes Publicitarios', href: '/contacto', type: 'Servicio', keywords: 'imanes refrigerador publicidad magneticos promocionales nevera' },
+  { label: 'Servicio de Diseño Gráfico', href: '/precios', type: 'Servicio', keywords: 'diseno grafico logotipos volantes personalizacion creativo arte' },
+  { label: 'Catálogo de Diseños de Volantes', href: '/disenos', type: 'Galería', keywords: 'disenos muestras ejemplos fotos galeria imagenes trabajos' },
+  { label: 'Cotizador y Tabla de Precios', href: '/precios', type: 'Precios', keywords: 'precios cotizador cotizar costos calcular offset presupuesto' },
+  { label: 'Impresión de Flyers Precio', href: '/impresion-de-flyers-precio', type: 'Artículo', keywords: 'flyers precio impresion volantes propaganda volantes' },
+  { label: 'Imprenta Volantes Baratos', href: '/imprenta-volantes-baratos', type: 'Artículo', keywords: 'imprenta baratos economicos volantes calidad mayoreo' },
+  { label: 'Volantes y Folletos', href: '/volantes-folletos', type: 'Artículo', keywords: 'folletos tripticos dipticos volantes propaganda dipticos' },
+  { label: 'Impresión de Volantes CDMX / DF', href: '/impresion-de-volantes-baratos-df', type: 'Ubicación', keywords: 'cdmx df mexico ciudad de mexico azcapotzalco norte sur poniente' },
+  { label: 'Impresión de Volantes Monterrey', href: '/impresion-de-volantes-monterrey', type: 'Ubicación', keywords: 'monterrey nuevo leon envios mty norte' },
+  { label: 'Volantes Publicitarios Guadalajara', href: '/volantes-publicitarios-guadalajara', type: 'Ubicación', keywords: 'guadalajara jalisco gdl envios occidente' },
+  { label: 'Envíos a toda la República Mexicana', href: '/entrega', type: 'Envíos', keywords: 'envios mensajeria paqueteria entrega republica nacional envios cdmx estados' },
+  { label: 'Volantes Económicos (Inicio)', href: '/', type: 'Inicio', keywords: 'inicio volantes economicos empresa imprenta' }
 ];
 
-const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${encodeURIComponent('¡Hola! Me gustaría cotizar volantes.')}`;
+const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${encodeURIComponent('¡Hola! Me gustaría cotizar productos en Volantes Económicos.')}`;
 ---
 
 <aside class="original-sidebar">
-  <!-- 1. Widget de Búsqueda -->
+  <!-- 1. Widget de Búsqueda y Sugerencias -->
   <div class="sidebar-widget">
     <h3 class="sidebar-widget-title">Buscar por:</h3>
-    <form class="sidebar-search-form" onsubmit="return false;">
-      <label for="sidebar-search-input" class="sr-only">Buscar</label>
-      <input 
-        type="search" 
-        id="sidebar-search-input" 
-        class="sidebar-search-input" 
-        placeholder="Buscar …" 
-      />
+    <form class="sidebar-search-form" id="sidebar-search-form" onsubmit="return false;">
+      <div class="search-input-wrapper">
+        <label for="sidebar-search-input" class="sr-only">Buscar productos, volantes o servicios</label>
+        <input 
+          type="search" 
+          id="sidebar-search-input" 
+          class="sidebar-search-input" 
+          placeholder="Buscar volantes, lonas, menús…" 
+          autocomplete="off"
+        />
+        <button type="button" id="sidebar-search-clear" class="sidebar-search-clear-btn" aria-label="Limpiar búsqueda">
+          &times;
+        </button>
+      </div>
       <button type="submit" class="btn btn-primary sidebar-search-btn">
         Buscar
       </button>
     </form>
   </div>
 
-  <!-- 2. Lista de Artículos y Enlaces Originales -->
-  <div class="sidebar-widget">
-    <ul class="sidebar-links-list">
-      {sidebarLinks.map(item => (
-        <li>
-          <a href={item.href} class="sidebar-link">
-            {item.label}
+  <!-- 2. Lista de Productos, Sugerencias y Mensaje de No Encontrado -->
+  <div class="sidebar-widget" id="sidebar-results-widget">
+    <!-- Indicador de Resultados (dinámico) -->
+    <div id="search-status-bar" class="search-results-info" style="display: none;">
+      <span id="search-status-text">Resultados</span>
+      <button type="button" id="btn-show-all" style="background: none; border: none; color: #64748b; font-size: 0.75rem; text-decoration: underline; cursor: pointer;">
+        Ver todo
+      </button>
+    </div>
+
+    <!-- Lista Filtrable -->
+    <ul class="sidebar-links-list" id="sidebar-catalog-list">
+      {siteCatalog.map(item => (
+        <li data-title={item.label} data-keywords={item.keywords} data-type={item.type}>
+          <a href={item.href} class="sidebar-link-item">
+            <span class="sidebar-link-text">{item.label}</span>
+            <span class="search-badge">{item.type}</span>
           </a>
         </li>
       ))}
     </ul>
+
+    <!-- Mensaje cuando NO se encuentra lo buscado (Captura 151519) -->
+    <div id="search-not-found-box" class="search-no-results" style="display: none;">
+      <div class="search-no-results-icon" aria-hidden="true">🔍</div>
+      <h4 class="search-no-results-title">
+        No encontramos resultados para "<span id="no-results-query" class="search-term-highlight"></span>"
+      </h4>
+      <p class="search-no-results-desc">
+        En Volantes Económicos nos especializamos en volantes, flyers, tarjetas, lonas y menús.
+      </p>
+
+      <div class="search-popular-suggestions">
+        <span class="suggestions-label">Sugerencias que sí vendemos:</span>
+        <div class="suggestions-tags">
+          <a href="/1000-volantes-precio" class="suggestion-tag">1,000 Volantes</a>
+          <a href="/precios" class="suggestion-tag">Tabla de Precios</a>
+          <a href="/disenos" class="suggestion-tag">Diseños</a>
+          <a href="/volantes-para-pizzas" class="suggestion-tag">Pizzas y Menús</a>
+          <a href="/contacto" class="suggestion-tag">Tarjetas y Lonas</a>
+        </div>
+      </div>
+
+      <a 
+        href={whatsappUrl} 
+        id="search-whatsapp-custom-link"
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="btn btn-whatsapp search-whatsapp-cta"
+      >
+        <Icon name="whatsapp" size={18} />
+        <span>¿Buscas algo especial? Pregúntanos</span>
+      </a>
+    </div>
   </div>
 
   <!-- 3. Cotización Directa por WhatsApp -->
@@ -70,36 +134,118 @@ const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${e
 <script>
   function setupSidebarSearch() {
     const input = document.getElementById('sidebar-search-input') as HTMLInputElement | null;
-    const list = document.querySelector('.sidebar-links-list');
-    if (!input || !list) return;
+    const clearBtn = document.getElementById('sidebar-search-clear') as HTMLButtonElement | null;
+    const list = document.getElementById('sidebar-catalog-list') as HTMLUListElement | null;
+    const noResultsBox = document.getElementById('search-not-found-box') as HTMLDivElement | null;
+    const querySpan = document.getElementById('no-results-query') as HTMLSpanElement | null;
+    const statusBar = document.getElementById('search-status-bar') as HTMLDivElement | null;
+    const statusText = document.getElementById('search-status-text') as HTMLSpanElement | null;
+    const showAllBtn = document.getElementById('btn-show-all') as HTMLButtonElement | null;
+    const waCustomLink = document.getElementById('search-whatsapp-custom-link') as HTMLAnchorElement | null;
+    const form = document.getElementById('sidebar-search-form') as HTMLFormElement | null;
 
-    const items = Array.from(list.querySelectorAll('li'));
+    if (!input || !list || !noResultsBox) return;
 
-    input.addEventListener('input', () => {
-      const q = input.value.trim().toLowerCase();
-      items.forEach(item => {
-        const text = item.textContent?.toLowerCase() || '';
-        if (!q || text.includes(q)) {
-          item.style.display = '';
-        } else {
-          item.style.display = 'none';
-        }
-      });
-    });
+    const items = Array.from(list.querySelectorAll<HTMLLIElement>('li'));
 
-    const form = input.closest('form');
-    if (form) {
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const visible = items.find(item => item.style.display !== 'none');
-        if (visible) {
-          const link = visible.querySelector('a');
-          if (link && link.href) {
-            window.location.href = link.href;
-          }
-        }
-      });
+    function normalizeText(str: string): string {
+      return str
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .trim();
     }
+
+    function doSearch() {
+      const rawVal = input?.value || '';
+      const q = normalizeText(rawVal);
+
+      // Si el input tiene texto, mostrar botón de limpiar
+      if (clearBtn) {
+        clearBtn.style.display = rawVal.length > 0 ? 'flex' : 'none';
+      }
+
+      // Si está vacío, restablecer todo al estado inicial
+      if (!q) {
+        items.forEach(li => {
+          li.style.display = '';
+        });
+        noResultsBox!.style.display = 'none';
+        if (statusBar) statusBar.style.display = 'none';
+        return;
+      }
+
+      // Buscar coincidencias
+      let matchCount = 0;
+      let firstMatchLink: HTMLAnchorElement | null = null;
+
+      items.forEach(li => {
+        const title = normalizeText(li.getAttribute('data-title') || '');
+        const keywords = normalizeText(li.getAttribute('data-keywords') || '');
+        const type = normalizeText(li.getAttribute('data-type') || '');
+        const combined = `${title} ${keywords} ${type}`;
+
+        // Soporta búsqueda por palabras múltiples (ej. "volantes pizzas")
+        const terms = q.split(/\s+/).filter(Boolean);
+        const matchesAll = terms.every(term => combined.includes(term));
+
+        if (matchesAll) {
+          li.style.display = '';
+          matchCount++;
+          if (!firstMatchLink) {
+            firstMatchLink = li.querySelector('a');
+          }
+        } else {
+          li.style.display = 'none';
+        }
+      });
+
+      // Manejar estado cuando NO hay resultados
+      if (matchCount === 0) {
+        noResultsBox!.style.display = 'block';
+        if (querySpan) querySpan.textContent = rawVal;
+        if (statusBar) statusBar.style.display = 'none';
+
+        // Actualizar enlace de WhatsApp con la consulta no encontrada
+        if (waCustomLink) {
+          const msg = `¡Hola Volantes Económicos! Estuve buscando "${rawVal}" en su página web y me gustaría saber si realizan ese servicio o producto.`;
+          const baseHref = waCustomLink.href.split('?')[0];
+          waCustomLink.href = `${baseHref}?text=${encodeURIComponent(msg)}`;
+        }
+      } else {
+        noResultsBox!.style.display = 'none';
+        if (statusBar && statusText) {
+          statusBar.style.display = 'flex';
+          statusText.textContent = `${matchCount} sugerencia${matchCount > 1 ? 's' : ''} encontrada${matchCount > 1 ? 's' : ''}`;
+        }
+      }
+    }
+
+    // Eventos de entrada
+    input.addEventListener('input', doSearch);
+
+    // Limpiar búsqueda
+    function resetSearch() {
+      if (!input) return;
+      input.value = '';
+      doSearch();
+      input.focus();
+    }
+
+    clearBtn?.addEventListener('click', resetSearch);
+    showAllBtn?.addEventListener('click', resetSearch);
+
+    // Manejar envío del formulario (Enter o botón Buscar)
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const visible = items.find(li => li.style.display !== 'none');
+      if (visible) {
+        const link = visible.querySelector('a');
+        if (link && link.href) {
+          window.location.href = link.href;
+        }
+      }
+    });
   }
 
   setupSidebarSearch();
