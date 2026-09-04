@@ -42,3 +42,7 @@ Desktop.ini
 *.temp
 *.bak
 *.swp
+
+# Local AI Agent Skills & System
+.agents/
+
