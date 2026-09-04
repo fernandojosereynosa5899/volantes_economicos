@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import { getActiveConfig } from '../scripts/content-loader';
+import Icon from '../components/Icon.astro';
+
+const siteConfig = getActiveConfig();
+const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${encodeURIComponent('¡Hola! Me gustaría cotizar volantes con envío a mi ciudad.')}`;
+---
+
+<Layout 
+  title="ENTREGA - Volantes Económicos" 
+  description="Entregamos por medio de mensajería a toda la República Mexicana. El precio no incluye el envío."
+  currentPath="/entrega"
+>
+  <div class="container" style="padding-top: 3rem; padding-bottom: 4rem;">
+    <div class="page-layout-grid">
+      <!-- Main Content Area -->
+      <article class="page-content-area original-content-typography">
+        <h1 class="main-page-title" style="margin-bottom: 1.5rem;">ENTREGA</h1>
+        
+        <div class="step-card" style="padding: 2.5rem 2rem; text-align: center; margin-bottom: 2.5rem;">
+          <div style="width: 64px; height: 64px; border-radius: 50%; background: var(--color-primary-light); color: var(--color-primary); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem auto;">
+            <Icon name="truck" size={32} />
+          </div>
+
+          <h2 style="font-size: 1.35rem; font-weight: 700; color: #111827; margin-bottom: 1.5rem; line-height: 1.5;" data-bind="entrega.text">
+            Entregamos por medio de mensajería a toda la República Mexicana. El precio no incluye el envío.
+          </h2>
+
+          <a 
+            href={whatsappUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn btn-whatsapp btn-lg"
+          >
+            <Icon name="whatsapp" size={22} />
+            <span>Cotizar Envío por WhatsApp</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Sidebar Column -->
+      <Sidebar />
+    </div>
+  </div>
+</Layout>

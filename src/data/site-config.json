@@ -1,0 +1,192 @@
+{
+  "general": {
+    "siteName": "Volantes Económicos",
+    "siteSubtitle": "Alta Calidad en Impresión",
+    "whatsappNumber": "5215540421232",
+    "phoneNumber": "55 4042 1232",
+    "secondaryPhone": "55 4223 3675",
+    "email": "moyrivera100@gmail.com",
+    "facebookUrl": "https://www.facebook.com/share/p/1NEQ4stvVk/",
+    "messengerName": "Volantes Económicos CDMX",
+    "address": "Poniente 54 # 3915, Col. Obrero popular, Ciudad de México, C.P. 02840",
+    "topBannerText": "Envíos a toda la República Mexicana • Contáctenos: 55 4042 1232",
+    "schedule": {
+      "weekdays": "Lunes a Viernes: 9:00 a. m. – 6:00 p. m.",
+      "saturday": "Sábado: 9:00 a. m. – 2:00 p. m.",
+      "sunday": "Domingo: Cerrado"
+    }
+  },
+  "home": {
+    "title": "Volantes Económicos para su negocio",
+    "intro": "En Volantes Económicos nos interesa su negocio por eso realizamos sus folletos con todo el profesionalismo. Porque Sabemos que sus volantes publicitarios son muy importante para usted y su negocio.",
+    "section1Title": "En Volantes Económicos diseñamos su publicidad de esta manera:",
+    "section1Paragraphs": [
+      "Los volantes son una de las herramientas publicitarias más antiguas. La mayoría de las personas están tan acostumbradas a recibir volantes por eso es uno de los medios más eficientes de publicidad.",
+      "La respuesta que muchos dueños de negocios, empresarios y vendedores (incluyéndome a mí) han dado es: sí, pero necesitan ser buenos voladores.",
+      "De hecho, el diseño y la distribución de volantes llamativos es sólo una de las muchas estrategias efectivas de marketing offline que funcionan hoy en día."
+    ],
+    "section2Title": "Un volante bien pensado y bien diseñado debería serlo:",
+    "characteristics": [
+      { "title": "Llamativo", "text": "Lo suficientemente llamativo como para que la gente se detenga y se interese en leerlo." },
+      { "title": "Dirigido", "text": "El volante debe hablar directamente a la audiencia a la que se dirige." },
+      { "title": "Informativo", "text": "Las personas deben saber qué es lo que el volante está anunciando y dónde pueden encontrar más información." },
+      { "title": "Convincente", "text": "El volante debe entusiasmar a la gente sobre su producto, servicio o evento." }
+    ],
+    "stepsTitle": "En volantes Económicos seguimos estos sencillos pasos para que tu tengas el mejor de los volantes. Enfocamos tu diseño:",
+    "steps": [
+      {
+        "number": 1,
+        "title": "Incluye una llamada a la acción que le permita rastrear el retorno de la inversión de su Folleto de Negocios",
+        "description": "Para asegurarse de que la distribución de un volante valga la pena, probablemente querrá hacer un seguimiento del retorno de la inversión de sus volantes. Incluya una llamada a la acción clara que no sólo incite a la gente a querer revisar su negocio, sino que también le permita rastrear la cantidad de clientes que usted trajo con su volante."
+      },
+      {
+        "number": 2,
+        "title": "Usar imágenes únicas",
+        "description": "Una imagen inusual (ya sea una foto o una ilustración) ayuda a llamar la atención y anima a la gente a mirar más de cerca su folleto. Intente darle un giro único a su producto o mezclarlo con otro entorno, objetos o personas relevantes para su negocio."
+      },
+      {
+        "number": 3,
+        "title": "Utilice ilustraciones de productos que reflejen el carácter de su marca",
+        "description": "Para mucha gente, su volante será su primera introducción a su negocio. Por eso, si desea atraer a su público objetivo, debe tratar de incorporar la personalidad de su negocio en el diseño de su folleto."
+      },
+      {
+        "number": 4,
+        "title": "Usar iconos para representar diferentes servicios o productos",
+        "description": "Los iconos son útiles para empaquetar el significado en una página pequeña. Debido a que son simples y reconocibles, puede utilizar iconos para reforzar e incluso reemplazar el texto en el diseño de su folleto."
+      },
+      {
+        "number": 5,
+        "title": "Utilizar iconos para representar diferentes opciones y paquetes de precios",
+        "description": "También puede usar iconos para representar las diferentes opciones que ofrece su negocio. Busque un icono sencillo que ilustre su opción y diferencie las opciones utilizando un fondo de diferentes colores."
+      },
+      {
+        "number": 6,
+        "title": "Utilice fuentes que den variedad y elegancia a su diseño",
+        "description": "La selección de la fuente no sólo determina la facilidad de lectura de su volante, sino que también juega un papel esencial en su aspecto visual y profesionalismo."
+      },
+      {
+        "number": 7,
+        "title": "Usar formas semitransparentes para destacar el texto",
+        "description": "Si su volante tiene una imagen de fondo, superponga formas sobre la imagen y ajuste la transparencia para que el texto resalte claramente sin oscurecer el fondo."
+      },
+      {
+        "number": 8,
+        "title": "Usar iconos como puntos de viñetas",
+        "description": "Si desea incluir una lista de los servicios que ofrece su empresa, añada un giro creativo utilizando iconos en lugar de simples viñetas para ilustrar cada concepto."
+      },
+      {
+        "number": 9,
+        "title": "Añada formas y colores para un diseño espectacular",
+        "description": "Transmitir lo divertido y creativo que es su negocio ayuda a captar atención. Utilice diferentes formas geométricas y acentos para enriquecer la presentación."
+      },
+      {
+        "number": 10,
+        "title": "Use los colores de su marca para crear una identidad cohesiva",
+        "description": "La incorporación de los colores de su marca en el diseño de su folleto ayudará a mantener la cohesión en toda la plataforma, tanto digital como impresa."
+      },
+      {
+        "number": 11,
+        "title": "Crear una composición visual clara",
+        "description": "Piense en una escena que ilustre lo que hace su negocio y coloque los elementos para guiar la mirada del cliente hacia el mensaje principal."
+      }
+    ],
+    "closingCta": "En volantes económicos diseñamos los mejores y más económicos folletos CONTACTENOS PARA HACER SU PEDIDO"
+  },
+  "disenos": {
+    "title": "DISEÑOS",
+    "subtitle": "Así trabajamos !"
+  },
+  "precios": {
+    "title": "PRECIOS",
+    "subtitle": "Tenemos los mejores precios con entregas a todo México !"
+  },
+  "entrega": {
+    "title": "ENTREGA",
+    "text": "Entregamos por medio de mensajería a toda la República Mexicana. El precio no incluye el envío."
+  },
+  "contacto": {
+    "title": "CONTACTO",
+    "subtitle": "Nos da mucho gusto atenderte y ofrecerte los mejores precios !"
+  },
+  "services": [
+    "Volantes Publicitarios",
+    "Tarjetas de Presentación",
+    "Lonas Impresas",
+    "Menús para Restaurantes",
+    "Comandas",
+    "Imanes Publicitarios"
+  ],
+  "calculator": {
+    "quantities": [
+      { "value": 1000, "label": "1,000", "sub": "Recomendado inicio" },
+      { "value": 2500, "label": "2,500", "sub": "Mayor alcance" },
+      { "value": 5000, "label": "5,000", "sub": "Más popular ⭐" },
+      { "value": 10000, "label": "10,000", "sub": "Mejor costo/u" },
+      { "value": 20000, "label": "20,000", "sub": "Campañas masivas" }
+    ],
+    "sizes": [
+      { "id": "cuarto-carta", "label": "1/4 de Carta", "dimensions": "10 x 14 cm" },
+      { "id": "media-carta", "label": "1/2 Carta", "dimensions": "14 x 21 cm" },
+      { "id": "carta-completa", "label": "Carta Completa", "dimensions": "21 x 28 cm" }
+    ],
+    "papers": [
+      { "id": "couche-130", "label": "Couché 130g", "desc": "Brillante estándar", "multiplier": 1.0 },
+      { "id": "couche-150", "label": "Couché 150g", "desc": "Grueso y rígido", "multiplier": 1.15 },
+      { "id": "bond-90", "label": "Papel Bond 90g", "desc": "Sin brillo", "multiplier": 0.95 }
+    ],
+    "colors": [
+      { "id": "4x0", "label": "Solo Frente (4x0)", "desc": "Reverso en blanco" },
+      { "id": "4x4", "label": "Frente y Reverso (4x4)", "desc": "Ambas caras a color" }
+    ],
+    "designServiceCost": 250,
+    "pricingMatrix": {
+      "1000": {
+        "cuarto-carta": { "4x0": 590, "4x4": 790 },
+        "media-carta": { "4x0": 990, "4x4": 1390 },
+        "carta-completa": { "4x0": 1890, "4x4": 2590 }
+      },
+      "2500": {
+        "cuarto-carta": { "4x0": 1190, "4x4": 1590 },
+        "media-carta": { "4x0": 1990, "4x4": 2690 },
+        "carta-completa": { "4x0": 3790, "4x4": 4990 }
+      },
+      "5000": {
+        "cuarto-carta": { "4x0": 1890, "4x4": 2490 },
+        "media-carta": { "4x0": 3490, "4x4": 4490 },
+        "carta-completa": { "4x0": 6790, "4x4": 8790 }
+      },
+      "10000": {
+        "cuarto-carta": { "4x0": 3290, "4x4": 4290 },
+        "media-carta": { "4x0": 5990, "4x4": 7590 },
+        "carta-completa": { "4x0": 11490, "4x4": 14690 }
+      },
+      "20000": {
+        "cuarto-carta": { "4x0": 5990, "4x4": 7690 },
+        "media-carta": { "4x0": 10990, "4x4": 13890 },
+        "carta-completa": { "4x0": 20990, "4x4": 26490 }
+      }
+    }
+  },
+  "faqs": [
+    {
+      "question": "¿Cómo puedo realizar mi pedido de volantes?",
+      "answer": "Puedes cotizar directamente en nuestra página y dar clic en el botón de WhatsApp o llamarnos a los teléfonos 55 4223 3675 / 55 4042 1232 para confirmar cantidad, medidas y detalles de entrega."
+    },
+    {
+      "question": "¿Tienen envíos a toda la República Mexicana?",
+      "answer": "Sí, entregamos por medio de mensajería a toda la República Mexicana. El precio no incluye el envío."
+    },
+    {
+      "question": "¿Dónde se encuentran ubicados?",
+      "answer": "Nos encontramos en Poniente 54 # 3915, Col. Obrero popular, Ciudad de México, C.P. 02840."
+    },
+    {
+      "question": "¿Qué servicios adicionales ofrecen?",
+      "answer": "Además de volantes, ofrecemos servicio de impresión de tarjetas de presentación, lonas, menús, comandas e imanes publicitarios."
+    },
+    {
+      "question": "¿Qué diferencia hay entre impresión 4x0 y 4x4?",
+      "answer": "4x0 significa impresión a color únicamente por el frente (reverso blanco). 4x4 significa impresión a color por ambos lados (frente y reverso)."
+    }
+  ]
+}

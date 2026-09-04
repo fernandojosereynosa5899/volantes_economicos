@@ -1,0 +1,50 @@
+---
+import '../styles/components/features.css';
+
+const features = [
+  {
+    icon: '🎯',
+    title: 'Impresión Offset HD',
+    desc: 'Maquinaria industrial Heidelberg y Komori para registro exacto de color, tramado fino y definición fotográfica de 300 DPI.'
+  },
+  {
+    icon: '⚡',
+    title: 'Producción en 24 a 48 hrs',
+    desc: 'Tiempos de entrega récord para que tus promociones arranquen justo a tiempo. Sin retrasos innecesarios en tus campañas.'
+  },
+  {
+    icon: '🎨',
+    title: 'Revisión Técnica Gratis',
+    desc: 'Verificamos resolución, sangrías, fuentes y perfil de color CMYK antes de imprimir para garantizar que tu volante salga impecable.'
+  },
+  {
+    icon: '📦',
+    title: 'Envíos a Todo México',
+    desc: 'Empaque especial reforzado antihumedad y alianzas con FedEx, Estafeta y DHL para entregas seguras en cualquier estado.'
+  }
+];
+---
+
+<section class="section" style="background: rgba(255, 255, 255, 0.015); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+  <div class="container">
+    <div class="section-header reveal-item">
+      <span class="section-tag">¿Por qué Elegirnos?</span>
+      <h2 class="section-title">La Diferencia de Imprimir con <span class="text-gradient">Profesionales</span></h2>
+      <p class="section-subtitle">
+        Más de 10 años respaldando el crecimiento de negocios con materiales publicitarios duraderos, vibrantes y económicos.
+      </p>
+    </div>
+
+    <div class="features-grid">
+      {features.map((item, idx) => (
+        <div class="feature-card reveal-item" style={`transition-delay: ${(idx + 1) * 100}ms;`}>
+          <div class="feature-icon-box" aria-hidden="true">
+            <span style="font-size: 1.5rem;">{item.icon}</span>
+          </div>
+          <h3 class="feature-title">{item.title}</h3>
+          <p class="feature-desc">{item.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

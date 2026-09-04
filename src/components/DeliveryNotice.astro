@@ -1,0 +1,94 @@
+---
+import { getActiveConfig } from '../scripts/content-loader';
+import Icon from './Icon.astro';
+
+const siteConfig = getActiveConfig();
+---
+
+<section class="delivery-bottom-section" aria-label="Información de Entrega">
+  <div class="container">
+    <div class="delivery-bottom-box">
+      <div class="delivery-icon-badge" aria-hidden="true">
+        <Icon name="truck" size={30} />
+      </div>
+      <div class="delivery-content">
+        <h3 class="delivery-badge-title">ENTREGA</h3>
+        <p class="delivery-badge-text" data-bind="entrega.text">
+          {siteConfig.entrega.text}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .delivery-bottom-section {
+    padding: 1.5rem 0 3rem 0;
+    background: transparent;
+  }
+
+  .delivery-bottom-box {
+    background: #fdf2f2;
+    border: 1px solid rgba(193, 18, 31, 0.2);
+    border-left: 5px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    box-shadow: 0 4px 12px rgba(193, 18, 31, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .delivery-bottom-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(193, 18, 31, 0.1);
+  }
+
+  .delivery-icon-badge {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: #ffffff;
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .delivery-content {
+    flex: 1;
+  }
+
+  .delivery-badge-title {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin: 0 0 0.25rem 0;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .delivery-badge-text {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #1e293b;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 640px) {
+    .delivery-bottom-box {
+      flex-direction: column;
+      text-align: center;
+      padding: 1.25rem 1rem;
+      gap: 1rem;
+    }
+    .delivery-icon-badge {
+      margin: 0 auto;
+    }
+  }
+</style>

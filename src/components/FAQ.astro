@@ -1,0 +1,47 @@
+---
+import '../styles/components/faq.css';
+import { getActiveConfig } from '../scripts/content-loader';
+import Icon from './Icon.astro';
+
+const siteConfig = getActiveConfig();
+const faqs = siteConfig.faqs;
+---
+
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-header reveal-item">
+      <span class="section-tag">Preguntas Frecuentes</span>
+      <h2 class="section-title">Preguntas <span class="text-gradient">Frecuentes</span></h2>
+      <p class="section-subtitle">
+        Información clara para tu pedido de volantes publicitarios.
+      </p>
+    </div>
+
+    <div class="faq-container">
+      {faqs.map((faq, idx) => (
+        <div class="faq-item reveal-item" style={`transition-delay: ${idx * 80}ms;`}>
+          <button 
+            class="faq-question-btn" 
+            aria-expanded="false"
+            id={`faq-btn-${idx}`}
+          >
+            <span>{faq.question}</span>
+            <span class="faq-icon" aria-hidden="true">
+              <Icon name="chevron-down" size={16} />
+            </span>
+          </button>
+          <div class="faq-answer-panel" role="region" aria-labelledby={`faq-btn-${idx}`}>
+            <p class="faq-answer-text">{faq.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import { initFAQ } from '../scripts/faq';
+  document.addEventListener('DOMContentLoaded', () => {
+    initFAQ();
+  });
+</script>

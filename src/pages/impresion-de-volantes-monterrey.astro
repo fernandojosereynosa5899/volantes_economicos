@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import { getActiveConfig } from '../scripts/content-loader';
+import Icon from '../components/Icon.astro';
+
+const siteConfig = getActiveConfig();
+const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${encodeURIComponent('¡Hola! Me interesa cotizar impresión de volantes para Monterrey.')}`;
+---
+
+<Layout 
+  title="Impresión de Volantes Monterrey - Volantes Económicos" 
+  description="Quieres Impresión de Volantes para Monterrey. Somos los mejores, con envíos a Monterrey y todo Nuevo León a los precios más bajos de México."
+  currentPath="/impresion-de-volantes-monterrey"
+>
+  <div class="container" style="padding-top: 3rem; padding-bottom: 4rem;">
+    <div class="page-layout-grid">
+      <!-- Main Content Area -->
+      <article class="page-content-area original-content-typography">
+        <h1 class="main-page-title" style="margin-bottom: 0.5rem;">Impresión de Volantes Monterrey</h1>
+        <p class="lead-text" style="color: var(--color-primary); font-weight: 700; margin-bottom: 2rem;">
+          Quieres Impresión de Volantes para Monterrey. Somos los mejores
+        </p>
+
+        <p>
+          Monterrey es una ciudad moderna a la vanguardia de la publicidad, es por ello que te recomendamos sigas los siguientes consejos para que tus volantes o flyer sean los mejores:
+        </p>
+
+        <div class="steps-detailed-list">
+          <div class="step-card">
+            <h4>1. Cree un diseño asimétrico para un diseño de volante de ventas vanguardista</h4>
+            <p>
+              Para atraer la atención de su público, es una buena idea buscar maneras de hacer que el diseño de su volante sea original. Mientras que muchas empresas optan por un diseño de cuadrícula simple porque es eficiente, usted puede diferenciar su negocio utilizando un diseño asimétrico.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <h4>2. Optimice su folleto de ventas para los medios sociales</h4>
+            <p>
+              Si está planeando compartir su folleto de ventas en los medios sociales, entonces es una buena idea optimizar sus folletos en consecuencia. Esto significa utilizar las mejores dimensiones de imagen para cualquier plataforma de medios sociales en la que estés posteando, y asegurarte de que tu volante sea fácil de leer en el móvil.
+            </p>
+            <p>
+              Puede utilizar un folleto de ventas para atraer la atención de nuestra audiencia, y luego enlazar a su sitio para obtener más información. Echa un vistazo a este sencillo pero llamativo folleto de ventas de medios sociales.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <h4>3. Use colores claros y cálidos para un folleto de ventas con temas veraniegos</h4>
+            <p>
+              Mucha gente espera con impaciencia el final del verano para realizar grandes ventas, ya que las tiendas revisan sus productos para el invierno. Ayude a su audiencia a permanecer en el ambiente soleado y optimista del verano con un alegre folleto de ventas.
+            </p>
+            <p>
+              Use colores brillantes y cálidos como el amarillo, rosa, naranja y rojo. Eche un vistazo a cómo este ejemplo de folleto de ventas combina texto soleado con un contorno de acento púrpura.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <h4>4. Elige imágenes para tu folleto de ventas que reflejen la temporada</h4>
+            <p>
+              ¿Vas a hacer una venta de Navidad? ¿Una venta de Pascua? ¿Una venta de Halloween?
+            </p>
+            <p>
+              Ayude a que su audiencia se adentre en el espíritu de la temporada incorporando iconos de la temporada, imágenes de fondo y esquemas de color. Está bien exagerar un poco cuando se trata de volantes de temporada, ¡eso es parte de la diversión!
+            </p>
+            <p>
+              Por ejemplo, no hay que perderse para qué temporada es este folleto de ventas o su volante.
+            </p>
+          </div>
+        </div>
+
+        <p style="font-size: 1.05rem; margin-top: 1.5rem;">
+          Elaboramos volantes publicitarios para la Ciudad de Monterrey y los entregamos a los mejores precios por mensajería.
+        </p>
+
+        <!-- Closing CTA -->
+        <div class="closing-cta-card">
+          <p class="closing-text">
+            Su negocio en Monterrey merece la mejor publicidad al precio más económico. <strong>CONTACTANOS</strong>
+          </p>
+          <a 
+            href={whatsappUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn btn-whatsapp btn-lg"
+          >
+            <Icon name="whatsapp" size={22} />
+            <span>Cotizar Volantes para Monterrey por WhatsApp</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Sidebar Column -->
+      <Sidebar />
+    </div>
+  </div>
+</Layout>

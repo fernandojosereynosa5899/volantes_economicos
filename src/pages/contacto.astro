@@ -1,0 +1,181 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import { getActiveConfig } from '../scripts/content-loader';
+import Icon from '../components/Icon.astro';
+
+const siteConfig = getActiveConfig();
+const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${encodeURIComponent('¡Hola! Me gustaría cotizar volantes para mi negocio.')}`;
+const secondaryWhatsappUrl = `https://wa.me/52${siteConfig.general.secondaryPhone.replace(/\s+/g, '')}?text=${encodeURIComponent('¡Hola! Me gustaría cotizar volantes para mi negocio.')}`;
+---
+
+<Layout 
+  title="CONTACTO - Volantes Económicos" 
+  description="Nos da mucho gusto atenderte y ofrecerte los mejores precios ! Contáctanos por WhatsApp o teléfono."
+  currentPath="/contacto"
+>
+  <div class="container" style="padding-top: 3rem; padding-bottom: 4rem;">
+    <div class="page-layout-grid">
+      <!-- Main Content Area -->
+      <article class="page-content-area original-content-typography">
+        <h1 class="main-page-title" style="margin-bottom: 0.5rem;">CONTACTO</h1>
+        <p class="lead-text" style="color: var(--color-primary); font-weight: 700; margin-bottom: 2rem;" data-bind="contacto.subtitle">
+          Nos da mucho gusto atenderte y ofrecerte los mejores precios !
+        </p>
+
+        <!-- Formulario Estilo WPForms Limpio y Directo -->
+        <div class="step-card" style="padding: 2.25rem; margin-bottom: 2.5rem;">
+          <h3 style="font-size: 1.35rem; font-weight: 800; color: #111827; margin-bottom: 0.35rem;">
+            Formulario de Contacto y Cotización
+          </h3>
+          <p style="font-size: 0.95rem; color: #64748b; margin-bottom: 1.75rem;">
+            Completa los datos y se abrirá WhatsApp con tu mensaje listo para cotizarte al instante:
+          </p>
+
+          <form id="quick-quote-form" style="display: flex; flex-direction: column; gap: 1.25rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem;">
+              <div style="display: flex; flex-direction: column; gap: 0.35rem;">
+                <label for="contact-name" style="font-size: 0.88rem; font-weight: 700; color: #374151;">Nombre *</label>
+                <input 
+                  type="text" 
+                  id="contact-name" 
+                  placeholder="Tu nombre completo" 
+                  required 
+                  style="padding: 0.75rem 0.95rem; border: 1px solid #cbd5e1; border-radius: var(--radius-sm); font-size: 0.95rem; background: #ffffff; color: #111827; outline: none;"
+                />
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 0.35rem;">
+                <label for="contact-phone" style="font-size: 0.88rem; font-weight: 700; color: #374151;">Teléfono / WhatsApp *</label>
+                <input 
+                  type="tel" 
+                  id="contact-phone" 
+                  placeholder="Tu número telefónico" 
+                  required 
+                  style="padding: 0.75rem 0.95rem; border: 1px solid #cbd5e1; border-radius: var(--radius-sm); font-size: 0.95rem; background: #ffffff; color: #111827; outline: none;"
+                />
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem;">
+              <div style="display: flex; flex-direction: column; gap: 0.35rem;">
+                <label for="contact-email" style="font-size: 0.88rem; font-weight: 700; color: #374151;">Correo Electrónico</label>
+                <input 
+                  type="email" 
+                  id="contact-email" 
+                  placeholder="correo@ejemplo.com" 
+                  style="padding: 0.75rem 0.95rem; border: 1px solid #cbd5e1; border-radius: var(--radius-sm); font-size: 0.95rem; background: #ffffff; color: #111827; outline: none;"
+                />
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 0.35rem;">
+                <label for="contact-service" style="font-size: 0.88rem; font-weight: 700; color: #374151;">Servicio de Interés</label>
+                <select 
+                  id="contact-service" 
+                  style="padding: 0.75rem 0.95rem; border: 1px solid #cbd5e1; border-radius: var(--radius-sm); font-size: 0.95rem; background: #ffffff; color: #111827; outline: none;"
+                >
+                  <option value="Volantes 1/4 de Carta">Volantes 1/4 de Carta</option>
+                  <option value="Volantes 1/2 Carta">Volantes 1/2 Carta</option>
+                  <option value="Volantes para Pizzas">Volantes para Pizzas</option>
+                  <option value="Tarjetas de Presentación">Tarjetas de Presentación</option>
+                  <option value="Lonas Impresas">Lonas Impresas</option>
+                  <option value="Menús para Restaurantes">Menús para Restaurantes</option>
+                  <option value="Comandas">Comandas</option>
+                  <option value="Imanes Publicitarios">Imanes Publicitarios</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 0.35rem;">
+              <label for="contact-message" style="font-size: 0.88rem; font-weight: 700; color: #374151;">Mensaje o Detalles del Pedido</label>
+              <textarea 
+                id="contact-message" 
+                rows="4" 
+                placeholder="Escribe aquí tu mensaje o detalles de lo que necesitas..." 
+                style="padding: 0.75rem 0.95rem; border: 1px solid #cbd5e1; border-radius: var(--radius-sm); font-size: 0.95rem; background: #ffffff; color: #111827; outline: none; resize: vertical;"
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-whatsapp btn-lg" style="margin-top: 0.5rem;">
+              <Icon name="whatsapp" size={22} />
+              <span>Enviar por WhatsApp</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Tarjetas de Información de Contacto -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem;">
+          <div class="step-card" style="display: flex; gap: 1rem; align-items: flex-start;">
+            <div style="color: var(--color-whatsapp); flex-shrink: 0; margin-top: 2px;">
+              <Icon name="whatsapp" size={24} />
+            </div>
+            <div>
+              <h4 style="font-size: 1rem; margin-bottom: 0.2rem;">WhatsApp Principal</h4>
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" style="color: var(--color-whatsapp-dark); font-weight: 700;">
+                {siteConfig.general.phoneNumber}
+              </a>
+            </div>
+          </div>
+
+          <div class="step-card" style="display: flex; gap: 1rem; align-items: flex-start;">
+            <div style="color: var(--color-primary); flex-shrink: 0; margin-top: 2px;">
+              <Icon name="phone" size={24} />
+            </div>
+            <div>
+              <h4 style="font-size: 1rem; margin-bottom: 0.2rem;">Teléfono Alterno</h4>
+              <a href={secondaryWhatsappUrl} target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); font-weight: 700;">
+                {siteConfig.general.secondaryPhone}
+              </a>
+            </div>
+          </div>
+
+          <div class="step-card" style="display: flex; gap: 1rem; align-items: flex-start;">
+            <div style="color: #0284c7; flex-shrink: 0; margin-top: 2px;">
+              <Icon name="mail" size={24} />
+            </div>
+            <div>
+              <h4 style="font-size: 1rem; margin-bottom: 0.2rem;">Correo Electrónico</h4>
+              <a href={`mailto:${siteConfig.general.email}`} style="color: #0284c7; font-weight: 600;">
+                {siteConfig.general.email}
+              </a>
+            </div>
+          </div>
+
+          <div class="step-card" style="display: flex; gap: 1rem; align-items: flex-start;">
+            <div style="flex-shrink: 0; margin-top: 2px;">
+              <Icon name="facebook" size={24} />
+            </div>
+            <div>
+              <h4 style="font-size: 1rem; margin-bottom: 0.2rem;">Facebook Oficial</h4>
+              <a href={siteConfig.general.facebookUrl} target="_blank" rel="noopener noreferrer" style="color: #1877f2; font-weight: 600;">
+                {siteConfig.general.messengerName}
+              </a>
+            </div>
+          </div>
+
+          <div class="step-card" style="display: flex; gap: 1rem; align-items: flex-start;">
+            <div style="color: #64748b; flex-shrink: 0; margin-top: 2px;">
+              <Icon name="map-pin" size={24} />
+            </div>
+            <div>
+              <h4 style="font-size: 1rem; margin-bottom: 0.2rem;">Ubicación</h4>
+              <p style="margin: 0; font-size: 0.88rem; color: #475569;">
+                {siteConfig.general.address}
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Sidebar Column -->
+      <Sidebar />
+    </div>
+  </div>
+</Layout>
+
+<script>
+  import { initContactForm } from '../scripts/contact';
+  document.addEventListener('DOMContentLoaded', () => {
+    initContactForm();
+  });
+</script>

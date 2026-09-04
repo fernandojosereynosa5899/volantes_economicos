@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import { getActiveConfig } from '../scripts/content-loader';
+import Icon from '../components/Icon.astro';
+
+const siteConfig = getActiveConfig();
+const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${encodeURIComponent('¡Hola! Me interesa conocer el precio de 1,000 volantes.')}`;
+---
+
+<Layout 
+  title="1000 Volantes Precio - Volantes Económicos" 
+  description="¿Buscas el precio de 1000 Volantes Económicos? Contamos con paquetes de 1000 volantes con los precios más bajos de todo México y entregas por mensajería."
+  currentPath="/1000-volantes-precio"
+>
+  <div class="container" style="padding-top: 3rem; padding-bottom: 4rem;">
+    <div class="page-layout-grid">
+      <!-- Main Content Area -->
+      <article class="page-content-area original-content-typography">
+        <h1 class="main-page-title" style="margin-bottom: 0.5rem;">1000 Volantes Precio</h1>
+        <p class="lead-text" style="color: var(--color-primary); font-weight: 700; margin-bottom: 2rem;">
+          Buscas el precio de 1000 Volantes Económicos
+        </p>
+
+        <p>
+          En volantes económicos tenemos los mejores precios para su publicidad, y con entrega por mensajería a cualquier parte de México.
+        </p>
+
+        <p>
+          Nuestro compromiso es crear la mejor publicidad y volantes publicitarios para su negocio, siguiendo estos lineamientos de diseño:
+        </p>
+
+        <div class="steps-detailed-list">
+          <div class="step-card">
+            <h4>1. Ponga un límite poco convencional al folleto de su evento o producto</h4>
+            <p>
+              ¿Desea que su folleto de evento o producto se distinga de los diseños estándar de su nicho? Busque maneras de utilizar elementos de diseño no convencionales.
+            </p>
+            <p>
+              Por ejemplo, puede utilizar un volante de evento que utiliza un borde que se superpone a la imagen presentada, en lugar de rodear el borde como usted esperaría. El resultado es un diseño poco convencional que refleja innovación.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <h4>2. Utilice dos colores complementarios como esquema de color de su volante</h4>
+            <p>
+              Verde y rojo. Amarillo y púrpura. Azul y naranja. Estos pares son conocidos como colores complementarios porque van bien juntos. Por eso, si no está seguro de qué colores elegir para el diseño del folleto de su evento, los colores complementarios son un buen punto de partida.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <h4>3. Diseño de flyers de eventos o productos con efectos de diseño clásicos</h4>
+            <p>
+              ¿Su evento va a ser una celebración del brillo y el glamour? No tenga miedo de sacar el brillo en el folleto de su evento. Escoja una combinación de colores que refleje todo lo que los clientes pueden esperar.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <h4>4. Ilustra tu producto con iconos</h4>
+            <p>
+              Configure la escena de su producto creando su propia ilustración personalizada. Utilice iconos de edificios y muebles para ilustrar el lugar del evento. Busque iconos que muestren cualquier objeto o comida que vaya a estar allí.
+            </p>
+            <p>
+              Por ejemplo, puede crear una ilustración de folleto de evento utilizando iconos del mismo color y colocándolos a lo largo de una línea de base.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <h4>5. Énfasis y tiempo y lugar de su negocio</h4>
+            <p>
+              Aunque un diseño que llame la atención atraerá la atención, no olvide el propósito principal de su folleto del negocio: conseguir que la gente asista a su comercio. Asegúrese de que los detalles del evento, como la ubicación, la hora y la venta de entradas, sean fáciles de leer.
+            </p>
+          </div>
+        </div>
+
+        <p style="font-size: 1.05rem; margin-top: 1.5rem;">
+          Contamos con paquetes de 1000 volantes o folletos con los precios más bajos de todo México. Su negocio es lo más importante para Volantes Económicos por eso tenemos los mejores precios y los mejores diseños para su negocio.
+        </p>
+
+        <!-- Closing CTA -->
+        <div class="closing-cta-card">
+          <p class="closing-text">
+            ¡Cotiza tus 1,000 volantes al instante! <strong>CONTACTENOS</strong>
+          </p>
+          <a 
+            href={whatsappUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn btn-whatsapp btn-lg"
+          >
+            <Icon name="whatsapp" size={22} />
+            <span>Consultar Precio de 1000 Volantes por WhatsApp</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Sidebar Column -->
+      <Sidebar />
+    </div>
+  </div>
+</Layout>

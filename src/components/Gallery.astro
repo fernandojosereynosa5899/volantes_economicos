@@ -1,0 +1,151 @@
+---
+import '../styles/components/gallery.css';
+import { getActiveConfig } from '../scripts/content-loader';
+import Icon from './Icon.astro';
+
+const siteConfig = getActiveConfig();
+
+const designs = [
+  {
+    id: 1,
+    title: 'Volantes Publicitarios 1',
+    category: 'Diseño 1',
+    image: '/images/disenos/diseño_1.jpg',
+    description: 'Muestra de volante publicitario impreso con colores vivos y diseño profesional.'
+  },
+  {
+    id: 2,
+    title: 'Volantes Publicitarios 2',
+    category: 'Diseño 2',
+    image: '/images/disenos/diseño_2.jpg',
+    description: 'Muestra de volante publicitario impreso con colores vivos y diseño profesional.'
+  },
+  {
+    id: 3,
+    title: 'Volantes Publicitarios 3',
+    category: 'Diseño 3',
+    image: '/images/disenos/diseño_3.jpg',
+    description: 'Muestra de volante publicitario impreso con colores vivos y diseño profesional.'
+  },
+  {
+    id: 4,
+    title: 'Volantes Publicitarios 4',
+    category: 'Diseño 4',
+    image: '/images/disenos/diseño_4.jpg',
+    description: 'Muestra de volante publicitario impreso con colores vivos y diseño profesional.'
+  },
+  {
+    id: 5,
+    title: 'Volantes Publicitarios 5',
+    category: 'Diseño 5',
+    image: '/images/disenos/diseño_5.jpg',
+    description: 'Muestra de volante publicitario impreso con colores vivos y diseño profesional.'
+  },
+  {
+    id: 6,
+    title: 'Volantes Publicitarios 6',
+    category: 'Diseño 6',
+    image: '/images/disenos/diseño_6.jpg',
+    description: 'Muestra de volante publicitario impreso con colores vivos y diseño profesional.'
+  },
+  {
+    id: 7,
+    title: 'Volantes Publicitarios 7',
+    category: 'Diseño 7',
+    image: '/images/disenos/diseño_7.jpg',
+    description: 'Muestra de volante publicitario impreso con colores vivos y diseño profesional.'
+  },
+  {
+    id: 8,
+    title: 'Volantes Publicitarios 8',
+    category: 'Diseño 8',
+    image: '/images/disenos/diseño_8.jpg',
+    description: 'Muestra de volante publicitario impreso con colores vivos y diseño profesional.'
+  }
+];
+---
+
+<section class="section" id="galeria">
+  <div class="container">
+    <div class="section-header reveal-item">
+      <span class="section-tag">{siteConfig.disenos.title}</span>
+      <h2 class="section-title">{siteConfig.disenos.subtitle}</h2>
+      <p class="section-subtitle">
+        Conoce algunos de los trabajos y diseños realizados para nuestros clientes.
+      </p>
+    </div>
+
+    <!-- Grid -->
+    <div class="gallery-grid">
+      {designs.map((item, idx) => (
+        <div 
+          class="gallery-card reveal-item"
+          style={`transition-delay: ${(idx % 4) * 80}ms;`}
+          data-category={item.category}
+          data-img={item.image}
+          data-title={item.title}
+          data-desc={item.description}
+        >
+          <div class="gallery-img-wrapper">
+            <img 
+              src={item.image} 
+              alt={item.title} 
+              class="gallery-img"
+              loading="lazy"
+              width="400"
+              height="400"
+            />
+            <div class="gallery-overlay">
+              <span class="gallery-badge">{item.category}</span>
+              <h3 class="gallery-card-title">{item.title}</h3>
+              <div class="gallery-view-hint">
+                <Icon name="search" size={16} />
+                <span>Clic para ampliar</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox-modal" id="gallery-lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="lightbox-content">
+      <button class="lightbox-close-btn" id="lightbox-close" aria-label="Cerrar vista previa">
+        <Icon name="close" size={20} />
+      </button>
+
+      <div class="lightbox-media">
+        <img src="" id="lightbox-target-img" alt="Vista previa de diseño" />
+      </div>
+
+      <div class="lightbox-details">
+        <div>
+          <span class="section-tag" id="lightbox-target-category" style="margin-bottom: 0.75rem;">Diseño</span>
+          <h3 class="lightbox-title" id="lightbox-target-title">Título del Diseño</h3>
+          <p class="lightbox-desc" id="lightbox-target-desc">Muestra de volante publicitario.</p>
+        </div>
+
+        <a 
+          href="#" 
+          id="lightbox-whatsapp-cta" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="btn btn-whatsapp"
+          style="width: 100%;"
+        >
+          <Icon name="whatsapp" size={20} />
+          <span>Cotizar por WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { initGallery } from '../scripts/gallery';
+  document.addEventListener('DOMContentLoaded', () => {
+    initGallery();
+  });
+</script>

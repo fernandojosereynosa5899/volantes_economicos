@@ -1,0 +1,147 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import Icon from '../components/Icon.astro';
+
+const designs = [
+  {
+    id: 2,
+    title: 'Volantes Publicitarios 2',
+    image: '/images/disenos/diseño_2.jpg',
+    description: 'Muestra de volante publicitario para negocio con impresión de alta calidad offset.'
+  },
+  {
+    id: 4,
+    title: 'Volantes Económicos 4',
+    image: '/images/disenos/diseño_4.jpg',
+    description: 'Diseño de volante publicitario económico enfocado a promociones y ventas.'
+  },
+  {
+    id: 8,
+    title: 'Volantes Económicos 8',
+    image: '/images/disenos/diseño_8.jpg',
+    description: 'Muestra de volante con composición visual clara, atractiva y colores balanceados.'
+  },
+  {
+    id: 1,
+    title: 'Volantes Económicos 1',
+    image: '/images/disenos/diseño_1.jpg',
+    description: 'Volante publicitario económico con colores vivos y llamado a la acción comercial.'
+  },
+  {
+    id: 7,
+    title: 'Volantes Económicos 7',
+    image: '/images/disenos/diseño_7.jpg',
+    description: 'Diseño de volante con tipografía clara y estructura gráfica profesional.'
+  },
+  {
+    id: 3,
+    title: 'Volantes Económicos 3',
+    image: '/images/disenos/diseño_3.jpg',
+    description: 'Muestra de volante publicitario para restaurantes, pizzerías y negocios locales.'
+  },
+  {
+    id: 6,
+    title: 'Volantes Económicos 6',
+    image: '/images/disenos/diseño_6.jpg',
+    description: 'Diseño publicitario optimizado para máxima atracción de nuevos clientes.'
+  },
+  {
+    id: 5,
+    title: 'Volantes Económicos 5',
+    image: '/images/disenos/diseño_5.jpg',
+    description: 'Volante publicitario de gran impacto visual y alta calidad de impresión offset.'
+  }
+];
+---
+
+<Layout 
+  title="DISEÑOS - Volantes Económicos" 
+  description="Así trabajamos en Volantes Económicos. Muestras de diseños de volantes publicitarios para su negocio."
+  currentPath="/disenos"
+>
+  <div class="container" style="padding-top: 3rem; padding-bottom: 4rem;">
+    <div class="page-layout-grid">
+      <!-- Main Content Column -->
+      <div class="page-content-area">
+        <h1 class="main-page-title" style="margin-bottom: 0.5rem;">DISEÑOS</h1>
+        <p class="lead-text" style="color: var(--color-primary); font-weight: 700; margin-bottom: 2rem;">
+          Así trabajamos !
+        </p>
+
+        <!-- Gallery Grid - Solo imágenes limpias con animación fluida -->
+        <div class="gallery-grid" style="grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));">
+          {designs.map((item, idx) => (
+            <div 
+              class="gallery-card gallery-card-pure-img reveal-item"
+              data-img={item.image}
+              data-title={item.title}
+              data-desc={item.description}
+              style={`animation-delay: ${idx * 0.08}s;`}
+            >
+              <div class="gallery-img-wrapper">
+                <img 
+                  src={item.image} 
+                  alt={item.title} 
+                  class="gallery-img"
+                  loading="lazy"
+                  width="400"
+                  height="400"
+                />
+                <!-- Subtle hover zoom indicator without text -->
+                <div class="gallery-hover-icon" aria-hidden="true">
+                  <div class="zoom-circle">
+                    <Icon name="search" size={22} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Sidebar Column -->
+      <Sidebar />
+    </div>
+  </div>
+
+  <!-- Lightbox Modal con animaciones fluidas -->
+  <div class="lightbox-modal" id="gallery-lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="lightbox-content">
+      <button class="lightbox-close-btn" id="lightbox-close" aria-label="Cerrar vista previa">
+        <Icon name="close" size={20} />
+      </button>
+
+      <div class="lightbox-media">
+        <img src="" id="lightbox-target-img" alt="Vista previa de diseño" />
+      </div>
+
+      <div class="lightbox-details">
+        <div>
+          <span class="section-tag" id="lightbox-target-category" style="margin-bottom: 0.75rem;">Muestra Impresa</span>
+          <h3 class="lightbox-title" id="lightbox-target-title">Título del Diseño</h3>
+          <p class="lightbox-desc" id="lightbox-target-desc">Muestra de volante publicitario.</p>
+        </div>
+
+        <a 
+          href="#" 
+          id="lightbox-whatsapp-cta" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="btn btn-whatsapp"
+          style="width: 100%;"
+        >
+          <Icon name="whatsapp" size={20} />
+          <span>Cotizar este Diseño por WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  import { initGallery } from '../scripts/gallery';
+  document.addEventListener('DOMContentLoaded', () => {
+    initGallery();
+  });
+</script>

@@ -1,0 +1,125 @@
+---
+import { getActiveConfig } from '../scripts/content-loader';
+import Icon from './Icon.astro';
+
+const siteConfig = getActiveConfig();
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '/' } = Astro.props;
+
+// Pestañas principales de navegación (Entrega se acomodó abajo según solicitud)
+const navItems = [
+  { href: '/', label: 'Inicio' },
+  { href: '/disenos', label: 'Diseños' },
+  { href: '/precios', label: 'Precios' },
+  { href: '/contacto', label: 'Contacto' }
+];
+
+const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${encodeURIComponent('¡Hola! Me gustaría cotizar volantes.')}`;
+---
+
+<!-- Skip to content -->
+<a href="#contenido-principal" class="sr-only">Ir al contenido</a>
+
+<!-- Photographic Banner Original -->
+<div class="header-hero-banner">
+  <img 
+    src="/images/inicio.jpg" 
+    alt="Volantes Económicos - Impresión Offset y Flyers en México" 
+    class="header-hero-bg" 
+    loading="eager"
+  />
+  <div class="header-hero-overlay"></div>
+  <div class="container header-hero-content">
+    <a href="/" class="header-hero-brand" aria-label="Volantes Económicos - Inicio">
+      <div class="header-hero-title" data-bind="general.siteName">Volantes Economicos</div>
+      <div class="header-hero-subtitle" data-bind="general.siteSubtitle">Volantes Publicitarios Económicos</div>
+    </a>
+  </div>
+</div>
+
+<!-- Header Navigation Bar con Menú Hamburguesa -->
+<header class="site-header" id="main-header">
+  <div class="container header-container">
+    <a href="/" class="mobile-brand-link" aria-label="Volantes Económicos - Inicio">
+      Volantes Económicos
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="main-nav" aria-label="Navegación principal">
+      {navItems.map(item => (
+        <a 
+          href={item.href} 
+          class:list={['nav-link', { active: currentPath === item.href }]}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Header Actions (WhatsApp Directo + Botón Menú Hamburguesa) -->
+    <div class="header-actions">
+      <a 
+        href={whatsappUrl} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="nav-whatsapp-link"
+        title="Cotizar directamente por WhatsApp"
+      >
+        <Icon name="whatsapp" size={20} />
+        <span class="wa-text-full">WhatsApp: <strong data-bind="general.phoneNumber">{siteConfig.general.phoneNumber}</strong></span>
+        <span class="wa-text-short"><strong data-bind="general.phoneNumber">{siteConfig.general.phoneNumber}</strong></span>
+      </a>
+
+      <!-- Botón Menú Hamburguesa -->
+      <button 
+        class="mobile-toggle" 
+        id="mobile-nav-toggle" 
+        aria-label="Abrir menú de navegación"
+        aria-expanded="false"
+      >
+        <Icon name="menu" size={24} />
+      </button>
+    </div>
+  </div>
+
+  <!-- Drawer Menú Hamburguesa (Estilizado idéntico a NAVEGACIÓN de captura 134155) -->
+  <div class="mobile-drawer" id="mobile-nav-drawer">
+    <div class="container">
+      <div class="drawer-nav-container">
+        <div class="drawer-nav-header">
+          <h3 class="drawer-nav-title">NAVEGACIÓN</h3>
+          <span class="drawer-nav-line" aria-hidden="true"></span>
+        </div>
+
+        <ul class="mobile-nav-list">
+          {navItems.map(item => (
+            <li>
+              <a 
+                href={item.href} 
+                class:list={['mobile-nav-link', { active: currentPath === item.href }]}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+          <li class="drawer-whatsapp-wrap">
+            <a 
+              href={whatsappUrl} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="btn btn-whatsapp" 
+              style="width: 100%;"
+            >
+              <Icon name="whatsapp" size={20} />
+              <span>Cotizar WhatsApp: {siteConfig.general.phoneNumber}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>

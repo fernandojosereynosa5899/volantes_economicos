@@ -1,0 +1,25 @@
+---
+import '../styles/components/whatsapp-bubble.css';
+import { getActiveConfig } from '../scripts/content-loader';
+
+const siteConfig = getActiveConfig();
+---
+
+<a 
+  href={`https://wa.me/${siteConfig.general.whatsappNumber}?text=${encodeURIComponent('¡Hola! Deseo cotizar volantes para mi negocio por favor.')}`} 
+  target="_blank" 
+  rel="noopener noreferrer" 
+  class="whatsapp-floating-widget"
+  aria-label="Contactar por WhatsApp para cotización inmediata"
+>
+  <div class="whatsapp-tooltip">
+    <strong>¿Tienes dudas?</strong>
+    <span>¡Chatea con nosotros en vivo!</span>
+  </div>
+  <div class="whatsapp-bubble-btn">
+    <span class="whatsapp-status-dot" aria-hidden="true"></span>
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.974.536 1.765.814 2.796.814 3.182 0 5.769-2.587 5.769-5.767.001-3.181-2.586-5.769-5.769-5.769zm3.387 8.213c-.14.394-.716.744-1.007.788-.273.041-.628.069-1.02-.055-.246-.078-.564-.199-.974-.378-1.745-.765-2.879-2.531-2.966-2.648-.088-.118-.711-.947-.711-1.807 0-.86.449-1.284.609-1.458.16-.174.349-.218.465-.218.117 0 .233.001.334.006.107.005.251-.041.393.3.146.35.494 1.206.538 1.294.044.088.073.19.015.306-.058.117-.087.19-.174.292-.087.102-.183.228-.262.306-.087.087-.179.182-.077.357.102.175.454.749.974 1.213.67.597 1.235.782 1.41.87.175.087.277.073.38-.044.102-.117.437-.51.554-.685.117-.175.233-.146.393-.087.16.058 1.019.481 1.194.568.175.088.291.131.335.204.043.073.043.424-.097.818zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.66 1.434 5.176L2 22l4.962-1.399C8.423 21.499 10.154 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+    </svg>
+  </div>
+</a>

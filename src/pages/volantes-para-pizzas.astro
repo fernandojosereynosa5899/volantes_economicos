@@ -1,0 +1,100 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import { getActiveConfig } from '../scripts/content-loader';
+import Icon from '../components/Icon.astro';
+
+const siteConfig = getActiveConfig();
+const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${encodeURIComponent('¡Hola! Me interesa cotizar volantes para pizzería.')}`;
+---
+
+<Layout 
+  title="Volantes para Pizzas - Volantes Económicos" 
+  description="Somos especialistas en Volantes para Pizzas y tenemos los precios más bajos de México. Diseños atractivos y entrega por mensajería."
+  currentPath="/volantes-para-pizzas"
+>
+  <div class="container" style="padding-top: 3rem; padding-bottom: 4rem;">
+    <div class="page-layout-grid">
+      <!-- Main Content Area -->
+      <article class="page-content-area original-content-typography">
+        <h1 class="main-page-title" style="margin-bottom: 0.5rem;">Volantes para Pizzas</h1>
+        <p class="lead-text" style="color: var(--color-primary); font-weight: 700; margin-bottom: 2rem;">
+          Somos especialistas en Volantes para Pizzas y tenemos los precios más bajos
+        </p>
+
+        <p>
+          Para tener más impacto con sus volantes para pizzas en tus clientes. Le recomendamos tomar en cuenta lo siguiente:
+        </p>
+
+        <div class="steps-detailed-list">
+          <div class="step-card">
+            <h4>1. Busque formas creativas de sorprender a los clientes con su diseño</h4>
+            <p>
+              Parte de la emoción de su audiencia es sorprenderlos, no sólo con sus increíbles ofertas, sino también con su marca creativa. Busque maneras de añadir un poco de magia al diseño de su folleto de ventas.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <h4>2. Crear un volante de ventas de encabezado de correo electrónico</h4>
+            <p>
+              ¿Quieres que tu anuncio de ventas sea lo primero que la gente vea cuando abren tu email promocional? Luego cree un encabezado de correo electrónico llamativo.
+            </p>
+            <p>
+              Generalmente, una imagen con una relación de 3 a 1 funciona bien para las cabeceras de correo electrónico. Debido a que el espacio es más pequeño, es mejor no meter demasiado texto en el encabezado. Por ejemplo, eche un vistazo a este sencillo pero festivo encabezado de correo electrónico de venta de vacaciones.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <h4>3. Utilice imágenes que reflejen el tema de su venta</h4>
+            <p>
+              ¿Se ha tomado el tiempo para encontrar un nombre inteligente para su venta? Hágale justicia creando un volante inteligente! Por ejemplo un volante para su Pizza Gigante.
+            </p>
+            <p>
+              Piense en cómo puede utilizar el color y los elementos visuales como fotos e iconos para reflejar el tema de su venta.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <h4>4. Crear patrones simples usando iconos</h4>
+            <p>
+              Ejemplo de Folleto de Ventas de Pizzas, exclusivamente enfocado en apetitosas combinaciones de ingredientes, quesos e iconos llamativos.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <h4>5. Utilice un espaciado más amplio en el título</h4>
+            <p>
+              La tipografía no se trata sólo de la fuente que usted elija. También se trata del espacio entre los caracteres, la audacia del texto y la forma en que se ordena el texto en la página.
+            </p>
+            <p>
+              Juega con diferentes espaciamientos de caracteres. Añadiendo un poco de espacio extra entre las letras puede dar a su texto de título un cierto impacto añadido.
+            </p>
+          </div>
+        </div>
+
+        <p style="font-size: 1.05rem; margin-top: 1.5rem;">
+          Espero que estos ejemplos de folletos le hayan servido de inspiración para sus propios diseños. Recuerde, comenzar con un folleto puede darle una base sólida para trabajar en su negocio de Pizzas.
+        </p>
+
+        <!-- Closing CTA -->
+        <div class="closing-cta-card">
+          <p class="closing-text">
+            En Volantes Económicos somos especialistas en pizzerias. Porque conocemos lo importante que son los Volantes Económicos para usted. <strong>CONTACTENOS</strong>
+          </p>
+          <a 
+            href={whatsappUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn btn-whatsapp btn-lg"
+          >
+            <Icon name="whatsapp" size={22} />
+            <span>Cotizar Volantes para Pizzas por WhatsApp</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Sidebar Column -->
+      <Sidebar />
+    </div>
+  </div>
+</Layout>

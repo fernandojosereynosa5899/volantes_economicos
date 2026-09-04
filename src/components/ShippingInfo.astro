@@ -1,0 +1,42 @@
+---
+import '../styles/components/shipping.css';
+import { getActiveConfig } from '../scripts/content-loader';
+import Icon from './Icon.astro';
+
+const siteConfig = getActiveConfig();
+
+const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${encodeURIComponent('¡Hola! Me gustaría cotizar volantes con envío a mi ciudad.')}`;
+---
+
+<section class="section" id="envios">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">{siteConfig.entrega.title}</span>
+      <h2 class="section-title">Envíos a Toda la <span class="text-highlight">República Mexicana</span></h2>
+    </div>
+
+    <div class="shipping-box" style="max-width: 860px; margin: 0 auto; text-align: center;">
+      <div class="shipping-icon-circle">
+        <Icon name="truck" size={36} />
+      </div>
+
+      <h3 class="shipping-quote-text" data-bind="entrega.text">
+        "{siteConfig.entrega.text}"
+      </h3>
+
+      <p class="shipping-description">
+        Realizamos envíos seguros por medio de servicio de mensajería a cualquier destino de México.
+      </p>
+
+      <a 
+        href={whatsappUrl} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="btn btn-whatsapp btn-lg"
+      >
+        <Icon name="whatsapp" size={22} />
+        <span>Cotizar Envío por WhatsApp</span>
+      </a>
+    </div>
+  </div>
+</section>

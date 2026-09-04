@@ -1,0 +1,401 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getActiveConfig } from '../scripts/content-loader';
+import Icon from '../components/Icon.astro';
+
+const siteConfig = getActiveConfig();
+---
+
+<Layout 
+  title="Panel de Edición Gráfica - Volantes Económicos" 
+  description="Panel visual interactivo para que el dueño del sitio pueda editar textos, precios y preguntas frecuentes directamente desde la interfaz gráfica sin tocar código."
+  currentPath="/configuracion"
+>
+  <div class="container section" style="padding-top: 2.5rem;">
+    <!-- Header del Panel -->
+    <div class="section-header" style="margin-bottom: 2rem;">
+      <span class="section-tag">
+        <Icon name="settings" size={15} /> Interfaz Gráfica para el Dueño
+      </span>
+      <h1 class="section-title">Panel de Control <span class="text-highlight">del Sitio</span></h1>
+      <p class="section-subtitle">
+        Modifica fácilmente cualquier texto, teléfonos, precios del cotizador y preguntas frecuentes directamente desde esta pantalla sin tocar código.
+      </p>
+    </div>
+
+    <!-- Alert de Notificación de Guardado -->
+    <div id="save-alert" style="display: none; background: #dcfce7; border: 1px solid #86efac; border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 2rem; color: #166534; text-align: center;">
+      <div style="font-weight: 700; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+        <Icon name="check" size={22} />
+        <span>¡Cambios guardados con éxito en la interfaz gráfica!</span>
+      </div>
+      <p style="font-size: 0.925rem; color: #15803d; margin-top: 0.35rem;">
+        Tus nuevos precios, teléfonos y textos ya están activos en todas las páginas del sitio.
+      </p>
+    </div>
+
+    <!-- Formulario Gráfico Completo -->
+    <form id="owner-gui-editor" class="glass-card" style="padding: 2.5rem; background: #ffffff;">
+      
+      <!-- 1. Contacto y Redes -->
+      <div style="margin-bottom: 2.5rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid var(--color-border); padding-bottom: 0.75rem; margin-bottom: 1.5rem;">
+          <h3 style="color: #111827; font-size: 1.25rem; font-weight: 800; display: flex; align-items: center; gap: 0.5rem;">
+            <Icon name="phone" size={20} />
+            <span>1. Teléfonos, Contacto y Redes Sociales</span>
+          </h3>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+          <div class="form-group">
+            <label style="font-weight: 600; color: #374151; font-size: 0.875rem;">WhatsApp Principal (solo números, ej. 525542233675)</label>
+            <input type="text" id="gui-whatsapp" class="form-input" value={siteConfig.general.whatsappNumber} />
+          </div>
+
+          <div class="form-group">
+            <label style="font-weight: 600; color: #374151; font-size: 0.875rem;">Teléfono Visible Principal</label>
+            <input type="text" id="gui-phone" class="form-input" value={siteConfig.general.phoneNumber} />
+          </div>
+
+          <div class="form-group">
+            <label style="font-weight: 600; color: #374151; font-size: 0.875rem;">Teléfono Secundario</label>
+            <input type="text" id="gui-secondary-phone" class="form-input" value={siteConfig.general.secondaryPhone} />
+          </div>
+
+          <div class="form-group">
+            <label style="font-weight: 600; color: #374151; font-size: 0.875rem;">Correo Electrónico</label>
+            <input type="email" id="gui-email" class="form-input" value={siteConfig.general.email} />
+          </div>
+
+          <div class="form-group">
+            <label style="font-weight: 600; color: #374151; font-size: 0.875rem;">Enlace de Página de Facebook</label>
+            <input type="text" id="gui-facebook" class="form-input" value={siteConfig.general.facebookUrl} />
+          </div>
+
+          <div class="form-group">
+            <label style="font-weight: 600; color: #374151; font-size: 0.875rem;">Nombre de Messenger / Página</label>
+            <input type="text" id="gui-messenger" class="form-input" value={siteConfig.general.messengerName} />
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label style="font-weight: 600; color: #374151; font-size: 0.875rem;">Dirección Física de Taller / Local</label>
+            <input type="text" id="gui-address" class="form-input" value={siteConfig.general.address} />
+          </div>
+
+          <div class="form-group">
+            <label style="font-weight: 600; color: #374151; font-size: 0.875rem;">Horario Lunes a Viernes</label>
+            <input type="text" id="gui-hours-weekdays" class="form-input" value={siteConfig.general.schedule.weekdays} />
+          </div>
+
+          <div class="form-group">
+            <label style="font-weight: 600; color: #374151; font-size: 0.875rem;">Horario Sábado</label>
+            <input type="text" id="gui-hours-saturday" class="form-input" value={siteConfig.general.schedule.saturday} />
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Textos del Sitio -->
+      <div style="margin-bottom: 2.5rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid var(--color-border); padding-bottom: 0.75rem; margin-bottom: 1.5rem;">
+          <h3 style="color: #111827; font-size: 1.25rem; font-weight: 800; display: flex; align-items: center; gap: 0.5rem;">
+            <Icon name="info" size={20} />
+            <span>2. Textos Originales de las Páginas</span>
+          </h3>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+          <div class="form-group">
+            <label style="font-weight: 600; color: #374151; font-size: 0.875rem;">Título Principal de Inicio</label>
+            <input type="text" id="gui-home-title" class="form-input" value={siteConfig.home.title} />
+          </div>
+
+          <div class="form-group">
+            <label style="font-weight: 600; color: #374151; font-size: 0.875rem;">Texto de Introducción (Inicio)</label>
+            <textarea id="gui-home-intro" class="form-textarea" rows="3">{siteConfig.home.intro}</textarea>
+          </div>
+
+          <div class="form-group">
+            <label style="font-weight: 600; color: #374151; font-size: 0.875rem;">Texto de Entrega</label>
+            <textarea id="gui-entrega-text" class="form-textarea" rows="2">{siteConfig.entrega.text}</textarea>
+          </div>
+
+          <div class="form-group">
+            <label style="font-weight: 600; color: #374151; font-size: 0.875rem;">Texto de Contacto</label>
+            <input type="text" id="gui-contacto-subtitle" class="form-input" value={siteConfig.contacto.subtitle} />
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Precios del Cotizador -->
+      <div style="margin-bottom: 2.5rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid var(--color-border); padding-bottom: 0.75rem; margin-bottom: 1.5rem;">
+          <h3 style="color: #111827; font-size: 1.25rem; font-weight: 800; display: flex; align-items: center; gap: 0.5rem;">
+            <Icon name="settings" size={20} />
+            <span>3. Precios del Cotizador (en Pesos Mexicanos)</span>
+          </h3>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem;">
+          <div class="form-group">
+            <label style="font-weight: 600; color: #374151; font-size: 0.875rem;">1,000 Volantes (1/4 carta, frente 4x0)</label>
+            <input type="number" id="gui-p-1000-4x0" class="form-input" value={siteConfig.calculator.pricingMatrix['1000']['cuarto-carta']['4x0']} />
+          </div>
+
+          <div class="form-group">
+            <label style="font-weight: 600; color: #374151; font-size: 0.875rem;">1,000 Volantes (1/4 carta, ambas caras 4x4)</label>
+            <input type="number" id="gui-p-1000-4x4" class="form-input" value={siteConfig.calculator.pricingMatrix['1000']['cuarto-carta']['4x4']} />
+          </div>
+
+          <div class="form-group">
+            <label style="font-weight: 600; color: #374151; font-size: 0.875rem;">2,500 Volantes (1/4 carta, frente 4x0)</label>
+            <input type="number" id="gui-p-2500-4x0" class="form-input" value={siteConfig.calculator.pricingMatrix['2500']['cuarto-carta']['4x0']} />
+          </div>
+
+          <div class="form-group">
+            <label style="font-weight: 600; color: #374151; font-size: 0.875rem;">5,000 Volantes (1/4 carta, frente 4x0)</label>
+            <input type="number" id="gui-p-5000-4x0" class="form-input" value={siteConfig.calculator.pricingMatrix['5000']['cuarto-carta']['4x0']} />
+          </div>
+
+          <div class="form-group">
+            <label style="font-weight: 600; color: #374151; font-size: 0.875rem;">10,000 Volantes (1/4 carta, frente 4x0)</label>
+            <input type="number" id="gui-p-10000-4x0" class="form-input" value={siteConfig.calculator.pricingMatrix['10000']['cuarto-carta']['4x0']} />
+          </div>
+
+          <div class="form-group">
+            <label style="font-weight: 600; color: #374151; font-size: 0.875rem;">Costo del Servicio de Diseño (+$)</label>
+            <input type="number" id="gui-design-cost" class="form-input" value={siteConfig.calculator.designServiceCost} />
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Preguntas Frecuentes (FAQ) Dinámicas -->
+      <div style="margin-bottom: 2.5rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid var(--color-border); padding-bottom: 0.75rem; margin-bottom: 1.5rem;">
+          <h3 style="color: #111827; font-size: 1.25rem; font-weight: 800; display: flex; align-items: center; gap: 0.5rem;">
+            <Icon name="search" size={20} />
+            <span>4. Preguntas Frecuentes (Añadir, Editar o Eliminar)</span>
+          </h3>
+          <button type="button" id="btn-add-faq" class="btn btn-outline" style="padding: 0.4rem 0.85rem; font-size: 0.85rem;">
+            + Agregar Pregunta
+          </button>
+        </div>
+
+        <div id="gui-faq-container" style="display: flex; flex-direction: column; gap: 1.25rem;">
+          {siteConfig.faqs.map((faq, idx) => (
+            <div class="gui-faq-card" style="padding: 1.25rem; background: #f8fafc; border: 1px solid var(--color-border); border-radius: var(--radius-md);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                <label style="font-weight: 700; color: var(--color-primary);">Pregunta #{idx + 1}</label>
+                <button type="button" class="btn-delete-faq" style="background: #fee2e2; border: 1px solid #fca5a5; color: #dc2626; padding: 0.25rem 0.6rem; border-radius: 6px; cursor: pointer; font-size: 0.75rem; font-weight: 600;">
+                  🗑️ Eliminar
+                </button>
+              </div>
+              <input type="text" class="form-input faq-question-input" value={faq.question} style="margin-bottom: 0.75rem;" />
+              <label style="font-weight: 700; font-size: 0.85rem; color: #475569; display: block; margin-bottom: 0.35rem;">Respuesta</label>
+              <textarea class="form-textarea faq-answer-input" rows="2">{faq.answer}</textarea>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Barra de Botones Principales -->
+      <div style="display: flex; gap: 1.25rem; flex-wrap: wrap; align-items: center; border-top: 1px solid var(--color-border); padding-top: 2rem;">
+        <button type="button" id="btn-save-gui" class="btn btn-whatsapp btn-lg">
+          <Icon name="check" size={20} />
+          <span>💾 Guardar Cambios en la Interfaz</span>
+        </button>
+
+        <a href="/" class="btn btn-primary btn-lg">
+          <span>👀 Ver Sitio en Vivo</span>
+        </a>
+
+        <button type="button" id="btn-reset-gui" class="btn btn-outline" style="color: #dc2626; border-color: #fca5a5;">
+          <span>🔄 Restaurar Valores Originales</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</Layout>
+
+<script>
+  import { getActiveConfig, saveActiveConfig, resetActiveConfig } from '../scripts/content-loader';
+
+  const saveBtn = document.getElementById('btn-save-gui');
+  const resetBtn = document.getElementById('btn-reset-gui');
+  const addFaqBtn = document.getElementById('btn-add-faq');
+  const faqContainer = document.getElementById('gui-faq-container');
+  const alertBox = document.getElementById('save-alert');
+
+  // Load current active config into fields
+  function populateFromActiveConfig() {
+    const cfg = getActiveConfig();
+
+    // Contact
+    const wa = document.getElementById('gui-whatsapp') as HTMLInputElement;
+    const phone = document.getElementById('gui-phone') as HTMLInputElement;
+    const secPhone = document.getElementById('gui-secondary-phone') as HTMLInputElement;
+    const email = document.getElementById('gui-email') as HTMLInputElement;
+    const fb = document.getElementById('gui-facebook') as HTMLInputElement;
+    const msgr = document.getElementById('gui-messenger') as HTMLInputElement;
+    const addr = document.getElementById('gui-address') as HTMLInputElement;
+    const hWeek = document.getElementById('gui-hours-weekdays') as HTMLInputElement;
+    const hSat = document.getElementById('gui-hours-saturday') as HTMLInputElement;
+
+    if (wa) wa.value = cfg.general.whatsappNumber;
+    if (phone) phone.value = cfg.general.phoneNumber;
+    if (secPhone) secPhone.value = cfg.general.secondaryPhone;
+    if (email) email.value = cfg.general.email;
+    if (fb) fb.value = cfg.general.facebookUrl;
+    if (msgr) msgr.value = cfg.general.messengerName;
+    if (addr) addr.value = cfg.general.address;
+    if (hWeek) hWeek.value = cfg.general.schedule.weekdays;
+    if (hSat) hSat.value = cfg.general.schedule.saturday;
+
+    // Texts
+    const hTitle = document.getElementById('gui-home-title') as HTMLInputElement;
+    const hIntro = document.getElementById('gui-home-intro') as HTMLTextAreaElement;
+    const eText = document.getElementById('gui-entrega-text') as HTMLTextAreaElement;
+    const cSub = document.getElementById('gui-contacto-subtitle') as HTMLInputElement;
+
+    if (hTitle) hTitle.value = cfg.home.title;
+    if (hIntro) hIntro.value = cfg.home.intro;
+    if (eText) eText.value = cfg.entrega.text;
+    if (cSub) cSub.value = cfg.contacto.subtitle;
+
+    // Prices
+    const matrix = cfg.calculator.pricingMatrix as any;
+    const p1000_4x0 = document.getElementById('gui-p-1000-4x0') as HTMLInputElement;
+    const p1000_4x4 = document.getElementById('gui-p-1000-4x4') as HTMLInputElement;
+    const p2500_4x0 = document.getElementById('gui-p-2500-4x0') as HTMLInputElement;
+    const p5000_4x0 = document.getElementById('gui-p-5000-4x0') as HTMLInputElement;
+    const p10000_4x0 = document.getElementById('gui-p-10000-4x0') as HTMLInputElement;
+    const designCost = document.getElementById('gui-design-cost') as HTMLInputElement;
+
+    if (p1000_4x0 && matrix['1000']) p1000_4x0.value = matrix['1000']['cuarto-carta']['4x0'];
+    if (p1000_4x4 && matrix['1000']) p1000_4x4.value = matrix['1000']['cuarto-carta']['4x4'];
+    if (p2500_4x0 && matrix['2500']) p2500_4x0.value = matrix['2500']['cuarto-carta']['4x0'];
+    if (p5000_4x0 && matrix['5000']) p5000_4x0.value = matrix['5000']['cuarto-carta']['4x0'];
+    if (p10000_4x0 && matrix['10000']) p10000_4x0.value = matrix['10000']['cuarto-carta']['4x0'];
+    if (designCost) designCost.value = String(cfg.calculator.designServiceCost);
+  }
+
+  // Bind Delete buttons
+  function bindDeleteButtons() {
+    document.querySelectorAll<HTMLButtonElement>('.btn-delete-faq').forEach(btn => {
+      btn.onclick = () => {
+        const card = btn.closest('.gui-faq-card');
+        card?.remove();
+      };
+    });
+  }
+
+  // Add FAQ
+  addFaqBtn?.addEventListener('click', () => {
+    if (!faqContainer) return;
+    const count = faqContainer.querySelectorAll('.gui-faq-card').length + 1;
+    const newCard = document.createElement('div');
+    newCard.className = 'gui-faq-card';
+    newCard.style.padding = '1.25rem';
+    newCard.style.background = '#f8fafc';
+    newCard.style.border = '1px solid var(--color-border)';
+    newCard.style.borderRadius = 'var(--radius-md)';
+    newCard.innerHTML = `
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+        <label style="font-weight: 700; color: var(--color-primary);">Pregunta #${count}</label>
+        <button type="button" class="btn-delete-faq" style="background: #fee2e2; border: 1px solid #fca5a5; color: #dc2626; padding: 0.25rem 0.6rem; border-radius: 6px; cursor: pointer; font-size: 0.75rem; font-weight: 600;">
+          🗑️ Eliminar
+        </button>
+      </div>
+      <input type="text" class="form-input faq-question-input" placeholder="Escribe la nueva pregunta..." style="margin-bottom: 0.75rem;" />
+      <label style="font-weight: 700; font-size: 0.85rem; color: #475569; display: block; margin-bottom: 0.35rem;">Respuesta</label>
+      <textarea class="form-textarea faq-answer-input" rows="2" placeholder="Escribe la respuesta..."></textarea>
+    `;
+    faqContainer.appendChild(newCard);
+    bindDeleteButtons();
+  });
+
+  // Save changes from GUI
+  saveBtn?.addEventListener('click', () => {
+    const cfg = getActiveConfig();
+    const updated = JSON.parse(JSON.stringify(cfg));
+
+    // General
+    updated.general.whatsappNumber = (document.getElementById('gui-whatsapp') as HTMLInputElement)?.value || updated.general.whatsappNumber;
+    updated.general.phoneNumber = (document.getElementById('gui-phone') as HTMLInputElement)?.value || updated.general.phoneNumber;
+    updated.general.secondaryPhone = (document.getElementById('gui-secondary-phone') as HTMLInputElement)?.value || updated.general.secondaryPhone;
+    updated.general.email = (document.getElementById('gui-email') as HTMLInputElement)?.value || updated.general.email;
+    updated.general.facebookUrl = (document.getElementById('gui-facebook') as HTMLInputElement)?.value || updated.general.facebookUrl;
+    updated.general.messengerName = (document.getElementById('gui-messenger') as HTMLInputElement)?.value || updated.general.messengerName;
+    updated.general.address = (document.getElementById('gui-address') as HTMLInputElement)?.value || updated.general.address;
+    updated.general.schedule.weekdays = (document.getElementById('gui-hours-weekdays') as HTMLInputElement)?.value || updated.general.schedule.weekdays;
+    updated.general.schedule.saturday = (document.getElementById('gui-hours-saturday') as HTMLInputElement)?.value || updated.general.schedule.saturday;
+
+    // Home
+    updated.home.title = (document.getElementById('gui-home-title') as HTMLInputElement)?.value || updated.home.title;
+    updated.home.intro = (document.getElementById('gui-home-intro') as HTMLTextAreaElement)?.value || updated.home.intro;
+    updated.entrega.text = (document.getElementById('gui-entrega-text') as HTMLTextAreaElement)?.value || updated.entrega.text;
+    updated.contacto.subtitle = (document.getElementById('gui-contacto-subtitle') as HTMLInputElement)?.value || updated.contacto.subtitle;
+
+    // Prices
+    const p1000 = parseInt((document.getElementById('gui-p-1000-4x0') as HTMLInputElement)?.value || '590');
+    const p1000_doble = parseInt((document.getElementById('gui-p-1000-4x4') as HTMLInputElement)?.value || '790');
+    const p2500 = parseInt((document.getElementById('gui-p-2500-4x0') as HTMLInputElement)?.value || '1190');
+    const p5000 = parseInt((document.getElementById('gui-p-5000-4x0') as HTMLInputElement)?.value || '1890');
+    const p10000 = parseInt((document.getElementById('gui-p-10000-4x0') as HTMLInputElement)?.value || '3290');
+    const design = parseInt((document.getElementById('gui-design-cost') as HTMLInputElement)?.value || '250');
+
+    if (updated.calculator.pricingMatrix['1000']) {
+      updated.calculator.pricingMatrix['1000']['cuarto-carta']['4x0'] = p1000;
+      updated.calculator.pricingMatrix['1000']['cuarto-carta']['4x4'] = p1000_doble;
+    }
+    if (updated.calculator.pricingMatrix['2500']) {
+      updated.calculator.pricingMatrix['2500']['cuarto-carta']['4x0'] = p2500;
+    }
+    if (updated.calculator.pricingMatrix['5000']) {
+      updated.calculator.pricingMatrix['5000']['cuarto-carta']['4x0'] = p5000;
+    }
+    if (updated.calculator.pricingMatrix['10000']) {
+      updated.calculator.pricingMatrix['10000']['cuarto-carta']['4x0'] = p10000;
+    }
+    updated.calculator.designServiceCost = design;
+
+    // FAQs
+    const qInputs = document.querySelectorAll<HTMLInputElement>('.faq-question-input');
+    const aInputs = document.querySelectorAll<HTMLTextAreaElement>('.faq-answer-input');
+    const newFaqs: { question: string; answer: string }[] = [];
+    qInputs.forEach((qInput, i) => {
+      if (qInput.value.trim()) {
+        newFaqs.push({
+          question: qInput.value.trim(),
+          answer: aInputs[i]?.value.trim() || ''
+        });
+      }
+    });
+    updated.faqs = newFaqs;
+
+    // Save to localStorage & DOM
+    saveActiveConfig(updated);
+
+    if (alertBox) {
+      alertBox.style.display = 'block';
+      alertBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      setTimeout(() => {
+        alertBox.style.display = 'none';
+      }, 5000);
+    }
+  });
+
+  // Reset to Defaults
+  resetBtn?.addEventListener('click', () => {
+    if (confirm('¿Deseas restaurar todos los valores originales de fábrica?')) {
+      resetActiveConfig();
+      populateFromActiveConfig();
+      alert('Valores originales restaurados.');
+    }
+  });
+
+  // Initialize
+  document.addEventListener('DOMContentLoaded', () => {
+    populateFromActiveConfig();
+    bindDeleteButtons();
+  });
+</script>

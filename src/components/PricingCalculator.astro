@@ -1,0 +1,175 @@
+---
+import '../styles/components/calculator.css';
+import { getActiveConfig } from '../scripts/content-loader';
+import Icon from './Icon.astro';
+
+const siteConfig = getActiveConfig();
+
+const { quantities, sizes, papers, colors, designServiceCost } = siteConfig.calculator;
+---
+
+<section class="section" id="cotizador">
+  <div class="container">
+    <div class="section-header reveal-item">
+      <span class="section-tag">Cotizador en Tiempo Real</span>
+      <h2 class="section-title">Calcula el Costo de tus <span class="text-gradient">Volantes</span></h2>
+      <p class="section-subtitle">
+        Selecciona las opciones para ver el precio estimado al instante y ordenar directamente por WhatsApp.
+      </p>
+    </div>
+
+    <div class="calculator-wrapper reveal-item delay-100">
+      <div class="calculator-grid">
+        <!-- Form Options Side -->
+        <form class="calc-options-side" id="flyer-calc-form" onsubmit="return false;">
+          <!-- Step 1: Cantidad -->
+          <div class="calc-group">
+            <div class="calc-group-title">
+              <span class="step-num">1</span>
+              <span>Cantidad de Volantes</span>
+            </div>
+            <div class="radio-pill-grid">
+              {quantities.map((q, idx) => (
+                <label class="radio-card">
+                  <input type="radio" name="calc_qty" value={q.value} checked={idx === 0} />
+                  <div class="radio-pill-content">
+                    <strong>{q.label}</strong>
+                    <span>{q.sub}</span>
+                  </div>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <!-- Step 2: Tamaño -->
+          <div class="calc-group">
+            <div class="calc-group-title">
+              <span class="step-num">2</span>
+              <span>Tamaño del Volante</span>
+            </div>
+            <div class="radio-pill-grid">
+              {sizes.map((s, idx) => (
+                <label class="radio-card">
+                  <input type="radio" name="calc_size" value={s.id} checked={idx === 0} />
+                  <div class="radio-pill-content">
+                    <strong>{s.label}</strong>
+                    <span>{s.dimensions}</span>
+                  </div>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <!-- Step 3: Tipo de Papel -->
+          <div class="calc-group">
+            <div class="calc-group-title">
+              <span class="step-num">3</span>
+              <span>Tipo de Papel</span>
+            </div>
+            <div class="radio-pill-grid">
+              {papers.map((p, idx) => (
+                <label class="radio-card">
+                  <input type="radio" name="calc_paper" value={p.id} checked={idx === 0} />
+                  <div class="radio-pill-content">
+                    <strong>{p.label}</strong>
+                    <span>{p.desc}</span>
+                  </div>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <!-- Step 4: Tintas -->
+          <div class="calc-group">
+            <div class="calc-group-title">
+              <span class="step-num">4</span>
+              <span>Caras Impresas</span>
+            </div>
+            <div class="radio-pill-grid">
+              {colors.map((c, idx) => (
+                <label class="radio-card">
+                  <input type="radio" name="calc_color" value={c.id} checked={idx === 0} />
+                  <div class="radio-pill-content">
+                    <strong>{c.label}</strong>
+                    <span>{c.desc}</span>
+                  </div>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <!-- Addon: Diseño -->
+          <div class="calc-group">
+            <label class="calc-addon-toggle">
+              <div class="addon-label">
+                <input type="checkbox" name="calc_design" id="calc-design-checkbox" />
+                <div>
+                  <strong>¿Requieres que diseñemos tu volante?</strong>
+                  <p style="font-size: 0.8rem; color: var(--color-text-dim); margin: 0;">
+                    Diseño profesional adaptado a tu negocio
+                  </p>
+                </div>
+              </div>
+              <span class="addon-price">+${designServiceCost} MXN</span>
+            </label>
+          </div>
+        </form>
+
+        <!-- Summary & CTA Panel -->
+        <div class="calc-summary-panel">
+          <div class="summary-header">
+            <h3>Resumen de Cotización</h3>
+            <p>Precios directos de imprenta</p>
+          </div>
+
+          <ul class="summary-details-list">
+            <li class="summary-row">
+              <span class="summary-label">Cantidad:</span>
+              <span class="summary-value" id="calc-qty-val">1,000 pzas</span>
+            </li>
+            <li class="summary-row">
+              <span class="summary-label">Medida:</span>
+              <span class="summary-value" id="calc-size-val">1/4 de Carta</span>
+            </li>
+            <li class="summary-row">
+              <span class="summary-label">Papel:</span>
+              <span class="summary-value" id="calc-paper-val">Couché 130g</span>
+            </li>
+            <li class="summary-row">
+              <span class="summary-label">Impresión:</span>
+              <span class="summary-value" id="calc-color-val">1 cara (4x0)</span>
+            </li>
+            <li class="summary-row">
+              <span class="summary-label">Cobertura:</span>
+              <span class="summary-value" style="color: var(--color-primary);">Envíos a toda la República</span>
+            </li>
+          </ul>
+
+          <div class="price-display-box">
+            <span class="price-sub">Total Estimado</span>
+            <div class="price-big" id="calc-total-price">$590 MXN</div>
+            <span class="unit-price-chip" id="calc-unit-price">$0.59 c/u</span>
+          </div>
+
+          <a 
+            href="#" 
+            id="calc-whatsapp-btn" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn btn-whatsapp btn-lg calc-cta-btn"
+          >
+            <Icon name="whatsapp" size={22} />
+            <span>Pedir por WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { initCalculator } from '../scripts/calculator';
+  document.addEventListener('DOMContentLoaded', () => {
+    initCalculator();
+  });
+</script>

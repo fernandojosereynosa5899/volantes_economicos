@@ -1,0 +1,61 @@
+---
+import '../styles/components/features.css';
+import type { Testimonial } from '../types';
+
+const testimonials: Testimonial[] = [
+  {
+    name: 'Roberto Gómez',
+    business: 'Pizzería Bella Napoli',
+    city: 'Monterrey, N.L.',
+    rating: 5,
+    text: 'Mandamos imprimir 5,000 volantes de 1/4 de carta para repartir en las colonias cercanas. El papel couché brillante hizo que las pizzas se vieran increíbles y los pedidos por llamada subieron un 40% el primer fin de semana.'
+  },
+  {
+    name: 'Carolina Méndez',
+    business: 'Clínica Dental Sonrisas',
+    city: 'Guadalajara, Jal.',
+    rating: 5,
+    text: 'Excelente servicio. No teníamos diseño y su equipo nos ayudó a armar el volante desde cero con nuestra lista de precios y promociones. Llegó en 48 horas por paquetería perfectamente empacado.'
+  },
+  {
+    name: 'Alejandro Navarrete',
+    business: 'Inmobiliaria Premier',
+    city: 'Ciudad de México, CDMX',
+    rating: 5,
+    text: 'La fidelidad del color y el corte son impecables. Llevamos más de 2 años pidiendo volantes en tirajes de 10,000 piezas para nuestros desarrollos y nunca nos han quedado mal. Los mejores precios del país.'
+  }
+];
+---
+
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal-item">
+      <span class="section-tag">Testimonios Reales</span>
+      <h2 class="section-title">Lo que Dicen Nuestros <span class="text-gradient">Clientes</span></h2>
+      <p class="section-subtitle">
+        Empresas y emprendedores que confían en nosotros para sus campañas impresas.
+      </p>
+    </div>
+
+    <div class="testimonials-grid">
+      {testimonials.map((t, idx) => (
+        <div class="testimonial-card reveal-item" style={`transition-delay: ${(idx + 1) * 150}ms;`}>
+          <div>
+            <div class="testimonial-stars" aria-label={`Calificación ${t.rating} de 5 estrellas`}>
+              {'★'.repeat(t.rating)}
+            </div>
+            <p class="testimonial-text">"{t.text}"</p>
+          </div>
+
+          <div class="testimonial-author">
+            <div class="author-avatar">{t.name.charAt(0)}</div>
+            <div class="author-info">
+              <strong>{t.name}</strong>
+              <span>{t.business} • {t.city}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

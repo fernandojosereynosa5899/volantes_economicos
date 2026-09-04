@@ -1,0 +1,103 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import { getActiveConfig } from '../scripts/content-loader';
+import Icon from '../components/Icon.astro';
+
+const siteConfig = getActiveConfig();
+const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${encodeURIComponent('¡Hola! Me interesa cotizar volantes baratos en CDMX / DF.')}`;
+---
+
+<Layout 
+  title="Impresión de Volantes Baratos DF - Volantes Económicos" 
+  description="¿Buscas impresión de Volantes Baratos en el DF o Ciudad de México? En Volantes Económicos nos especializamos en la mejor impresión económica de la CDMX."
+  currentPath="/impresion-de-volantes-baratos-df"
+>
+  <div class="container" style="padding-top: 3rem; padding-bottom: 4rem;">
+    <div class="page-layout-grid">
+      <!-- Main Content Area -->
+      <article class="page-content-area original-content-typography">
+        <h1 class="main-page-title" style="margin-bottom: 0.5rem;">Impresión de Volantes Baratos DF</h1>
+        <p class="lead-text" style="color: var(--color-primary); font-weight: 700; margin-bottom: 2rem;">
+          Buscas impresión de Volantes Baratos en el DF o Ciudad de México
+        </p>
+
+        <p>
+          En Volantes Económicos nos especializamos en la impresión de volantes económicos. Si quieres lograr un mejor impacto con tus volantes publicitarios sigue las siguientes recomendaciones:
+        </p>
+
+        <div class="steps-detailed-list">
+          <div class="step-card">
+            <h4>1. Divida el diseño de su volante en secciones de diferentes colores</h4>
+            <p>
+              Para mantener a los lectores interesados, es útil añadir elementos sorprendentes al diseño de su folleto. Puede hacerlo dividiendo su volante en diferentes secciones con fondos de bloques de color, o aplicando diferentes filtros de color a las secciones de su volante.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <h4>2. Utilice un diseño circular para el folleto de su producto</h4>
+            <p>
+              El diseño de volantes baratos es una oportunidad para jugar con diseños no convencionales. Esto significa que no tiene que atenerse a la distribución clásica de izquierda a derecha.
+            </p>
+            <p>
+              Por ejemplo, puede colocar su producto en el centro de su folleto y rodearlo con un círculo con los detalles del producto.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <h4>3. Utilice una imagen de su producto como fondo para su folleto</h4>
+            <p>
+              A los consumidores les gusta saber lo que están recibiendo. Por eso es una buena idea incluir una imagen grande de su producto, o incluso utilizarla como imagen de fondo para su folleto.
+            </p>
+            <p>
+              Sólo asegúrese de que el texto destaque sobre el fondo. El uso de texto en negrita contrastante puede ayudar. También puede superponer su imagen con un filtro de color transparente.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <h4>4. Utilizar los bordes como elemento central de diseño</h4>
+            <p>
+              Los bordes no tienen que ser sólo el toque final de su volante, también pueden ser una parte clave de su diseño. Especialmente si usas un borde de una manera no convencional.
+            </p>
+            <p>
+              Por ejemplo, puede utilizar un borde para ayudar a que la información de su producto destaque, en uno de los cuadrantes de su volante o en el centro.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <h4>5. Elija fuentes o tipos de letra que transmitan la personalidad de su marca</h4>
+            <p>
+              Las fuentes pueden decir mucho sobre su negocio: las fuentes simples y funcionales son estándar en la industria de la tecnología, mientras que las fuentes más decorativas y de aspecto «clásico» perduran en la industria de la impresión.
+            </p>
+            <p>
+              Al diseñar el folleto de su producto, piense en la personalidad que desea comunicar. ¿Es su negocio divertido y fácil de llevar? ¿Es fiable? ¿Es innovador o más tradicional?
+            </p>
+          </div>
+        </div>
+
+        <p style="font-size: 1.05rem; margin-top: 1.5rem;">
+          Si buscas volantes económicos o baratos en el DF o Ciudad de México, nosotros somos tu mejor opción con entrega directa o mensajería.
+        </p>
+
+        <!-- Closing CTA -->
+        <div class="closing-cta-card">
+          <p class="closing-text">
+            Ubicados en Azcapotzalco, CDMX. Envíos y entregas en toda la capital y área metropolitana. <strong>CONTACTANOS</strong>
+          </p>
+          <a 
+            href={whatsappUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn btn-whatsapp btn-lg"
+          >
+            <Icon name="whatsapp" size={22} />
+            <span>Cotizar Volantes en DF por WhatsApp</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Sidebar Column -->
+      <Sidebar />
+    </div>
+  </div>
+</Layout>

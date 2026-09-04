@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import { getActiveConfig } from '../scripts/content-loader';
+import Icon from '../components/Icon.astro';
+
+const siteConfig = getActiveConfig();
+const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${encodeURIComponent('¡Hola! Me interesa cotizar impresión de flyers al mejor precio.')}`;
+---
+
+<Layout 
+  title="Impresión de Flyers Precio - Volantes Económicos" 
+  description="¿Estás buscando la impresión de Flyers a los Mejores Precios? Recomendaciones profesionales de diseño e impresión con cotizaciones directas por WhatsApp."
+  currentPath="/impresion-de-flyers-precio"
+>
+  <div class="container" style="padding-top: 3rem; padding-bottom: 4rem;">
+    <div class="page-layout-grid">
+      <!-- Main Content Area -->
+      <article class="page-content-area original-content-typography">
+        <h1 class="main-page-title" style="margin-bottom: 0.5rem;">Impresión de Flyers Precio</h1>
+        <p class="lead-text" style="color: var(--color-primary); font-weight: 700; margin-bottom: 2rem;">
+          ¿Estás buscando la impresión de Flyers a los Mejores Precios?
+        </p>
+
+        <p>
+          Para que tus flyers o volantes sean más económicos te damos las siguientes recomendaciones. Ya que un volante bien diseñado atrae a más clientes y el precio se reduce con cada venta:
+        </p>
+
+        <div class="steps-detailed-list">
+          <div class="step-card">
+            <h4>1. Utilice una imagen para enmarcar el folleto de su evento</h4>
+            <p>
+              Un diseño elegante es usar una imagen como marco alrededor de su volante. Puede hacerlo utilizando una imagen que tenga un espacio en blanco y colocándola a lo largo del borde de la página.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <h4>2. Incluir información de contacto en caso de que los clientes tengan preguntas de cómo llegar a su negocio</h4>
+            <p>
+              Usted sólo tiene un espacio limitado en el folleto para obtener información. Es por eso que puede ser una buena idea incluir información de contacto donde la gente pueda ir para obtener más información sobre cosas como la accesibilidad y los requisitos de asistencia.
+            </p>
+            <p>
+              Todo lo que tiene que hacer es poner una simple etiqueta e información de contacto.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <h4>3. Incluya el precio de algunos productos</h4>
+            <p>
+              Hágale saber a la gente cuánto cuestan sus mejores productos, directamente en el volante. Si tiene productos que son una ganga, usted puede enfatizar el precio en el medio de su volante. Si es un poco más caro, es posible que desee incluir algunos puntos de venta además del precio.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <h4>4. Haga una lista de los productos especiales</h4>
+            <p>
+              A continuación, conviértalo en una de las principales características que incluya en su folleto promocional. Es posible que incluso desee presentar fotos de los productos más destacados.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <h4>5. Deje espacio en blanco para que el diseño de su folleto no se vea desordenado</h4>
+            <p>
+              El espacio negativo es el espacio vacío entre los elementos de la página.
+            </p>
+            <p>
+              Cuando intentas agrupar demasiados elementos visuales en una página, es fácil que tu diseño se desordene y sea difícil de leer. Pero si dejas que tu texto y tus imágenes respiren con mucho espacio negativo, será mucho más fácil para la gente leer y entender la información.
+            </p>
+          </div>
+        </div>
+
+        <p style="font-size: 1.05rem; margin-top: 1.5rem;">
+          Con estos trucos de diseño te aseguramos que tus Flyers tendrán el mejor precio de Impresión y los clientes acudirán a tu negocio.
+        </p>
+
+        <!-- Closing CTA -->
+        <div class="closing-cta-card">
+          <p class="closing-text">
+            Cotiza hoy mismo tus flyers directamente por WhatsApp al precio más accesible. <strong>CONTACTANOS</strong>
+          </p>
+          <a 
+            href={whatsappUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn btn-whatsapp btn-lg"
+          >
+            <Icon name="whatsapp" size={22} />
+            <span>Cotizar Flyers al Mejor Precio por WhatsApp</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Sidebar Column -->
+      <Sidebar />
+    </div>
+  </div>
+</Layout>

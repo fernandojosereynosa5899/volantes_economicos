@@ -1,0 +1,270 @@
+/* ==========================================================================
+   ANIMATIONS & TRANSITIONS - VOLANTES ECONÓMICOS
+   Animaciones fluidas, llamativas y de alto rendimiento
+   ========================================================================== */
+
+/* 1. Keyframes Principales */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes heroZoomIn {
+  from {
+    transform: scale(1.08);
+    opacity: 0.8;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes ctaShimmer {
+  0% {
+    left: -80%;
+  }
+  30%, 100% {
+    left: 140%;
+  }
+}
+
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes pulseGlowGreen {
+  0%, 100% {
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);
+  }
+  50% {
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.55), 0 0 0 4px rgba(37, 211, 102, 0.15);
+  }
+}
+
+/* 2. Hero Banner Animation */
+.hero-classic-banner {
+  overflow: hidden;
+}
+
+.hero-classic-banner img {
+  animation: heroZoomIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform;
+}
+
+.hero-classic-title {
+  animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+.hero-classic-subtitle {
+  animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+}
+
+/* 3. Reveal on Scroll Animation System */
+.reveal-item,
+.step-card,
+.sidebar-widget,
+.closing-cta-card {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-item.is-revealed,
+.step-card.is-revealed,
+.sidebar-widget.is-revealed,
+.closing-cta-card.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 4. Interactive Micro-Interactions */
+/* Botones */
+.btn {
+  position: relative;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.2s ease,
+              border-color 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.14);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Botón WhatsApp con Shimmer y Pulso Suave */
+.btn-whatsapp {
+  position: relative;
+  overflow: hidden;
+  animation: pulseGlowGreen 3.5s infinite ease-in-out;
+}
+
+.btn-whatsapp::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -80%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(25deg);
+  animation: ctaShimmer 5s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 25px -3px rgba(37, 211, 102, 0.45);
+}
+
+/* Step Cards Hover */
+.step-card {
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease,
+              opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.step-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.08);
+  border-color: #cbd5e1;
+}
+
+/* Sidebar Links Micro-interactions */
+.sidebar-link {
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.2s ease,
+              padding-left 0.22s ease;
+  display: inline-block;
+}
+
+.sidebar-link:hover {
+  transform: translateX(5px);
+  color: var(--color-primary);
+}
+
+/* Closing CTA Card */
+.closing-cta-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.closing-cta-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px -8px rgba(0, 0, 0, 0.1);
+}
+
+/* Navegación - Efecto de línea fluida */
+.classic-nav-list a {
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.classic-nav-list a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 1rem;
+  right: 1rem;
+  height: 2px;
+  background: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.classic-nav-list a:hover::after,
+.classic-nav-list a.is-active::after {
+  transform: scaleX(1);
+}
+
+/* Inputs de Contacto Focus Glow */
+.contact-input:focus,
+.contact-textarea:focus,
+.sidebar-search-input:focus {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 0 4px rgba(193, 18, 31, 0.12);
+  border-color: var(--color-primary);
+}
+
+/* Accesibilidad: Reducción de movimiento */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-item,
+  .step-card,
+  .sidebar-widget,
+  .closing-cta-card {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .btn-whatsapp::after {
+    display: none !important;
+  }
+}

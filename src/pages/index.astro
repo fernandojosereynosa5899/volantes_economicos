@@ -1,0 +1,200 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import { getActiveConfig } from '../scripts/content-loader';
+import Icon from '../components/Icon.astro';
+
+const siteConfig = getActiveConfig();
+const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${encodeURIComponent('¡Hola! Me interesa cotizar volantes económicos para mi negocio.')}`;
+---
+
+<Layout 
+  title="Volantes Económicos - Volantes Publicitarios Económicos" 
+  description="En Volantes Económicos nos interesa su negocio por eso realizamos sus folletos con todo el profesionalismo. Porque Sabemos que sus volantes publicitarios son muy importante para usted y su negocio."
+  currentPath="/"
+>
+  <div class="container" style="padding-top: 3rem; padding-bottom: 4rem;">
+    <div class="page-layout-grid">
+      <!-- Main Editorial Content Column -->
+      <article class="page-content-area original-content-typography">
+        <span class="subtle-site-tag" data-bind="general.siteName">Volantes Económicos</span>
+        
+        <h1 class="main-page-title" data-bind="home.title">
+          Volantes Económicos para su negocio
+        </h1>
+
+        <p class="lead-text" data-bind="home.intro">
+          En Volantes Económicos nos interesa su negocio por eso realizamos sus folletos con todo el profesionalismo. Porque Sabemos que sus volantes publicitarios son muy importante para usted y su negocio.
+        </p>
+
+        <h2 class="section-heading">
+          En Volantes Económicos diseñamos su publicidad de esta manera:
+        </h2>
+
+        <p>
+          Los volantes son una de las herramientas publicitarias más antiguas. La mayoría de las personas están tan acostumbradas a recibir volantes por eso es uno de los medios más eficientes de publicidad.
+        </p>
+
+        <p>
+          La respuesta que muchos dueños de negocios, empresarios y vendedores (incluyéndome a mí) han dado es: sí, pero necesitan ser buenos voladores.
+        </p>
+
+        <p>
+          De hecho, el diseño y la distribución de volantes llamativos es sólo una de las muchas estrategias efectivas de marketing offline que funcionan hoy en día.
+        </p>
+
+        <h3 class="subsection-heading">
+          Un volante bien pensado y bien diseñado debería serlo:
+        </h3>
+
+        <ul class="bullet-list-clean">
+          <li>
+            <strong>Llamativo:</strong> Lo suficientemente llamativo como para que la gente se detenga y se interese en leerlo.
+          </li>
+          <li>
+            <strong>Dirigido:</strong> El volante debe hablar directamente a la audiencia a la que se dirige.
+          </li>
+          <li>
+            <strong>Informativo:</strong> Las personas deben saber qué es lo que el volante está anunciando y dónde pueden encontrar más información.
+          </li>
+          <li>
+            <strong>Convincente:</strong> El volante debe entusiasmar a la gente sobre su producto, servicio o evento.
+          </li>
+        </ul>
+
+        <div class="methodology-intro-box">
+          <h3>En volantes Económicos seguimos estos sencillos pasos para que tu tengas el mejor de los volantes</h3>
+          <p class="enfocamos-tag"><strong>Enfocamos tu diseño:</strong></p>
+        </div>
+
+        <!-- The 11 Original Steps with Full Authentic Descriptions -->
+        <div class="steps-detailed-list">
+          <!-- Paso 1 -->
+          <div class="step-card">
+            <h4>1. Incluye una llamada a la acción que le permita rastrear el retorno de la inversión de su Folleto de Negocios</h4>
+            <p>
+              Para asegurarse de que la distribución de un volante valga la pena, probablemente querrá hacer un seguimiento del retorno de la inversión de sus volantes. Incluya una (llamada a la acción) clara que no sólo incite a la gente a querer revisar su negocio, sino que también le permita rastrear la cantidad de clientes que usted trajo con su volante.
+            </p>
+            <p>
+              Por ejemplo, podría incluir un código de canje, o hacer que su volante se duplique como un cupón. Echa un vistazo a este ejemplo de folleto de negocios que le dice a los destinatarios en la parte inferior que pueden canjear una bebida gratis: Plantilla de Folleto de Restaurante de Negocios.
+            </p>
+          </div>
+
+          <!-- Paso 2 -->
+          <div class="step-card">
+            <h4>2. Usar imágenes únicas</h4>
+            <p>
+              Una imagen inusual (ya sea una foto o una ilustración) ayuda a llamar la atención y anima a la gente a mirar más de cerca su folleto. Intente darle un giro único a su producto o mezclarlo con otro entorno, objetos o personas relevantes para su negocio.
+            </p>
+          </div>
+
+          <!-- Paso 3 -->
+          <div class="step-card">
+            <h4>3. Utilice ilustraciones de productos extravagantes que reflejen el carácter de su marca</h4>
+            <p>
+              Para mucha gente, su volante será su primera introducción a su negocio. Por eso, si desea atraer a su público objetivo, debe tratar de incorporar la personalidad de su negocio en el diseño de su folleto.
+            </p>
+            <p>
+              ¿Qué combinación de colores refleja su marca? ¿Qué estilo chillón? ¿Sofisticado? ¿Alcanzable?
+            </p>
+          </div>
+
+          <!-- Paso 4 -->
+          <div class="step-card">
+            <h4>4. Usar iconos para representar diferentes servicios o productos</h4>
+            <p>
+              Los iconos (esos sencillos gráficos vectoriales que se ven en todas partes) son útiles para empaquetar el significado en una página pequeña. Debido a que son simples y reconocibles, puede utilizar iconos para reforzar (y a veces incluso reemplazar) el texto en el diseño de su folleto.
+            </p>
+          </div>
+
+          <!-- Paso 5 -->
+          <div class="step-card">
+            <h4>5. Utilizar iconos para representar diferentes opciones de plan y paquetes de precios</h4>
+            <p>
+              También puede usar iconos para representar las diferentes opciones que ofrece su negocio. Busque un icono sencillo que ilustre su opción y diferencie las opciones utilizando un fondo de diferentes colores.
+            </p>
+          </div>
+
+          <!-- Paso 6 -->
+          <div class="step-card">
+            <h4>6. Utilice dos o tres fuentes o tipos de letra diferentes para dar variedad al diseño de su volante</h4>
+            <p>
+              Las fuentes que usted elija pueden hacer o romper el diseño de su volante. La selección de la fuente no sólo determina la facilidad de lectura de su volante, sino que también juega un papel esencial en su aspecto.
+            </p>
+            <p>
+              La combinación de dos o tres fuentes diferentes puede darle a su volante un toque de realismo.
+            </p>
+          </div>
+
+          <!-- Paso 7 -->
+          <div class="step-card">
+            <h4>7. Usar formas semitransparentes para hacer que el texto salga del fondo</h4>
+            <p>
+              Si su volante tiene una imagen de fondo ocupada, puede ser fácil que el texto se pierda en él. Esta es una oportunidad para introducir algunos elementos de diseño funcional en su folleto.
+            </p>
+            <p>
+              Intente superponer formas sobre la imagen de fondo y ajustar la transparencia para que algo del fondo siga llegando a su punto máximo. De esta manera, el texto podrá aparecer sin que la imagen de fondo se oscurezca.
+            </p>
+          </div>
+
+          <!-- Paso 8 -->
+          <div class="step-card">
+            <h4>8. Usar iconos como puntos de viñetas</h4>
+            <p>
+              Si desea incluir una lista en el diseño del folleto de su empresa (por ejemplo, para listar los servicios que ofrece), puede añadir un giro creativo utilizando iconos en lugar de viñetas. Escoge iconos que visualicen cada punto, mostrando una acción, ilustrando un ítem o visualizando un concepto.
+            </p>
+          </div>
+
+          <!-- Paso 9 -->
+          <div class="step-card">
+            <h4>9. Añade formas de diferentes colores para un diseño espectacular</h4>
+            <p>
+              ¿Quiere transmitir lo divertido y creativo que es su negocio? Luego trate de usar diferentes formas y diseños para embellecer su diseño. Esto podría significar aumentar partes de una fotografía con iconos de forma, o crear un borde alrededor de su póster.
+            </p>
+          </div>
+
+          <!-- Paso 10 -->
+          <div class="step-card">
+            <h4>10. Use los colores de su marca para crear una marca cohesiva</h4>
+            <p>
+              Una de las formas más fáciles de reconocer una marca es a través de los colores. La incorporación de los colores de su marca en el diseño de su folleto ayudará a mantener la cohesión de su marca en toda la plataforma, tanto digital como impresa.
+            </p>
+            <p>
+              Puede diseñar todo el folleto con los colores de su marca o puede utilizarlos como colores de acento. Por ejemplo, puede utilizar los colores de su marca en el encabezado de su folleto, en los iconos que utiliza.
+            </p>
+          </div>
+
+          <!-- Paso 11 -->
+          <div class="step-card">
+            <h4>11. Crear una ilustración personalizada utilizando iconos</h4>
+            <p>
+              Las ilustraciones pueden hacer que el diseño de un folleto sea atractivo. Pero crear una ilustración en un abrir y cerrar de ojos y dentro de un presupuesto puede ser difícil, a menos que lo haga usted mismo utilizando iconos.
+            </p>
+            <p>
+              Piense en una escena que ilustre lo que hace su negocio. Luego, coloque los iconos en su volante como lo haría con las pegatinas.
+            </p>
+          </div>
+        </div>
+
+        <!-- Closing CTA Box -->
+        <div class="closing-cta-card">
+          <p class="closing-text">
+            En volantes economicos diseñamos los mejores y más económicos folletos <strong>CONTACTENOS PARA HACER SU PEDIDO</strong>
+          </p>
+          <a 
+            href={whatsappUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn btn-whatsapp btn-lg"
+          >
+            <Icon name="whatsapp" size={22} />
+            <span>Contactar por WhatsApp: {siteConfig.general.phoneNumber}</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Sidebar Column -->
+      <Sidebar />
+    </div>
+  </div>
+</Layout>

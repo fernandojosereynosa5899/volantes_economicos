@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import { getActiveConfig } from '../scripts/content-loader';
+import Icon from '../components/Icon.astro';
+
+const siteConfig = getActiveConfig();
+const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${encodeURIComponent('¡Hola! Me interesa cotizar volantes publicitarios para Guadalajara.')}`;
+---
+
+<Layout 
+  title="Volantes Publicitarios Guadalajara - Volantes Económicos" 
+  description="Realizamos Volantes Publicitarios para Guadalajara. Enviamos todos tus folletos por mensajería a cualquier parte de Guadalajara a los precios más económicos."
+  currentPath="/volantes-publicitarios-guadalajara"
+>
+  <div class="container" style="padding-top: 3rem; padding-bottom: 4rem;">
+    <div class="page-layout-grid">
+      <!-- Main Content Area -->
+      <article class="page-content-area original-content-typography">
+        <h1 class="main-page-title" style="margin-bottom: 0.5rem;">Volantes Publicitarios Guadalajara</h1>
+        <p class="lead-text" style="color: var(--color-primary); font-weight: 700; margin-bottom: 2rem;">
+          Realizamos Volantes Publicitarios para Guadalajara
+        </p>
+
+        <p>
+          Si requieres que sus volantes publicitarios sean eficientes para el mercado de Guadalajara, Jalisco, siga estas sencillas recomendaciones:
+        </p>
+
+        <div class="steps-detailed-list">
+          <div class="step-card">
+            <h4>1. Ponga énfasis en los números en su folleto de ventas</h4>
+            <p>
+              La mayoría de la gente va a buscar una cosa en un folleto de ventas: cuánto descuento están recibiendo. Haga que sus ahorros sean imposibles de perder usando fuentes grandes en colores contrastantes.
+            </p>
+            <p>
+              Por ejemplo, en un folleto de ventas sería bueno poner los ahorros (35% de descuento).
+            </p>
+          </div>
+
+          <div class="step-card">
+            <h4>2. Convierta su folleto de venta en atractivo, para atraer la atención</h4>
+            <p>
+              Las personas y los animales no son tan diferentes. A todos nos gustan los objetos brillantes y en movimiento. Si desea captar la atención de su público, puede lograrlo destacando elementos clave del diseño visual.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <h4>3. Elige colores que transmitan el estado de ánimo de tu evento de ventas</h4>
+            <p>
+              ¿Te estás divirtiendo con una venta de primavera? ¿Una venta festiva de vacaciones? ¿Una emocionante venta flash?
+            </p>
+            <p>
+              Los colores que usted elija para su volante deben apelar a las emociones de su audiencia. ¿Qué quiere que sienta su público cuando vea su volante?
+            </p>
+            <p>
+              Por ejemplo, si desea que su folleto de ventas tenga un humor intenso (para productos como ropa deportiva), use colores oscuros con algunos acentos brillantes o los colores que utilizarán en las Fiestas de Octubre o Ferias de Guadalajara.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <h4>4. Haga de su descuento el punto central del diseño de su folleto de ventas</h4>
+            <p>
+              ¿Está ofreciendo a sus fieles clientes un descuento increíble? Puede planificar el diseño de su folleto para que el descuento sea el punto central.
+            </p>
+            <p>
+              Esta es una oportunidad para usar una fuente grande y llamativa. Incluso puede mezclar y combinar algunas fuentes, utilizando una fuente más externa para el número de descuento y una fuente menos llamativa para el texto descriptivo.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <h4>5. Utilice fuentes decorativas como la característica principal de diseño de su folleto de ventas</h4>
+            <p>
+              El uso de una a tres fuentes decorativas con un fondo sólido puede dar lugar a un diseño de volantes elegante y con clase. La clave es elegir fuentes que se complementen entre sí. Es posible que desee elegir fuentes de tres estilos diferentes (delgado, grueso, abstracto) o apegarse a tres fuentes similares.
+            </p>
+            <p>
+              Por ejemplo, un folleto de ventas combina cuatro fuentes muy diferentes, pero se complementan muy bien.
+            </p>
+          </div>
+        </div>
+
+        <p style="font-size: 1.05rem; margin-top: 1.5rem;">
+          Enviamos todos tus folletos por mensajería desde la Ciudad de México a cualquier parte de Guadalajara y Zapopan a los precios más Económicos.
+        </p>
+
+        <!-- Closing CTA -->
+        <div class="closing-cta-card">
+          <p class="closing-text">
+            Comprueba la calidad y ahorro en tus volantes publicitarios para Guadalajara. <strong>CONTACTANOS</strong>
+          </p>
+          <a 
+            href={whatsappUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn btn-whatsapp btn-lg"
+          >
+            <Icon name="whatsapp" size={22} />
+            <span>Cotizar Volantes para Guadalajara por WhatsApp</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Sidebar Column -->
+      <Sidebar />
+    </div>
+  </div>
+</Layout>

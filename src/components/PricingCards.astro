@@ -1,0 +1,118 @@
+---
+import '../styles/components/pricing.css';
+import type { PackageDeal } from '../types';
+import { getActiveConfig } from '../scripts/content-loader';
+
+const config = getActiveConfig();
+
+const packages: PackageDeal[] = [
+  {
+    id: 'pack-1000',
+    name: 'Paquete Emprendedor',
+    quantity: '1,000 Volantes',
+    size: '1/4 de Carta (10 x 14 cm)',
+    paper: 'Papel Couché Brillante 130g',
+    colors: 'Frente a todo color (4x0)',
+    price: config.calculator.pricingMatrix['1000']?.['cuarto-carta']?.['4x0'] ?? 590,
+    features: [
+      'Ideal para arrancar promociones locales',
+      'Impresión offset con colores vivos',
+      'Corte limpio y empaque protector',
+      'Revisión básica de archivos gratis',
+      'Entrega de 24 a 48 horas'
+    ]
+  },
+  {
+    id: 'pack-5000',
+    name: 'Paquete Negocio Pro',
+    badge: 'MÁS VENDIDO ⭐',
+    featured: true,
+    quantity: '5,000 Volantes',
+    size: '1/4 de Carta (10 x 14 cm)',
+    paper: 'Papel Couché Brillante 130g',
+    colors: 'Frente a todo color (4x0)',
+    price: config.calculator.pricingMatrix['5000']?.['cuarto-carta']?.['4x0'] ?? 1890,
+    features: [
+      'Solo $0.37 MXN por volante',
+      'Máximo alcance y retorno de inversión',
+      'Impresión offset de alta fidelidad',
+      'Revisión y optimización de diseño gratis',
+      'Prioridad en cola de impresión'
+    ]
+  },
+  {
+    id: 'pack-2500-doble',
+    name: 'Paquete Alto Impacto',
+    badge: 'DOBLE CARA',
+    quantity: '2,500 Volantes 1/2 Carta',
+    size: '1/2 Carta (14 x 21 cm)',
+    paper: 'Papel Couché Brillante 130g',
+    colors: 'Frente y Reverso a Color (4x4)',
+    price: 2690,
+    features: [
+      'El doble de espacio para tu menú o catálogo',
+      'Impresión a color por ambos lados',
+      'Acabado brillante premium',
+      'Excelente presencia en mano',
+      'Envío express disponible'
+    ]
+  }
+];
+
+function getWhatsAppLink(pkg: PackageDeal) {
+  const msg = `¡Hola ${config.general.siteName}! 👋 Quiero ordenar el *${pkg.name}* (${pkg.quantity} por $${pkg.price} MXN). ¿Me comparten los datos para enviar mi archivo y pagar?`;
+  return `https://wa.me/${config.general.whatsappNumber}?text=${encodeURIComponent(msg)}`;
+}
+---
+
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal-item">
+      <span class="section-tag">Paquetes Populares</span>
+      <h2 class="section-title">Precios Claros y <span class="text-gradient">Sin Sorpresas</span></h2>
+      <p class="section-subtitle">
+        Los tirajes más solicitados por comercios, restaurantes y empresas en todo México.
+      </p>
+    </div>
+
+    <div class="pricing-grid">
+      {packages.map((pkg, idx) => (
+        <div class:list={['pricing-card', 'reveal-item', `delay-${(idx + 1) * 100}`, { featured: pkg.featured }]}>
+          {pkg.badge && <span class="card-badge">{pkg.badge}</span>}
+
+          <div>
+            <div class="card-header">
+              <h3 class="card-title">{pkg.name}</h3>
+              <p class="card-desc">{pkg.quantity} • {pkg.size}</p>
+
+              <div class="card-price-box">
+                <span class="card-price-currency">$</span>
+                <span class="card-price">{pkg.price.toLocaleString('es-MX')}</span>
+                <span class="card-price-period">Pesos Mexicanos (MXN)</span>
+              </div>
+            </div>
+
+            <ul class="features-list">
+              {pkg.features.map(feat => (
+                <li>
+                  <span class="check-icon">✓</span>
+                  <span>{feat}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <a 
+            href={getWhatsAppLink(pkg)} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class:list={['btn', pkg.featured ? 'btn-primary' : 'btn-outline']}
+            style="width: 100%;"
+          >
+            <span>📱</span> Ordenar Paquete
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

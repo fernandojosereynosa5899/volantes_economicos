@@ -1,0 +1,140 @@
+---
+import '../styles/global.css';
+import '../styles/animations.css';
+import '../styles/layout.css';
+
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import DeliveryNotice from '../components/DeliveryNotice.astro';
+import { getActiveConfig } from '../scripts/content-loader';
+
+interface Props {
+  title?: string;
+  description?: string;
+  currentPath?: string;
+  keywords?: string;
+}
+
+const siteConfig = getActiveConfig();
+
+const {
+  title = 'Volantes Económicos - Impresión de Volantes y Flyers Publicitarios en México',
+  description = 'Impresión de volantes publicitarios y folletos económicos con la mejor calidad offset de México. Envíos por mensajería a todo el país. Cotiza por WhatsApp.',
+  currentPath = '/',
+  keywords = 'volantes economicos, impresion de volantes cdmx, volantes publicitarios, flyers baratos mexico, imprenta de volantes, 1000 volantes precio, volantes para pizzas, imprenta offset'
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, 'https://volanteseconomicos.net');
+
+// Structured Data for Google SEO (LocalBusiness / PrintingService)
+const schemaOrgJSONLD = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": siteConfig.general.siteName,
+  "description": siteConfig.general.siteSubtitle + " - Especialistas en diseño e impresión de volantes publicitarios y folletos económicos en México.",
+  "url": "https://volanteseconomicos.net",
+  "telephone": "+52 1 55 4042 1232",
+  "email": siteConfig.general.email,
+  "image": "https://volanteseconomicos.net/images/inicio.jpg",
+  "priceRange": "$$",
+  "currenciesAccepted": "MXN",
+  "paymentAccepted": "Efectivo, Transferencia Electrónica, Tarjetas, Depósito Bancario",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Poniente 54 # 3915, Col. Obrero Popular",
+    "addressLocality": "Azcapotzalco, Ciudad de México",
+    "postalCode": "02840",
+    "addressCountry": "MX"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "19.4678",
+    "longitude": "-99.1764"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "09:00",
+      "closes": "14:00"
+    }
+  ],
+  "sameAs": [
+    siteConfig.general.facebookUrl,
+    "https://wa.me/5215540421232"
+  ]
+};
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="keywords" content={keywords} />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href={canonicalURL} />
+
+  <!-- Google Fonts Preconnect & Josefin Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content={siteConfig.general.siteName} />
+  <meta property="og:locale" content="es_MX" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content="https://volanteseconomicos.net/images/inicio.jpg" />
+  <meta property="og:image:alt" content="Volantes Económicos - Impresión Publicitaria" />
+
+  <!-- Twitter Card -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content={canonicalURL} />
+  <meta property="twitter:title" content={title} />
+  <meta property="twitter:description" content={description} />
+  <meta property="twitter:image" content="https://volanteseconomicos.net/images/inicio.jpg" />
+
+  <!-- JSON-LD Structured Data for Enhanced Google SEO -->
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(schemaOrgJSONLD)} />
+</head>
+<body>
+  <Header currentPath={currentPath} />
+
+  <main id="contenido-principal">
+    <slot />
+  </main>
+
+  <!-- Aviso de entrega integrado en la parte inferior para evitar pestaña exclusiva -->
+  <DeliveryNotice />
+
+  <Footer />
+
+  <script>
+    import { initNavbar } from '../scripts/navbar';
+    import { initAnimations } from '../scripts/animations';
+    import { applyConfigToDOM } from '../scripts/content-loader';
+
+    function bootstrap() {
+      applyConfigToDOM();
+      initNavbar();
+      initAnimations();
+    }
+
+    document.addEventListener('DOMContentLoaded', bootstrap);
+    document.addEventListener('astro:page-load', bootstrap);
+  </script>
+</body>
+</html>

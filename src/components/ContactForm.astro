@@ -1,0 +1,167 @@
+---
+import '../styles/components/contact.css';
+import { getActiveConfig } from '../scripts/content-loader';
+import Icon from './Icon.astro';
+
+const siteConfig = getActiveConfig();
+
+const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${encodeURIComponent('¡Hola! Me gustaría cotizar volantes para mi negocio.')}`;
+const secondaryWhatsappUrl = `https://wa.me/52${siteConfig.general.secondaryPhone.replace(/\s+/g, '')}?text=${encodeURIComponent('¡Hola! Me gustaría cotizar volantes para mi negocio.')}`;
+---
+
+<section class="section" id="contacto">
+  <div class="container">
+    <div class="section-header reveal-item">
+      <span class="section-tag">{siteConfig.contacto.title}</span>
+      <h2 class="section-title" data-bind="contacto.subtitle">
+        {siteConfig.contacto.subtitle}
+      </h2>
+      <p class="section-subtitle">
+        Contáctanos para hacer tu pedido o resolver cualquier duda sobre tus impresiones publicitarias.
+      </p>
+    </div>
+
+    <div class="contact-layout reveal-item delay-100">
+      <!-- Contact Info Cards -->
+      <div class="contact-info-cards">
+        <!-- WhatsApp Principal -->
+        <div class="contact-card-item whatsapp-featured">
+          <div class="contact-icon-box">
+            <Icon name="whatsapp" size={26} />
+          </div>
+          <div class="contact-card-text">
+            <h4>WhatsApp Principal</h4>
+            <p>Atención directa para pedidos y cotizaciones.</p>
+            <a 
+              href={whatsappUrl} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="contact-link whatsapp-link"
+            >
+              Enviar mensaje: <span data-bind="general.phoneNumber">{siteConfig.general.phoneNumber}</span> →
+            </a>
+          </div>
+        </div>
+
+        <!-- WhatsApp Secundario / Alternativo -->
+        <div class="contact-card-item">
+          <div class="contact-icon-box">
+            <Icon name="phone" size={24} />
+          </div>
+          <div class="contact-card-text">
+            <h4>Teléfono Alternativo</h4>
+            <p>Línea secundaria de atención y WhatsApp.</p>
+            <a href={secondaryWhatsappUrl} target="_blank" rel="noopener noreferrer" class="contact-link">
+              {siteConfig.general.secondaryPhone} →
+            </a>
+          </div>
+        </div>
+
+        <!-- Facebook & Messenger -->
+        <div class="contact-card-item" style="border-color: rgba(24, 119, 242, 0.3);">
+          <div class="contact-icon-box" style="background: rgba(24, 119, 242, 0.15); color: #1877f2;">
+            <Icon name="facebook" size={24} />
+          </div>
+          <div class="contact-card-text">
+            <h4>Facebook & Messenger</h4>
+            <p>{siteConfig.general.messengerName}</p>
+            <a href={siteConfig.general.facebookUrl} target="_blank" rel="noopener noreferrer" class="contact-link" style="color: #1877f2;">
+              Visitar Página de Facebook →
+            </a>
+          </div>
+        </div>
+
+        <!-- Correo Electrónico -->
+        <div class="contact-card-item">
+          <div class="contact-icon-box">
+            <Icon name="mail" size={24} />
+          </div>
+          <div class="contact-card-text">
+            <h4>Correo Electrónico</h4>
+            <p>Envía tus archivos o solicitudes por correo.</p>
+            <a href={`mailto:${siteConfig.general.email}`} class="contact-link">
+              {siteConfig.general.email} →
+            </a>
+          </div>
+        </div>
+
+        <!-- Ubicación / Dirección Física -->
+        <div class="contact-card-item">
+          <div class="contact-icon-box">
+            <Icon name="map-pin" size={24} />
+          </div>
+          <div class="contact-card-text">
+            <h4>Ubicación</h4>
+            <p>{siteConfig.general.address}</p>
+          </div>
+        </div>
+
+        <!-- Horarios de Atención -->
+        <div class="contact-card-item">
+          <div class="contact-icon-box">
+            <Icon name="clock" size={24} />
+          </div>
+          <div class="contact-card-text">
+            <h4>Horarios de Atención</h4>
+            <p style="margin: 0; line-height: 1.6;">
+              • {siteConfig.general.schedule.weekdays}<br/>
+              • {siteConfig.general.schedule.saturday}<br/>
+              • {siteConfig.general.schedule.sunday}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Quote Form -->
+      <div class="contact-form-box">
+        <h3>Formulario de Contacto</h3>
+        <p>Escríbenos y con gusto te atenderemos para tu cotización.</p>
+
+        <form id="quick-quote-form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="contact-name">Nombre *</label>
+              <input type="text" id="contact-name" class="form-input" placeholder="Tu nombre" required />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-phone">Teléfono / WhatsApp *</label>
+              <input type="tel" id="contact-phone" class="form-input" placeholder="Tu teléfono" required />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-email">Correo Electrónico</label>
+              <input type="email" id="contact-email" class="form-input" placeholder="correo@ejemplo.com" />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-service">Servicio</label>
+              <select id="contact-service" class="form-select">
+                {siteConfig.services.map(s => (
+                  <option value={s}>{s}</option>
+                ))}
+              </select>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="contact-message">Mensaje</label>
+              <textarea id="contact-message" class="form-textarea" placeholder="Escribe aquí tu mensaje o detalles de lo que necesitas..."></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-whatsapp btn-lg form-submit-btn">
+            <Icon name="whatsapp" size={22} />
+            <span>Enviar por WhatsApp</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { initContactForm } from '../scripts/contact';
+  document.addEventListener('DOMContentLoaded', () => {
+    initContactForm();
+  });
+</script>

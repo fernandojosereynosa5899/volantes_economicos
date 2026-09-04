@@ -1,0 +1,77 @@
+---
+import '../styles/components/hero.css';
+import { getActiveConfig } from '../scripts/content-loader';
+import Icon from './Icon.astro';
+
+const siteConfig = getActiveConfig();
+const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${encodeURIComponent('¡Hola! Me interesa cotizar volantes publicitarios.')}`;
+---
+
+<section class="editorial-hero-section">
+  <div class="container editorial-hero-grid">
+    <!-- Left Sidebar Column (exact layout from original site screenshot) -->
+    <aside class="editorial-sidebar">
+      <div class="sidebar-sticky-box">
+        <span class="sidebar-brand-tag">VOLANTES ECONÓMICOS</span>
+        <div class="sidebar-shipping-notice">
+          <Icon name="truck" size={16} />
+          <span>Envíos a toda la República</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Right Main Column (editorial content matching original site) -->
+    <div class="editorial-main">
+      <h1 class="editorial-main-title" data-bind="home.title">
+        {siteConfig.home.title}
+      </h1>
+
+      <p class="editorial-lead" data-bind="home.intro">
+        {siteConfig.home.intro}
+      </p>
+
+      <div class="editorial-subheading">
+        <h2>{siteConfig.home.section1Title}</h2>
+      </div>
+
+      <div class="editorial-paragraphs">
+        {siteConfig.home.section1Paragraphs.map(p => (
+          <p>{p}</p>
+        ))}
+      </div>
+
+      <!-- 4 Characteristics -->
+      <div class="editorial-characteristics-box">
+        <h3 class="characteristics-title">{siteConfig.home.section2Title}</h3>
+        <div class="characteristics-grid">
+          {siteConfig.home.characteristics.map(item => (
+            <div class="characteristic-card">
+              <div class="char-header">
+                <span class="char-check">✓</span>
+                <strong>{item.title}</strong>
+              </div>
+              <p>{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="editorial-cta-group">
+        <a href="#cotizador" class="btn btn-primary btn-lg">
+          <Icon name="search" size={20} />
+          <span>Cotizar en Línea</span>
+        </a>
+        <a 
+          href={whatsappUrl} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="btn btn-whatsapp btn-lg"
+        >
+          <Icon name="whatsapp" size={20} />
+          <span>WhatsApp: {siteConfig.general.phoneNumber}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

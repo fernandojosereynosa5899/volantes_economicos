@@ -1,0 +1,107 @@
+---
+import { getActiveConfig } from '../scripts/content-loader';
+import Icon from './Icon.astro';
+
+const siteConfig = getActiveConfig();
+const currentYear = new Date().getFullYear();
+
+const navLinks = [
+  { href: '/', label: 'Inicio' },
+  { href: '/disenos', label: 'Diseños' },
+  { href: '/precios', label: 'Precios' },
+  { href: '/contacto', label: 'Contacto' }
+];
+
+const articlesList = [
+  { label: 'Volantes para Pizzas', href: '/volantes-para-pizzas' },
+  { label: 'Impresión de Volantes Monterrey', href: '/impresion-de-volantes-monterrey' },
+  { label: 'Volantes Publicitarios Guadalajara', href: '/volantes-publicitarios-guadalajara' },
+  { label: 'Impresión de Flyers Precio', href: '/impresion-de-flyers-precio' },
+  { label: 'Imprenta Volantes Baratos', href: '/imprenta-volantes-baratos' },
+  { label: '1000 Volantes Precio', href: '/1000-volantes-precio' },
+  { label: 'Volantes Folletos', href: '/volantes-folletos' },
+  { label: 'Impresión de Volantes Baratos DF', href: '/impresion-de-volantes-baratos-df' }
+];
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Columna 1: Marca y WhatsApp -->
+      <div class="footer-col">
+        <h3 class="footer-brand-title">{siteConfig.general.siteName}</h3>
+        <p style="margin-top: 0.5rem;">
+          {siteConfig.general.siteSubtitle}. Especialistas en diseño e impresión de volantes publicitarios y folletos con envíos a toda la República Mexicana.
+        </p>
+        <div style="margin-top: 1.25rem;">
+          <a 
+            href={`https://wa.me/${siteConfig.general.whatsappNumber}?text=${encodeURIComponent('¡Hola! Me gustaría cotizar volantes.')}`}
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn btn-whatsapp"
+          >
+            <Icon name="whatsapp" size={18} />
+            <span>Cotizar WhatsApp: {siteConfig.general.phoneNumber}</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Columna 2: Navegación -->
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul class="footer-links">
+          <li><a href="/">Inicio</a></li>
+          {navLinks.map(item => (
+            <li><a href={item.href}>{item.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Columna 3: Temas Populares -->
+      <div class="footer-col">
+        <h4>Artículos y Servicios</h4>
+        <ul class="footer-links">
+          {articlesList.map(item => (
+            <li><a href={item.href}>{item.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Columna 4: Contacto y Horarios -->
+      <div class="footer-col">
+        <h4>Contacto & Horario</h4>
+        <ul class="footer-links">
+          <li style="display: flex; gap: 0.5rem; align-items: flex-start;">
+            <Icon name="map-pin" size={18} />
+            <span style="font-size: 0.88rem;">{siteConfig.general.address}</span>
+          </li>
+          <li style="display: flex; gap: 0.5rem; align-items: center;">
+            <Icon name="phone" size={16} />
+            <a href={`tel:+${siteConfig.general.whatsappNumber}`}>{siteConfig.general.phoneNumber} / {siteConfig.general.secondaryPhone}</a>
+          </li>
+          <li style="display: flex; gap: 0.5rem; align-items: center;">
+            <Icon name="mail" size={16} />
+            <a href={`mailto:${siteConfig.general.email}`}>{siteConfig.general.email}</a>
+          </li>
+          <li style="display: flex; gap: 0.5rem; align-items: center;">
+            <Icon name="facebook" size={18} />
+            <a href={siteConfig.general.facebookUrl} target="_blank" rel="noopener noreferrer">Facebook: {siteConfig.general.messengerName}</a>
+          </li>
+          <li style="display: flex; gap: 0.5rem; align-items: flex-start; font-size: 0.85rem; color: #94a3b8;">
+            <Icon name="clock" size={16} />
+            <span>
+              {siteConfig.general.schedule.weekdays}<br/>
+              {siteConfig.general.schedule.saturday}
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>
+        &copy; {currentYear} <strong>{siteConfig.general.siteName}</strong>. Todos los derechos reservados.
+      </div>
+    </div>
+  </div>
+</footer>

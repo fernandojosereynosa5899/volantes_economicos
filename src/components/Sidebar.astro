@@ -1,0 +1,110 @@
+---
+import { getActiveConfig } from '../scripts/content-loader';
+import Icon from './Icon.astro';
+
+const siteConfig = getActiveConfig();
+
+const sidebarLinks = [
+  { label: 'Volantes para Pizzas', href: '/volantes-para-pizzas' },
+  { label: 'Impresión de Volantes Monterrey', href: '/impresion-de-volantes-monterrey' },
+  { label: 'Volantes Publicitarios Guadalajara', href: '/volantes-publicitarios-guadalajara' },
+  { label: 'Impresión de Flyers Precio', href: '/impresion-de-flyers-precio' },
+  { label: 'Imprenta Volantes Baratos', href: '/imprenta-volantes-baratos' },
+  { label: '1000 Volantes Precio', href: '/1000-volantes-precio' },
+  { label: 'Volantes Folletos', href: '/volantes-folletos' },
+  { label: 'Impresión de Volantes Baratos DF', href: '/impresion-de-volantes-baratos-df' },
+  { label: 'Volantes Económicos', href: '/' }
+];
+
+const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${encodeURIComponent('¡Hola! Me gustaría cotizar volantes.')}`;
+---
+
+<aside class="original-sidebar">
+  <!-- 1. Widget de Búsqueda -->
+  <div class="sidebar-widget">
+    <h3 class="sidebar-widget-title">Buscar por:</h3>
+    <form class="sidebar-search-form" onsubmit="return false;">
+      <label for="sidebar-search-input" class="sr-only">Buscar</label>
+      <input 
+        type="search" 
+        id="sidebar-search-input" 
+        class="sidebar-search-input" 
+        placeholder="Buscar …" 
+      />
+      <button type="submit" class="btn btn-primary sidebar-search-btn">
+        Buscar
+      </button>
+    </form>
+  </div>
+
+  <!-- 2. Lista de Artículos y Enlaces Originales -->
+  <div class="sidebar-widget">
+    <ul class="sidebar-links-list">
+      {sidebarLinks.map(item => (
+        <li>
+          <a href={item.href} class="sidebar-link">
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <!-- 3. Cotización Directa por WhatsApp -->
+  <div class="sidebar-widget sidebar-cta-box">
+    <h4>¿Necesitas cotizar tus volantes?</h4>
+    <p>Atención inmediata por WhatsApp:</p>
+    <a 
+      href={whatsappUrl} 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      class="btn btn-whatsapp" 
+      style="width: 100%;"
+    >
+      <Icon name="whatsapp" size={18} />
+      <span>{siteConfig.general.phoneNumber}</span>
+    </a>
+    <p style="margin-top: 0.6rem; font-size: 0.85rem; color: #64748b;">
+      Tel. alterno: {siteConfig.general.secondaryPhone}
+    </p>
+  </div>
+</aside>
+
+<script>
+  function setupSidebarSearch() {
+    const input = document.getElementById('sidebar-search-input') as HTMLInputElement | null;
+    const list = document.querySelector('.sidebar-links-list');
+    if (!input || !list) return;
+
+    const items = Array.from(list.querySelectorAll('li'));
+
+    input.addEventListener('input', () => {
+      const q = input.value.trim().toLowerCase();
+      items.forEach(item => {
+        const text = item.textContent?.toLowerCase() || '';
+        if (!q || text.includes(q)) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+
+    const form = input.closest('form');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const visible = items.find(item => item.style.display !== 'none');
+        if (visible) {
+          const link = visible.querySelector('a');
+          if (link && link.href) {
+            window.location.href = link.href;
+          }
+        }
+      });
+    }
+  }
+
+  setupSidebarSearch();
+  document.addEventListener('astro:page-load', setupSidebarSearch);
+</script>

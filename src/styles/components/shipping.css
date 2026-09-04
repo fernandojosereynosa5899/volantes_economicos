@@ -1,0 +1,42 @@
+/* ==========================================================================
+   SHIPPING & LOGISTICS COMPONENT STYLES
+   Tema Claro y Limpio
+   ========================================================================== */
+
+.shipping-box {
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 3.5rem 2rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.shipping-icon-circle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+  border: 1px solid rgba(193, 18, 31, 0.25);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem auto;
+}
+
+.shipping-quote-text {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1.25rem;
+  line-height: 1.4;
+}
+
+.shipping-description {
+  font-size: 1.05rem;
+  color: #475569;
+  margin-bottom: 2rem;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
