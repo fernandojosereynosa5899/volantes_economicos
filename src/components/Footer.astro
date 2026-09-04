@@ -11,17 +11,6 @@ const navLinks = [
   { href: '/precios', label: 'Precios' },
   { href: '/contacto', label: 'Contacto' }
 ];
-
-const articlesList = [
-  { label: 'Volantes para Pizzas', href: '/volantes-para-pizzas' },
-  { label: 'Impresión de Volantes Monterrey', href: '/impresion-de-volantes-monterrey' },
-  { label: 'Volantes Publicitarios Guadalajara', href: '/volantes-publicitarios-guadalajara' },
-  { label: 'Impresión de Flyers Precio', href: '/impresion-de-flyers-precio' },
-  { label: 'Imprenta Volantes Baratos', href: '/imprenta-volantes-baratos' },
-  { label: '1000 Volantes Precio', href: '/1000-volantes-precio' },
-  { label: 'Volantes Folletos', href: '/volantes-folletos' },
-  { label: 'Impresión de Volantes Baratos DF', href: '/impresion-de-volantes-baratos-df' }
-];
 ---
 
 <footer class="site-footer">
@@ -57,17 +46,7 @@ const articlesList = [
         </ul>
       </div>
 
-      <!-- Columna 3: Temas Populares -->
-      <div class="footer-col">
-        <h4>Artículos y Servicios</h4>
-        <ul class="footer-links">
-          {articlesList.map(item => (
-            <li><a href={item.href}>{item.label}</a></li>
-          ))}
-        </ul>
-      </div>
-
-      <!-- Columna 4: Contacto y Horarios -->
+      <!-- Columna 3: Contacto y Horarios -->
       <div class="footer-col">
         <h4>Contacto & Horario</h4>
         <ul class="footer-links">
