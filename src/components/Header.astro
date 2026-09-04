@@ -1,8 +1,10 @@
 ---
 import { getActiveConfig } from '../scripts/content-loader';
+import { getGithubImageUrl } from '../config/site';
 import Icon from './Icon.astro';
 
 const siteConfig = getActiveConfig();
+const heroBannerImg = getGithubImageUrl('inicio.jpg');
 
 interface Props {
   currentPath?: string;
@@ -27,7 +29,7 @@ const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${e
 <!-- Photographic Banner Original -->
 <div class="header-hero-banner">
   <img 
-    src="/images/inicio.jpg" 
+    src={heroBannerImg} 
     alt="Volantes Económicos - Impresión Offset y Flyers en México" 
     class="header-hero-bg" 
     loading="eager"

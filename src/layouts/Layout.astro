@@ -7,6 +7,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import DeliveryNotice from '../components/DeliveryNotice.astro';
 import { getActiveConfig } from '../scripts/content-loader';
+import { getGithubImageUrl } from '../config/site';
 
 interface Props {
   title?: string;
@@ -35,7 +36,7 @@ const schemaOrgJSONLD = {
   "url": "https://volanteseconomicos.net",
   "telephone": "+52 1 55 4042 1232",
   "email": siteConfig.general.email,
-  "image": "https://volanteseconomicos.net/images/inicio.jpg",
+  "image": getGithubImageUrl('inicio.jpg'),
   "priceRange": "$$",
   "currenciesAccepted": "MXN",
   "paymentAccepted": "Efectivo, Transferencia Electrónica, Tarjetas, Depósito Bancario",
@@ -97,7 +98,7 @@ const schemaOrgJSONLD = {
   <meta property="og:url" content={canonicalURL} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:image" content="https://volanteseconomicos.net/images/inicio.jpg" />
+  <meta property="og:image" content={getGithubImageUrl('inicio.jpg')} />
   <meta property="og:image:alt" content="Volantes Económicos - Impresión Publicitaria" />
 
   <!-- Twitter Card -->
@@ -105,7 +106,7 @@ const schemaOrgJSONLD = {
   <meta property="twitter:url" content={canonicalURL} />
   <meta property="twitter:title" content={title} />
   <meta property="twitter:description" content={description} />
-  <meta property="twitter:image" content="https://volanteseconomicos.net/images/inicio.jpg" />
+  <meta property="twitter:image" content={getGithubImageUrl('inicio.jpg')} />
 
   <!-- JSON-LD Structured Data for Enhanced Google SEO -->
   <script is:inline type="application/ld+json" set:html={JSON.stringify(schemaOrgJSONLD)} />

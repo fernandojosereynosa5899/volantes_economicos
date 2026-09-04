@@ -2,55 +2,56 @@
 import Layout from '../layouts/Layout.astro';
 import Sidebar from '../components/Sidebar.astro';
 import Icon from '../components/Icon.astro';
+import { getGithubImageUrl } from '../config/site';
 import '../styles/components/gallery.css';
 
 const designs = [
   {
     id: 2,
     title: 'Volantes Publicitarios 2',
-    image: '/images/disenos/diseño_2.jpg',
+    image: getGithubImageUrl('diseño_2.jpg'),
     description: 'Muestra de volante publicitario para negocio con impresión de alta calidad offset.'
   },
   {
     id: 4,
     title: 'Volantes Económicos 4',
-    image: '/images/disenos/diseño_4.jpg',
+    image: getGithubImageUrl('diseño_4.jpg'),
     description: 'Diseño de volante publicitario económico enfocado a promociones y ventas.'
   },
   {
     id: 8,
     title: 'Volantes Económicos 8',
-    image: '/images/disenos/diseño_8.jpg',
+    image: getGithubImageUrl('diseño_8.jpg'),
     description: 'Muestra de volante con composición visual clara, atractiva y colores balanceados.'
   },
   {
     id: 1,
     title: 'Volantes Económicos 1',
-    image: '/images/disenos/diseño_1.jpg',
+    image: getGithubImageUrl('diseño_1.jpg'),
     description: 'Volante publicitario económico con colores vivos y llamado a la acción comercial.'
   },
   {
     id: 7,
     title: 'Volantes Económicos 7',
-    image: '/images/disenos/diseño_7.jpg',
+    image: getGithubImageUrl('diseño_7.jpg'),
     description: 'Diseño de volante con tipografía clara y estructura gráfica profesional.'
   },
   {
     id: 3,
     title: 'Volantes Económicos 3',
-    image: '/images/disenos/diseño_3.jpg',
+    image: getGithubImageUrl('diseño_3.jpg'),
     description: 'Muestra de volante publicitario para restaurantes, pizzerías y negocios locales.'
   },
   {
     id: 6,
     title: 'Volantes Económicos 6',
-    image: '/images/disenos/diseño_6.jpg',
+    image: getGithubImageUrl('diseño_6.jpg'),
     description: 'Diseño publicitario optimizado para máxima atracción de nuevos clientes.'
   },
   {
     id: 5,
     title: 'Volantes Económicos 5',
-    image: '/images/disenos/diseño_5.jpg',
+    image: getGithubImageUrl('diseño_5.jpg'),
     description: 'Volante publicitario de gran impacto visual y alta calidad de impresión offset.'
   }
 ];

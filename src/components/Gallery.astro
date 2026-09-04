@@ -1,6 +1,7 @@
 ---
 import '../styles/components/gallery.css';
 import { getActiveConfig } from '../scripts/content-loader';
+import { getGithubImageUrl } from '../config/site';
 import Icon from './Icon.astro';
 
 const siteConfig = getActiveConfig();
@@ -10,56 +11,56 @@ const designs = [
     id: 1,
     title: 'Volantes Publicitarios 1',
     category: 'Diseño 1',
-    image: '/images/disenos/diseño_1.jpg',
+    image: getGithubImageUrl('diseño_1.jpg'),
     description: 'Muestra de volante publicitario impreso con colores vivos y diseño profesional.'
   },
   {
     id: 2,
     title: 'Volantes Publicitarios 2',
     category: 'Diseño 2',
-    image: '/images/disenos/diseño_2.jpg',
+    image: getGithubImageUrl('diseño_2.jpg'),
     description: 'Muestra de volante publicitario impreso con colores vivos y diseño profesional.'
   },
   {
     id: 3,
     title: 'Volantes Publicitarios 3',
     category: 'Diseño 3',
-    image: '/images/disenos/diseño_3.jpg',
+    image: getGithubImageUrl('diseño_3.jpg'),
     description: 'Muestra de volante publicitario impreso con colores vivos y diseño profesional.'
   },
   {
     id: 4,
     title: 'Volantes Publicitarios 4',
     category: 'Diseño 4',
-    image: '/images/disenos/diseño_4.jpg',
+    image: getGithubImageUrl('diseño_4.jpg'),
     description: 'Muestra de volante publicitario impreso con colores vivos y diseño profesional.'
   },
   {
     id: 5,
     title: 'Volantes Publicitarios 5',
     category: 'Diseño 5',
-    image: '/images/disenos/diseño_5.jpg',
+    image: getGithubImageUrl('diseño_5.jpg'),
     description: 'Muestra de volante publicitario impreso con colores vivos y diseño profesional.'
   },
   {
     id: 6,
     title: 'Volantes Publicitarios 6',
     category: 'Diseño 6',
-    image: '/images/disenos/diseño_6.jpg',
+    image: getGithubImageUrl('diseño_6.jpg'),
     description: 'Muestra de volante publicitario impreso con colores vivos y diseño profesional.'
   },
   {
     id: 7,
     title: 'Volantes Publicitarios 7',
     category: 'Diseño 7',
-    image: '/images/disenos/diseño_7.jpg',
+    image: getGithubImageUrl('diseño_7.jpg'),
     description: 'Muestra de volante publicitario impreso con colores vivos y diseño profesional.'
   },
   {
     id: 8,
     title: 'Volantes Publicitarios 8',
     category: 'Diseño 8',
-    image: '/images/disenos/diseño_8.jpg',
+    image: getGithubImageUrl('diseño_8.jpg'),
     description: 'Muestra de volante publicitario impreso con colores vivos y diseño profesional.'
   }
 ];
