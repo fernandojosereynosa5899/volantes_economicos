@@ -1,5 +1,6 @@
 ---
 import { getActiveConfig } from '../scripts/content-loader';
+import { getGithubImageUrl } from '../config/site';
 import Icon from './Icon.astro';
 
 const siteConfig = getActiveConfig();
@@ -7,15 +8,15 @@ const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${e
 
 const slides = [
   {
-    image: '/images/VOL1.jpg',
+    image: getGithubImageUrl('images/VOL1.jpg'),
     alt: 'Velocidad de Entrega - Envío Exprés y Alta Calidad'
   },
   {
-    image: '/images/VOL2.jpg',
+    image: getGithubImageUrl('images/VOL2.jpg'),
     alt: 'Gran Alcance, Bajo Costo - Millares por un Súper Precio'
   },
   {
-    image: '/images/VOL3.jpg',
+    image: getGithubImageUrl('images/VOL3.jpg'),
     alt: 'Diseños que Atrapan - ¡Impacta a tus clientes!'
   }
 ];
@@ -32,7 +33,6 @@ const slides = [
         aria-roledescription="slide"
         aria-label={`${idx + 1} de ${slides.length}: ${slide.alt}`}
       >
-        <div class="hero-slide-overlay"></div>
       </div>
     ))}
   </div>

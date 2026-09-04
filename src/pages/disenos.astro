@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Sidebar from '../components/Sidebar.astro';
 import Icon from '../components/Icon.astro';
 import NuestrosTrabajos from '../components/NuestrosTrabajos.astro';
 import { getGithubImageUrl } from '../config/site';
@@ -64,41 +63,36 @@ const designs = [
   currentPath="/disenos"
 >
   <div class="container" style="padding-top: 3rem; padding-bottom: 4rem;">
-    <div class="page-layout-grid">
-      <!-- Main Content Column -->
-      <div class="page-content-area">
-        <h1 class="main-page-title" style="margin-bottom: 0.5rem;">DISEÑOS</h1>
-        <p class="lead-text" style="color: var(--color-primary); font-weight: 700; margin-bottom: 2rem;">
-          Así trabajamos !
-        </p>
+    <!-- Main Content Column Full-Width (Captura 172823 y 172851) -->
+    <div class="page-content-area" style="max-width: 100%;">
+      <h1 class="main-page-title" style="margin-bottom: 0.5rem;">DISEÑOS</h1>
+      <p class="lead-text" style="color: var(--color-primary); font-weight: 700; margin-bottom: 2rem;">
+        Así trabajamos !
+      </p>
 
-        <!-- Gallery Grid - Estrictamente 2 columnas con separación marcada entre imágenes -->
-        <div class="gallery-grid-2cols">
-          {designs.map((item, idx) => (
-            <div 
-              class="gallery-card gallery-card-pure-img reveal-item"
-              data-img={item.image}
-              data-title={item.title}
-              data-desc={item.description}
-              style={`animation-delay: ${idx * 0.08}s;`}
-            >
-              <div class="gallery-img-wrapper">
-                <img 
-                  src={item.image} 
-                  alt={item.title} 
-                  class="gallery-img"
-                  loading="lazy"
-                  width="500"
-                  height="500"
-                />
-              </div>
+      <!-- Gallery Grid - 3 Columnas (Captura 172851) -->
+      <div class="gallery-grid-3cols">
+        {designs.map((item, idx) => (
+          <div 
+            class="gallery-card gallery-card-pure-img reveal-item"
+            data-img={item.image}
+            data-title={item.title}
+            data-desc={item.description}
+            style={`animation-delay: ${idx * 0.08}s;`}
+          >
+            <div class="gallery-img-wrapper">
+              <img 
+                src={item.image} 
+                alt={item.title} 
+                class="gallery-img"
+                loading="lazy"
+                width="500"
+                height="500"
+              />
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
-
-      <!-- Sidebar Column -->
-      <Sidebar />
     </div>
   </div>
 
@@ -140,9 +134,9 @@ const designs = [
 </Layout>
 
 <style>
-  .gallery-grid-2cols {
+  .gallery-grid-3cols {
     display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-columns: repeat(3, 1fr) !important;
     gap: 2rem !important;
     margin-top: 1.5rem;
     margin-bottom: 2.5rem;
@@ -192,10 +186,17 @@ const designs = [
     transform: scale(1.03);
   }
 
-  @media (max-width: 640px) {
-    .gallery-grid-2cols {
+  @media (max-width: 992px) {
+    .gallery-grid-3cols {
       grid-template-columns: repeat(2, 1fr) !important;
-      gap: 1rem !important;
+      gap: 1.5rem !important;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .gallery-grid-3cols {
+      grid-template-columns: 1fr !important;
+      gap: 1.25rem !important;
     }
     .gallery-card-pure-img {
       border-radius: 8px;

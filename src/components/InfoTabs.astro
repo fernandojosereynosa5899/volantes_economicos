@@ -21,7 +21,7 @@ const googleMapsUrl = 'https://maps.app.goo.gl/EnpYZEobB2J1ZGxe9';
       </div>
       
       <!-- Contenido de Pestañas -->
-      <div class="info-tabs-body" style="padding: 2.5rem 2rem;">
+      <div class="info-tabs-body">
         <!-- Panel 1: Horarios de Atención (Captura 154744) -->
         <div class="info-tab-panel active" id="tab-horarios" role="tabpanel">
           <div class="visitante-grid-3">
@@ -55,10 +55,10 @@ const googleMapsUrl = 'https://maps.app.goo.gl/EnpYZEobB2J1ZGxe9';
           </div>
         </div>
 
-        <!-- Panel 2: Cómo Llegar (Captura 154804) -->
+        <!-- Panel 2: Cómo Llegar con Mapa Interactivo (Captura 154804) -->
         <div class="info-tab-panel" id="tab-llegar" role="tabpanel">
           <div class="visitante-grid-2">
-            <div class="visitante-card" style="text-align: center; padding: 2.5rem 1.5rem;">
+            <div class="visitante-card" style="text-align: center;">
               <i class="fas fa-map-marker-alt icon-large" style="color: #FFC107; font-size: 3rem; margin-bottom: 1rem;" aria-hidden="true"></i>
               <h3 style="color: #E3000F; font-family: 'Oswald', sans-serif; font-size: 1.45rem; margin-bottom: 1rem; text-transform: uppercase;">
                 Ubicación
@@ -82,19 +82,19 @@ const googleMapsUrl = 'https://maps.app.goo.gl/EnpYZEobB2J1ZGxe9';
               </div>
             </div>
 
-            <a 
-              href={googleMapsUrl} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              class="mapa-box"
-              style="border: 2px dashed #cbd5e1; min-height: 280px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; border-radius: 10px;"
-              title="Haz clic para ver el mapa en Google Maps"
-            >
-              <i class="fas fa-map-marked-alt" style="color: #FFC107; font-size: 3.5rem; margin-bottom: 1rem;" aria-hidden="true"></i>
-              <p style="color: #4b5563; font-size: 1.15rem; font-weight: 500; margin: 0; font-family: 'Montserrat', sans-serif;">
-                Haz clic para ver el mapa
-              </p>
-            </a>
+            <!-- Mapa Interactivo de Google Maps (Reemplazando el marcador previo) -->
+            <div class="mapa-frame-wrapper">
+              <iframe 
+                src="https://maps.google.com/maps?q=Poniente+54+3915,+Obrero+Popular,+Azcapotzalco,+02840+Ciudad+de+M%C3%A9xico&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                width="100%" 
+                height="100%" 
+                style="border:0; display: block;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Mapa interactivo de ubicación Volantes Económicos Azcapotzalco"
+              ></iframe>
+            </div>
           </div>
         </div>
 

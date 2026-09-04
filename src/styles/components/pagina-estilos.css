@@ -83,12 +83,7 @@
 }
 
 .hero-slide-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.6) 100%);
+  display: none !important;
 }
 
 .hero-slider-content-box {
@@ -630,15 +625,15 @@
 
 .visitante-grid-3 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
   gap: 1.75rem;
 }
 
 .visitante-grid-2 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
   gap: 2rem;
-  align-items: center;
+  align-items: stretch;
 }
 
 .visitante-card {
@@ -648,6 +643,7 @@
   border-radius: 10px;
   border: 1px solid #e2e8f0;
   box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  box-sizing: border-box;
 }
 
 .visitante-card .icon-large {
@@ -673,38 +669,50 @@
   font-size: 0.95rem;
 }
 
-.mapa-box {
+/* Contenedor del Mapa Interactivo */
+.mapa-frame-wrapper {
   background: #f8fafc;
   border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 2px dashed #cbd5e1;
-  min-height: 250px;
-  text-decoration: none;
-  color: inherit;
-  padding: 2rem;
-  transition: all 0.3s ease;
+  overflow: hidden;
+  height: 340px;
+  min-height: 280px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  border: 1px solid #e2e8f0;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
-.mapa-box:hover {
-  background: #f1f5f9;
-  border-color: var(--color-pagina-primary);
-  transform: translateY(-4px);
-}
+@media (max-width: 768px) {
+  .info-tabs-body {
+    padding: 1.5rem 1rem !important;
+  }
 
-.mapa-box i {
-  font-size: 3.5rem;
-  color: var(--color-pagina-secondary);
-  margin-bottom: 1rem;
-}
+  .info-tabs-header {
+    flex-direction: column;
+  }
 
-.mapa-box p {
-  font-weight: 700;
-  color: var(--color-pagina-primary);
-  font-size: 1.1rem;
-  font-family: var(--font-display-pagina);
+  .info-tab-btn {
+    width: 100%;
+    min-width: 100%;
+    padding: 0.85rem 1rem;
+    font-size: 0.95rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .visitante-grid-2,
+  .visitante-grid-3 {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+
+  .visitante-card {
+    padding: 1.75rem 1rem !important;
+  }
+
+  .mapa-frame-wrapper {
+    height: 280px;
+  }
 }
 
 /* ==========================================================================

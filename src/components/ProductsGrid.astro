@@ -1,5 +1,6 @@
 ---
 import { getActiveConfig } from '../scripts/content-loader';
+import { getGithubImageUrl } from '../config/site';
 
 const siteConfig = getActiveConfig();
 const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${encodeURIComponent('¡Hola! Me gustaría cotizar el producto: ')}`;
@@ -11,7 +12,7 @@ const products = [
     title: 'Media Carta',
     subtitle: 'Millares en papel couché',
     tooltip: 'Ideal para menús, promociones de impacto y eventos masivos.',
-    image: '/images/productos/media_carta.jpg'
+    image: getGithubImageUrl('images/productos/media_carta.jpg')
   },
   {
     id: 'cuarto-carta',
@@ -19,7 +20,7 @@ const products = [
     title: 'Cuarto de Carta',
     subtitle: 'Formato económico',
     tooltip: 'El tamaño más popular y accesible para buzoneo y entrega en mano.',
-    image: '/images/productos/cuarto_carta.jpg'
+    image: getGithubImageUrl('images/productos/cuarto_carta.jpg')
   },
   {
     id: 'tarjetas-presentacion',
@@ -27,7 +28,7 @@ const products = [
     title: 'Tarjetas de Presentación',
     subtitle: 'Barniz UV o Mate',
     tooltip: 'Da una excelente primera impresión profesional y duradera a tus clientes.',
-    image: '/images/productos/tarjetas.jpg'
+    image: getGithubImageUrl('images/productos/tarjetas.jpg')
   },
   {
     id: 'dipticos-tripticos',
@@ -35,7 +36,7 @@ const products = [
     title: 'Dípticos y Trípticos',
     subtitle: 'Para información detallada',
     tooltip: 'Perfectos para folletos corporativos, catálogos y guías de servicios.',
-    image: '/images/productos/dipticos.jpg'
+    image: getGithubImageUrl('images/productos/dipticos.jpg')
   },
   {
     id: 'notas-remisiones',
@@ -43,7 +44,7 @@ const products = [
     title: 'Notas y Remisiones',
     subtitle: 'Papel autocopiante',
     tooltip: 'Control administrativo para tus ventas y notas con folios y copia al carbón.',
-    image: '/images/productos/notas.jpg'
+    image: getGithubImageUrl('images/productos/notas.jpg')
   },
   {
     id: 'lonas-posters',
@@ -51,7 +52,7 @@ const products = [
     title: 'Lonas y Posters',
     subtitle: 'Gran formato exterior',
     tooltip: 'Atrae las miradas desde lejos con impresión exterior de máxima resolución.',
-    image: '/images/productos/lonas.jpg'
+    image: getGithubImageUrl('images/productos/lonas.jpg')
   }
 ];
 ---

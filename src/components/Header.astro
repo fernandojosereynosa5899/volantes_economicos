@@ -29,44 +29,43 @@ const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${e
 <!-- Header Principal Estilo Pagina (Idéntico a Captura 154443) -->
 <header class="pagina-header" id="main-header">
   <div class="pagina-header-container">
-    <!-- Logo e Información de Contacto / Dirección -->
-    <div class="pagina-logo-wrap">
-      <a href="/" class="pagina-brand-link">
-        <h1 class="pagina-brand-title">VOLANTES ECONÓMICOS</h1>
-      </a>
-      <p class="pagina-brand-sub">
-        <a href="https://maps.app.goo.gl/EnpYZEobB2J1ZGxe9" target="_blank" rel="noopener noreferrer">
-          Pte 54 3915, Azcapotzalco CDMX • Lunes a Sábado 9:00 - 18:00 hrs
+    <!-- Fila Superior: Marca e Información + Botón Hamburguesa -->
+    <div class="pagina-header-top">
+      <div class="pagina-logo-wrap">
+        <a href="/" class="pagina-brand-link">
+          <h1 class="pagina-brand-title">VOLANTES ECONÓMICOS</h1>
         </a>
-      </p>
-    </div>
-
-    <!-- Acciones del Header: Buscador tipo píldora y Botón Hamburguesa -->
-    <div class="pagina-header-actions">
-      <!-- Buscador en tiempo real integrado en el Header -->
-      <div class="header-search-wrapper">
-        <input 
-          type="text" 
-          class="header-pill-search" 
-          placeholder="Buscar servicios..." 
-          id="headerSearchInput"
-          autocomplete="off"
-          aria-label="Buscar servicios de imprenta"
-        />
-        <button type="button" class="header-pill-search-btn" id="headerSearchBtn" aria-label="Ejecutar búsqueda">
-          <i class="fas fa-search" aria-hidden="true"></i>
-        </button>
-
-        <!-- Dropdown de resultados rápidos de búsqueda -->
-        <div class="header-search-results-dropdown" id="headerSearchResults" style="display: none;">
-          <ul id="headerSearchList" class="header-search-list"></ul>
-        </div>
+        <p class="pagina-brand-sub">
+          <a href="https://maps.app.goo.gl/EnpYZEobB2J1ZGxe9" target="_blank" rel="noopener noreferrer">
+            Pte 54 3915, Azcapotzalco CDMX • Lun a Sáb 9:00 - 18:00 hrs
+          </a>
+        </p>
       </div>
 
-      <!-- Botón de Menú Hamburguesa -->
+      <!-- Botón de Menú Hamburguesa en Móvil/Tablet -->
       <button class="pagina-menu-toggle" id="paginaMenuToggle" aria-label="Abrir menú de navegación" aria-expanded="false">
         <i class="fas fa-bars" aria-hidden="true"></i>
       </button>
+    </div>
+
+    <!-- Buscador en tiempo real integrado tipo píldora -->
+    <div class="header-search-wrapper">
+      <input 
+        type="text" 
+        class="header-pill-search" 
+        placeholder="Buscar servicios (ej. volantes, tarjetas)..." 
+        id="headerSearchInput"
+        autocomplete="off"
+        aria-label="Buscar servicios de imprenta"
+      />
+      <button type="button" class="header-pill-search-btn" id="headerSearchBtn" aria-label="Ejecutar búsqueda">
+        <i class="fas fa-search" aria-hidden="true"></i>
+      </button>
+
+      <!-- Dropdown de resultados rápidos de búsqueda -->
+      <div class="header-search-results-dropdown" id="headerSearchResults" style="display: none;">
+        <ul id="headerSearchList" class="header-search-list"></ul>
+      </div>
     </div>
 
     <!-- Barra de Navegación (Pestañas limpias y fusionadas) -->
@@ -97,6 +96,7 @@ const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${e
     z-index: 1000;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
     border-bottom: 4px solid #FFC107;
+    width: 100%;
   }
 
   .pagina-header-container {
@@ -105,13 +105,26 @@ const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${e
     padding: 0 24px;
     display: grid;
     grid-template-columns: 1fr auto;
-    gap: 15px 20px;
+    grid-template-areas:
+      "top search"
+      "nav nav";
+    gap: 12px 20px;
     align-items: center;
+    box-sizing: border-box;
+  }
+
+  .pagina-header-top {
+    grid-area: top;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 0;
   }
 
   .pagina-logo-wrap {
     display: flex;
     flex-direction: column;
+    min-width: 0;
   }
 
   .pagina-brand-link {
@@ -120,7 +133,7 @@ const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${e
   }
 
   .pagina-brand-title {
-    font-size: clamp(1.45rem, 3.2vw, 1.95rem);
+    font-size: clamp(1.4rem, 3vw, 1.95rem);
     font-family: 'Oswald', sans-serif;
     font-weight: 700;
     margin: 0 0 2px 0;
@@ -132,7 +145,7 @@ const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${e
   }
 
   .pagina-brand-sub {
-    font-size: clamp(0.78rem, 1.8vw, 0.88rem);
+    font-size: clamp(0.75rem, 1.6vw, 0.88rem);
     font-weight: 500;
     color: #ffffff;
     margin: 0;
@@ -150,15 +163,12 @@ const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${e
     text-decoration: underline;
   }
 
-  .pagina-header-actions {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-
   /* Buscador estilo píldora de Pagina */
   .header-search-wrapper {
+    grid-area: search;
     position: relative;
+    justify-self: end;
+    min-width: 0;
   }
 
   .header-pill-search {
@@ -167,10 +177,11 @@ const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${e
     background: rgba(255, 255, 255, 0.12);
     color: #ffffff;
     border-radius: 25px;
-    width: 220px;
+    width: 230px;
     font-size: 0.92rem;
     font-family: 'Montserrat', sans-serif;
     transition: all 0.3s ease;
+    box-sizing: border-box;
   }
 
   .header-pill-search::placeholder {
@@ -181,7 +192,7 @@ const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${e
     outline: none;
     background: #ffffff;
     color: #111827;
-    width: 270px;
+    width: 280px;
     border-color: #FFC107;
     box-shadow: 0 0 10px rgba(255, 193, 7, 0.4);
   }
@@ -274,10 +285,11 @@ const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${e
 
   /* Barra de Navegación */
   .pagina-nav-menu {
-    grid-column: 1 / -1;
+    grid-area: nav;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     padding-top: 10px;
     margin-top: 4px;
+    width: 100%;
   }
 
   .pagina-nav-list {
@@ -310,39 +322,159 @@ const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${e
     transform: translateY(-1px);
   }
 
+  /* Responsive Mobile Navigation */
   @media screen and (max-width: 900px) {
+    .pagina-header {
+      padding: 10px 0 8px;
+    }
+
+    .pagina-header-container {
+      display: flex;
+      flex-direction: column;
+      padding: 0 16px;
+      gap: 10px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .pagina-header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      gap: 12px;
+    }
+
+    .pagina-logo-wrap {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .pagina-brand-title {
+      font-size: clamp(1.2rem, 4.8vw, 1.55rem);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.15;
+    }
+
+    .pagina-brand-sub {
+      font-size: clamp(0.7rem, 2.6vw, 0.8rem);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      opacity: 0.95;
+    }
+
     .pagina-menu-toggle {
-      display: block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      background: #FFC107;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      color: #111827;
+      font-size: 1.35rem;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+      transition: all 0.2s ease;
+    }
+
+    .pagina-menu-toggle:hover,
+    .pagina-menu-toggle:focus-visible {
+      background: #ffffff;
+      color: #E3000F;
+      outline: none;
+    }
+
+    .pagina-menu-toggle:active {
+      transform: scale(0.95);
+    }
+
+    .header-search-wrapper {
+      width: 100%;
+      position: relative;
+      margin: 0;
+    }
+
+    .header-pill-search {
+      width: 100% !important;
+      max-width: 100%;
+      box-sizing: border-box;
+      padding: 10px 44px 10px 18px;
+      font-size: 0.92rem;
+      background: rgba(255, 255, 255, 0.18);
+      border-color: rgba(255, 255, 255, 0.55);
+      color: #ffffff;
+    }
+
+    .header-pill-search::placeholder {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .header-pill-search:focus {
+      width: 100% !important;
+      background: #ffffff;
+      color: #111827;
+      border-color: #FFC107;
+      box-shadow: 0 0 12px rgba(255, 193, 7, 0.45);
+    }
+
+    .header-pill-search-btn {
+      right: 14px;
+      font-size: 1.05rem;
+    }
+
+    .header-search-results-dropdown {
+      width: 100%;
+      left: 0;
+      right: 0;
+      box-sizing: border-box;
+      max-height: 300px;
     }
 
     .pagina-nav-menu {
       display: none;
-      padding-top: 15px;
+      width: 100%;
+      border-top: 1px solid rgba(255, 255, 255, 0.25);
+      padding-top: 10px;
+      margin-top: 2px;
     }
 
     .pagina-nav-menu.active {
       display: block;
-      animation: menuSlideDown 0.3s ease;
+      animation: menuSlideDown 0.3s ease forwards;
     }
 
     .pagina-nav-list {
       flex-direction: column;
-      align-items: center;
+      align-items: stretch;
       gap: 6px;
+      width: 100%;
+      padding: 0;
+      margin: 0;
     }
 
     .pagina-nav-link {
       width: 100%;
+      display: block;
       text-align: center;
-      padding: 10px 16px;
+      padding: 11px 16px;
+      border-radius: 6px;
+      background: rgba(0, 0, 0, 0.15);
+      box-sizing: border-box;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
     }
 
-    .header-pill-search {
-      width: 170px;
-    }
-
-    .header-pill-search:focus {
-      width: 200px;
+    .pagina-nav-link:hover,
+    .pagina-nav-link.active {
+      background: #FFC107;
+      color: #111827;
     }
   }
 
@@ -361,7 +493,8 @@ const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${e
     const searchList = document.getElementById('headerSearchList');
 
     // 1. Toggle del menú hamburguesa
-    toggleBtn?.addEventListener('click', () => {
+    toggleBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
       const isOpen = navMenu?.classList.toggle('active');
       toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
@@ -375,6 +508,18 @@ const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${e
           toggleBtn?.setAttribute('aria-expanded', 'false');
         }
       });
+    });
+
+    // Cierra el menú móvil al hacer clic afuera
+    document.addEventListener('click', (e) => {
+      if (
+        navMenu?.classList.contains('active') && 
+        !navMenu.contains(e.target as Node) && 
+        !toggleBtn?.contains(e.target as Node)
+      ) {
+        navMenu.classList.remove('active');
+        toggleBtn?.setAttribute('aria-expanded', 'false');
+      }
     });
 
     // 2. Buscador en el header

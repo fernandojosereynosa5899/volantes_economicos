@@ -1,5 +1,6 @@
 ---
 import { getActiveConfig } from '../scripts/content-loader';
+import { getGithubImageUrl } from '../config/site';
 
 const siteConfig = getActiveConfig();
 const baseWa = `https://wa.me/${siteConfig.general.whatsappNumber}?text=`;
@@ -10,7 +11,7 @@ const trabajos = [
     title: 'Volantes para Restaurante',
     alt: 'Volante para restaurante',
     category: 'vol',
-    image: '/images/trabajos/volante_restaurante.jpg',
+    image: getGithubImageUrl('images/trabajos/volante_restaurante.jpg'),
     description: 'Volante publicitario impreso a todo color para restaurantes, menús y promociones de comida.'
   },
   {
@@ -18,7 +19,7 @@ const trabajos = [
     title: 'Tarjetas Barniz a Registro',
     alt: 'Tarjetas con barniz',
     category: 'tarjetas',
-    image: '/images/trabajos/tarjetas_barniz.jpg',
+    image: getGithubImageUrl('images/trabajos/tarjetas_barniz.jpg'),
     description: 'Tarjetas de presentación premium con acabado selectivo brillante UV sobre fondo mate.'
   },
   {
@@ -26,7 +27,7 @@ const trabajos = [
     title: 'Flyers Deportivos',
     alt: 'Volante gimnasio',
     category: 'vol',
-    image: '/images/trabajos/volante_gimnasio.jpg',
+    image: getGithubImageUrl('images/trabajos/volante_gimnasio.jpg'),
     description: 'Volante deportivo publicitario de alto impacto visual para gimnasios y crossfit.'
   },
   {
@@ -34,7 +35,7 @@ const trabajos = [
     title: 'Dípticos Corporativos',
     alt: 'Díptico',
     category: 'vol',
-    image: '/images/trabajos/diptico_corporativo.jpg',
+    image: getGithubImageUrl('images/trabajos/diptico_corporativo.jpg'),
     description: 'Díptico corporativo plegable con 4 caras para presentación de servicios empresariales.'
   }
 ];

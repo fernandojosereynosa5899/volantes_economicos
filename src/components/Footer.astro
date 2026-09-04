@@ -12,7 +12,7 @@ const currentYear = new Date().getFullYear();
       <!-- Columna 1: Marca y WhatsApp -->
       <div class="footer-col">
         <h3 class="footer-brand-title">{siteConfig.general.siteName}</h3>
-        <p style="margin-top: 0.5rem;">
+        <p class="footer-desc">
           {siteConfig.general.siteSubtitle}. Especialistas en diseño e impresión de volantes publicitarios y folletos con envíos a toda la República Mexicana.
         </p>
         <div style="margin-top: 1.25rem;">
@@ -20,7 +20,7 @@ const currentYear = new Date().getFullYear();
             href={`https://wa.me/${siteConfig.general.whatsappNumber}?text=${encodeURIComponent('¡Hola! Me gustaría cotizar volantes.')}`}
             target="_blank" 
             rel="noopener noreferrer" 
-            class="btn btn-whatsapp"
+            class="btn btn-whatsapp footer-whatsapp-btn"
           >
             <Icon name="whatsapp" size={18} />
             <span>Cotizar WhatsApp: {siteConfig.general.phoneNumber}</span>
@@ -28,31 +28,31 @@ const currentYear = new Date().getFullYear();
         </div>
       </div>
 
-      <!-- Columna 3: Contacto y Horarios -->
+      <!-- Columna 2: Contacto y Horarios -->
       <div class="footer-col">
-        <h4>Contacto & Horario</h4>
+        <h4 class="footer-col-title">Contacto & Horario</h4>
         <ul class="footer-links">
-          <li style="display: flex; gap: 0.5rem; align-items: flex-start;">
-            <Icon name="map-pin" size={18} />
-            <span style="font-size: 0.88rem;">{siteConfig.general.address}</span>
+          <li class="footer-link-row">
+            <span class="footer-icon"><Icon name="map-pin" size={18} /></span>
+            <span class="footer-text-address">{siteConfig.general.address}</span>
           </li>
-          <li style="display: flex; gap: 0.5rem; align-items: center;">
-            <Icon name="phone" size={16} />
+          <li class="footer-link-row">
+            <span class="footer-icon"><Icon name="phone" size={16} /></span>
             <a href={`tel:+${siteConfig.general.whatsappNumber}`}>{siteConfig.general.phoneNumber}</a>
           </li>
-          <li style="display: flex; gap: 0.5rem; align-items: center;">
-            <Icon name="mail" size={16} />
+          <li class="footer-link-row">
+            <span class="footer-icon"><Icon name="mail" size={16} /></span>
             <a href={`mailto:${siteConfig.general.email}`}>{siteConfig.general.email}</a>
           </li>
-          <li style="display: flex; gap: 0.5rem; align-items: center;">
-            <Icon name="facebook" size={18} />
+          <li class="footer-link-row">
+            <span class="footer-icon"><Icon name="facebook" size={18} /></span>
             <a href={siteConfig.general.facebookUrl} target="_blank" rel="noopener noreferrer">Facebook: {siteConfig.general.messengerName}</a>
           </li>
-          <li style="display: flex; gap: 0.5rem; align-items: flex-start; font-size: 0.85rem; color: #94a3b8;">
-            <Icon name="clock" size={16} />
-            <span>
+          <li class="footer-link-row align-start">
+            <span class="footer-icon"><Icon name="clock" size={16} /></span>
+            <span class="footer-schedule">
               Lunes a Sábado: 9:00 - 18:00 hrs<br/>
-              <span style="font-size: 0.8rem; color: #cbd5e1;">Azcapotzalco, Ciudad de México</span>
+              <span class="footer-schedule-sub">Azcapotzalco, Ciudad de México</span>
             </span>
           </li>
         </ul>
@@ -66,3 +66,180 @@ const currentYear = new Date().getFullYear();
     </div>
   </div>
 </footer>
+
+<style>
+  .site-footer {
+    background: #E3000F;
+    color: #ffffff;
+    border-top: 5px solid #FFC107;
+    padding-top: 3.5rem;
+    padding-bottom: 2rem;
+    box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.12);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 3.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .footer-brand-title {
+    font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    color: #FFC107;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 0.5rem 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.35);
+    line-height: 1.2;
+  }
+
+  .footer-desc {
+    font-size: 0.95rem;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.65;
+    margin-top: 0.5rem;
+    font-weight: 400;
+  }
+
+  .footer-whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #25d366;
+    color: #ffffff !important;
+    padding: 10px 22px;
+    border-radius: 25px;
+    font-weight: 700;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .footer-whatsapp-btn:hover {
+    background: #1ea952;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  }
+
+  .footer-col-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    display: inline-block;
+  }
+
+  .footer-col-title::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 36px;
+    height: 3px;
+    background: #FFC107;
+    border-radius: 2px;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-link-row {
+    display: flex;
+    gap: 0.65rem;
+    align-items: center;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .footer-link-row.align-start {
+    align-items: flex-start;
+  }
+
+  .footer-icon {
+    color: #FFC107;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .footer-text-address {
+    font-size: 0.92rem;
+    color: #ffffff;
+    line-height: 1.4;
+  }
+
+  .footer-links a {
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.92rem;
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+
+  .footer-links a:hover {
+    color: #FFC107;
+    text-decoration: underline;
+  }
+
+  .footer-schedule {
+    font-size: 0.88rem;
+    color: #ffffff;
+    line-height: 1.45;
+  }
+
+  .footer-schedule-sub {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    font-size: 0.88rem;
+    font-family: 'Montserrat', sans-serif;
+    color: rgba(255, 255, 255, 0.9);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-bottom strong {
+    color: #FFC107;
+  }
+
+  @media (max-width: 768px) {
+    .site-footer {
+      padding-top: 2.5rem;
+      padding-bottom: 1.75rem;
+    }
+
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      justify-content: center;
+    }
+  }
+</style>

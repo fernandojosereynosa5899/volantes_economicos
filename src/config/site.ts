@@ -4,14 +4,21 @@ import rawConfig from '../data/site-config.json';
  * URL base oficial de GitHub para servir las imágenes en alta velocidad
  * Repositorio: https://github.com/fernandojosereynosa5899/volantes_economicos
  */
-export const GITHUB_IMG_BASE = 'https://raw.githubusercontent.com/fernandojosereynosa5899/volantes_economicos/main/img';
+export const GITHUB_REPO_RAW = 'https://raw.githubusercontent.com/fernandojosereynosa5899/volantes_economicos/main';
+export const GITHUB_IMG_BASE = `${GITHUB_REPO_RAW}/img`;
 
 /**
- * Retorna la URL directa de GitHub para cualquier imagen
+ * Retorna la URL directa oficial de GitHub en máxima resolución y calidad
  */
-export function getGithubImageUrl(filename: string): string {
-  const encodedName = encodeURIComponent(filename);
-  return `${GITHUB_IMG_BASE}/${encodedName}`;
+export function getGithubImageUrl(filenameOrPath: string): string {
+  const clean = filenameOrPath.startsWith('/') ? filenameOrPath.slice(1) : filenameOrPath;
+  if (clean.startsWith('public/images/') || clean.startsWith('img/')) {
+    return `${GITHUB_REPO_RAW}/${clean}`;
+  }
+  if (clean.startsWith('images/')) {
+    return `${GITHUB_REPO_RAW}/public/${clean}`;
+  }
+  return `${GITHUB_IMG_BASE}/${encodeURIComponent(clean)}`;
 }
 
 /**

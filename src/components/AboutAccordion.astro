@@ -1,5 +1,5 @@
 ---
-// Componente Acerca de Nosotros con Acordeón interactivo y fotografía del taller
+import { getGithubImageUrl } from '../config/site';
 ---
 
 <section id="conoce" class="section" style="background-color: #ffffff; padding: 5rem 0;">
@@ -10,7 +10,7 @@
       <!-- Columna Izquierda: Imagen del taller de imprenta -->
       <div class="about-img-box reveal-item">
         <img 
-          src="/images/imprenta_taller.jpg" 
+          src={getGithubImageUrl('images/imprenta_taller.jpg')} 
           alt="Taller de impresión offset de Volantes Económicos" 
           loading="lazy"
           width="600"
@@ -18,7 +18,7 @@
         />
         <span class="about-badge">
           <i class="fas fa-check-circle" style="margin-right: 6px;"></i>
-          Taller Offset Propio
+          Imagen de referencia
         </span>
       </div>
 

@@ -1,4 +1,6 @@
 ---
+import { getGithubImageUrl } from '../config/site';
+
 interface Props {
   name: 'whatsapp' | 'phone' | 'mail' | 'truck' | 'check' | 'chevron-down' | 'close' | 'search' | 'info' | 'settings' | 'menu' | 'facebook' | 'messenger' | 'map-pin' | 'clock';
   class?: string;
@@ -10,7 +12,7 @@ const { name, class: className = '', size = 20 } = Astro.props;
 
 {name === 'whatsapp' && (
   <img 
-    src="/images/icons/whatsapp.png" 
+    src={getGithubImageUrl('images/icons/whatsapp.png')} 
     alt="WhatsApp" 
     width={size} 
     height={size} 
@@ -22,7 +24,7 @@ const { name, class: className = '', size = 20 } = Astro.props;
 
 {name === 'facebook' && (
   <img 
-    src="/images/icons/facebook.png" 
+    src={getGithubImageUrl('images/icons/facebook.png')} 
     alt="Facebook" 
     width={size} 
     height={size} 
@@ -34,7 +36,7 @@ const { name, class: className = '', size = 20 } = Astro.props;
 
 {name === 'mail' && (
   <img 
-    src="/images/icons/email.png" 
+    src={getGithubImageUrl('images/icons/email.png')} 
     alt="Correo Electrónico" 
     width={size} 
     height={size} 
