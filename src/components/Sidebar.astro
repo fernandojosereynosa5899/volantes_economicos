@@ -4,44 +4,10 @@ import Icon from './Icon.astro';
 
 const siteConfig = getActiveConfig();
 
-// Catálogo completo de productos, servicios y páginas
-const siteCatalog = [
-  { label: '1,000 Volantes Económicos', href: '/1000-volantes-precio', type: 'Paquete', keywords: '1000 mil volantes precio costo promocion flyers baratos oferta' },
-  { label: 'Volantes para Pizzas y Restaurantes', href: '/volantes-para-pizzas', type: 'Producto', keywords: 'pizzas pizzeria restaurantes comida menus volantes flyers alimentos tacos sushi' },
-  { label: 'Volantes 1/4 de Carta (10 x 14 cm)', href: '/precios', type: 'Medida', keywords: 'cuarto carta medidas tamanos volantes offset 10x14 economica chicos pequenos' },
-  { label: 'Volantes 1/2 Carta (14 x 21 cm)', href: '/precios', type: 'Medida', keywords: 'media carta medidas tamanos volantes folletos 14x21 medianos' },
-  { label: 'Volantes Carta Completa (21 x 28 cm)', href: '/precios', type: 'Medida', keywords: 'carta completa medidas 21x28 posters hojas grandes' },
-  { label: 'Paquetes de 2,500 y 5,000 Volantes', href: '/precios', type: 'Paquete', keywords: '2500 5000 volantes mayoreo paquetes precios offset paquetes economicos' },
-  { label: 'Paquetes de 10,000 y 20,000 Volantes', href: '/precios', type: 'Paquete', keywords: '10000 20000 volantes masivos campanas grandes precios volumen' },
-  { label: 'Tarjetas de Presentación con Barniz', href: '/disenos', type: 'Servicio', keywords: 'tarjetas presentacion negocio corporativas impresion personalizadas barniz' },
-  { label: 'Dípticos y Trípticos Corporativos', href: '/disenos', type: 'Servicio', keywords: 'dipticos tripticos folletos corporativos impresion' },
-  { label: 'Lonas Impresas Gran Formato', href: '/contacto', type: 'Servicio', keywords: 'lonas impresas gran formato publicidad banners letreros' },
-  { label: 'Catálogo de Diseños y Trabajos', href: '/disenos', type: 'Galería', keywords: 'disenos muestras ejemplos fotos galeria imagenes trabajos' },
-  { label: 'Cotizador y Tabla de Precios', href: '/precios', type: 'Precios', keywords: 'precios cotizador cotizar costos calcular offset presupuesto' }
-];
-
 const phoneFormatted = siteConfig.general.phoneNumber;
 ---
 
 <aside class="original-sidebar">
-  <!-- Widget: Accesos Rápidos a Productos & Servicios -->
-  <div class="sidebar-widget" style="border-top: 3px solid #E3000F; background: #ffffff; padding: 1.25rem;">
-    <h3 class="sidebar-widget-title" style="font-family: 'Oswald', sans-serif; text-transform: uppercase; font-size: 1.15rem; color: #E3000F; margin-bottom: 0.75rem;">
-      <i class="fas fa-layer-group" style="margin-right: 6px;"></i> PRODUCTOS & SERVICIOS
-    </h3>
-    
-    <ul class="sidebar-links-list" style="margin-top: 0.5rem; list-style: none; padding: 0;">
-      {siteCatalog.map(item => (
-        <li style="margin-bottom: 0.4rem;">
-          <a href={item.href} class="sidebar-link-item" style="display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; border-radius: 6px; text-decoration: none; color: #1e293b; font-size: 0.88rem; transition: background 0.2s ease;">
-            <span class="sidebar-link-text">{item.label}</span>
-            <span class="search-badge" style="background: #FFC107; color: #111827; font-size: 0.72rem; padding: 2px 7px; border-radius: 10px; font-weight: 700;">{item.type}</span>
-          </a>
-        </li>
-      ))}
-    </ul>
-  </div>
-
   <!-- Widget de Atención y Ubicación -->
   <div class="sidebar-widget" style="border-top: 3px solid #FFC107; background: #ffffff; padding: 1.25rem;">
     <h4 style="font-family: 'Oswald', sans-serif; font-size: 1.15rem; color: #111827; text-transform: uppercase; margin-bottom: 0.6rem;">
