@@ -4,13 +4,6 @@ import Icon from './Icon.astro';
 
 const siteConfig = getActiveConfig();
 const currentYear = new Date().getFullYear();
-
-const navLinks = [
-  { href: '/', label: 'Inicio' },
-  { href: '/disenos', label: 'Diseños' },
-  { href: '/precios', label: 'Precios' },
-  { href: '/contacto', label: 'Contacto' }
-];
 ---
 
 <footer class="site-footer">
@@ -33,17 +26,6 @@ const navLinks = [
             <span>Cotizar WhatsApp: {siteConfig.general.phoneNumber}</span>
           </a>
         </div>
-      </div>
-
-      <!-- Columna 2: Navegación -->
-      <div class="footer-col">
-        <h4>Navegación</h4>
-        <ul class="footer-links">
-          <li><a href="/">Inicio</a></li>
-          {navLinks.map(item => (
-            <li><a href={item.href}>{item.label}</a></li>
-          ))}
-        </ul>
       </div>
 
       <!-- Columna 3: Contacto y Horarios -->

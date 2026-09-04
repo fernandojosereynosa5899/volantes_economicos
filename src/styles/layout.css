@@ -303,8 +303,8 @@
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.8fr 1fr 1.5fr;
-  gap: 3.5rem;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
   margin-bottom: 3.5rem;
 }
 
