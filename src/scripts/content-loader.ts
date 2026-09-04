@@ -1,53 +1,14 @@
 import defaultConfig from '../data/site-config.json';
-import { ENV } from '../config/env';
 
 const STORAGE_KEY = 'volantes_site_config';
 
 export type SiteConfigType = typeof defaultConfig;
 
 /**
- * Returns configuration seeded with values from .env via ENV
+ * Retorna la configuración base directamente de los datos públicos centralizados (site-config.json)
  */
 export function getBaseConfig(): SiteConfigType {
-  const cfg = JSON.parse(JSON.stringify(defaultConfig)) as SiteConfigType;
-
-  cfg.general.siteName = ENV.siteName;
-  cfg.general.siteSubtitle = ENV.siteSubtitle;
-  cfg.general.topBannerText = ENV.topBannerText;
-  cfg.general.whatsappNumber = ENV.whatsappNumber;
-  cfg.general.phoneNumber = ENV.phoneNumber;
-  cfg.general.secondaryPhone = ENV.secondaryPhone;
-  cfg.general.email = ENV.email;
-  cfg.general.facebookUrl = ENV.facebookUrl;
-  cfg.general.messengerName = ENV.messengerName;
-  cfg.general.address = ENV.address;
-  cfg.general.schedule.weekdays = ENV.schedule.weekdays;
-  cfg.general.schedule.saturday = ENV.schedule.saturday;
-  cfg.general.schedule.sunday = ENV.schedule.sunday;
-
-  cfg.home.title = ENV.homeTitle;
-  cfg.home.intro = ENV.homeIntro;
-  cfg.entrega.text = ENV.shippingText;
-  cfg.contacto.subtitle = ENV.contactSubtitle;
-
-  if (cfg.calculator?.pricingMatrix?.['1000']?.['cuarto-carta']) {
-    cfg.calculator.pricingMatrix['1000']['cuarto-carta']['4x0'] = ENV.prices.p1000_4x0;
-    cfg.calculator.pricingMatrix['1000']['cuarto-carta']['4x4'] = ENV.prices.p1000_4x4;
-  }
-  if (cfg.calculator?.pricingMatrix?.['2500']?.['cuarto-carta']) {
-    cfg.calculator.pricingMatrix['2500']['cuarto-carta']['4x0'] = ENV.prices.p2500_4x0;
-  }
-  if (cfg.calculator?.pricingMatrix?.['5000']?.['cuarto-carta']) {
-    cfg.calculator.pricingMatrix['5000']['cuarto-carta']['4x0'] = ENV.prices.p5000_4x0;
-  }
-  if (cfg.calculator?.pricingMatrix?.['10000']?.['cuarto-carta']) {
-    cfg.calculator.pricingMatrix['10000']['cuarto-carta']['4x0'] = ENV.prices.p10000_4x0;
-  }
-  if (cfg.calculator) {
-    cfg.calculator.designServiceCost = ENV.prices.designCost;
-  }
-
-  return cfg;
+  return JSON.parse(JSON.stringify(defaultConfig)) as SiteConfigType;
 }
 
 /**
