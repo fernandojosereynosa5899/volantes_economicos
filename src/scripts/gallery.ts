@@ -29,7 +29,6 @@ export function initGallery(): void {
   const modalLoader = document.getElementById('lightbox-loader');
   const modalTitle = document.getElementById('lightbox-target-title');
   const modalDesc = document.getElementById('lightbox-target-desc');
-  const modalCategory = document.getElementById('lightbox-target-category');
   const modalBtn = document.getElementById('lightbox-whatsapp-cta') as HTMLAnchorElement | null;
   const closeBtn = document.getElementById('lightbox-close');
 
@@ -37,9 +36,8 @@ export function initGallery(): void {
 
   function openLightbox(card: HTMLElement): void {
     const src = card.getAttribute('data-img') || '';
-    const title = card.getAttribute('data-title') || 'Diseño de Volante Publicitario';
-    const category = card.getAttribute('data-category') || 'Promociones';
-    const desc = card.getAttribute('data-desc') || 'Diseño profesional optimizado para atracción de clientes y ventas.';
+    const title = card.getAttribute('data-title') || 'Diseño';
+    const desc = card.getAttribute('data-desc') || 'Muestra gráfica de impresión offset.';
 
     if (modalImg) {
       modalImg.classList.remove('is-loaded');
@@ -59,10 +57,9 @@ export function initGallery(): void {
 
     if (modalTitle) modalTitle.textContent = title;
     if (modalDesc) modalDesc.textContent = desc;
-    if (modalCategory) modalCategory.textContent = category;
 
     if (modalBtn) {
-      const text = `¡Hola Volantes Económicos! Me interesa cotizar un volante con un estilo similar a este: "${title}" (${category}). ¿Podrían orientarme con los paquetes disponibles?`;
+      const text = `¡Hola! Me interesa cotizar un trabajo con un estilo similar a este: "${title}". ¿Podrían orientarme con los paquetes disponibles?`;
       const waNumber = getActiveConfig().general.whatsappNumber;
       modalBtn.href = `https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`;
     }

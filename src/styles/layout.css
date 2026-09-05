@@ -292,14 +292,14 @@
   margin-top: 1.75rem;
 }
 
-/* 4. Professional Clean Footer - Matching Header Red & Yellow */
+/* 4. Professional Clean Footer - Color Theory Harmony with Brand & WhatsApp */
 .site-footer {
-  background: #EE2737;
-  color: #ffffff;
-  border-top: 5px solid #FFC107;
+  background: #111827;
+  color: #e2e8f0;
+  border-top: 5px solid #E3000F;
   padding-top: 3.5rem;
   padding-bottom: 2rem;
-  box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.25);
 }
 
 .footer-grid {
@@ -328,13 +328,13 @@
   left: 0;
   width: 36px;
   height: 3px;
-  background: #FFC107;
+  background: #E3000F;
   border-radius: 2px;
 }
 
 .footer-col p {
   font-size: 0.95rem;
-  color: #ffffff;
+  color: #cbd5e1;
   margin-bottom: 1rem;
   line-height: 1.65;
 }
@@ -346,7 +346,7 @@
   color: #FFC107;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.35);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
   line-height: 1.2;
 }
 
@@ -359,7 +359,7 @@
 
 .footer-links a {
   font-size: 0.925rem;
-  color: #ffffff;
+  color: #e2e8f0;
   transition: all var(--transition-fast);
 }
 
@@ -377,10 +377,10 @@
 .seo-tag {
   font-size: 0.8rem;
   color: #ffffff;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.1);
   padding: 0.3rem 0.6rem;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   transition: all var(--transition-fast);
 }
 
@@ -395,9 +395,9 @@
   align-items: center;
   justify-content: space-between;
   padding-top: 1.75rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.9);
+  color: #94a3b8;
   flex-wrap: wrap;
   gap: 1rem;
 }
