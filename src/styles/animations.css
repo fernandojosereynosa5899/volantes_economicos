@@ -268,3 +268,126 @@
     display: none !important;
   }
 }
+
+/* ==========================================================================
+   ANIMACIÓN DE DESCARGA / CARGA DE IMÁGENES (Shimmer Skeleton & Blur-Up)
+   ========================================================================== */
+@keyframes imgDownloadShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes spinnerRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseGlowLoader {
+  0%, 100% {
+    transform: scale(0.96);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+}
+
+/* Contenedores de imagen con efecto Shimmer mientras se descargan */
+.gallery-img-wrapper,
+.pagina-product-image,
+.trabajo-card-item,
+.img-shimmer-wrapper {
+  position: relative;
+  background: linear-gradient(
+    90deg,
+    #f1f5f9 0%,
+    #e2e8f0 35%,
+    #ffffff 50%,
+    #e2e8f0 65%,
+    #f1f5f9 100%
+  ) !important;
+  background-size: 250% 100% !important;
+  animation: imgDownloadShimmer 1.8s ease-in-out infinite !important;
+}
+
+.gallery-img-wrapper.is-loaded,
+.pagina-product-image.is-loaded,
+.trabajo-card-item.is-loaded,
+.img-shimmer-wrapper.is-loaded {
+  animation: none !important;
+  background: #ffffff !important;
+}
+
+/* Revelado progresivo y suave de la imagen al finalizar descarga */
+.gallery-img,
+.trabajo-card-item img,
+.pagina-product-image img,
+.img-lazy-animate {
+  opacity: 0;
+  transform: scale(0.97);
+  filter: blur(5px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.gallery-img.is-loaded,
+.trabajo-card-item img.is-loaded,
+.pagina-product-image img.is-loaded,
+.img-lazy-animate.is-loaded {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+  filter: blur(0) !important;
+}
+
+/* Loader animado elegante para vista previa (Lightbox) */
+.lightbox-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  z-index: 10;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 18px 24px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.lightbox-loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.lightbox-spinner-ring {
+  width: 44px;
+  height: 44px;
+  border: 4px solid rgba(227, 0, 15, 0.15);
+  border-top-color: #E3000F;
+  border-right-color: #FFC107;
+  border-radius: 50%;
+  animation: spinnerRotate 0.85s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.lightbox-loader-text {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #111827;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.3px;
+  animation: pulseGlowLoader 1.6s ease-in-out infinite;
+}

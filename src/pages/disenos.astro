@@ -106,8 +106,12 @@ const designs = [
         <Icon name="close" size={20} />
       </button>
 
-      <div class="lightbox-media">
-        <img src="" id="lightbox-target-img" alt="Vista previa de diseño" />
+      <div class="lightbox-media" style="position: relative; min-height: 340px;">
+        <div class="lightbox-loader hidden" id="lightbox-loader">
+          <div class="lightbox-spinner-ring"></div>
+          <span class="lightbox-loader-text">Descargando imagen...</span>
+        </div>
+        <img src="" id="lightbox-target-img" alt="Vista previa de diseño" class="img-lazy-animate" />
       </div>
 
       <div class="lightbox-details">

@@ -12,6 +12,7 @@ export function initAnimations(): void {
   
   if (!('IntersectionObserver' in window)) {
     elements.forEach(el => el.classList.add('is-revealed'));
+    initImageLoadAnimations();
     return;
   }
 
@@ -41,4 +42,36 @@ export function initAnimations(): void {
   });
 
   elements.forEach(el => observer.observe(el));
+  initImageLoadAnimations();
+}
+
+/**
+ * Monitorea la descarga de imágenes en la página para mostrar una
+ * animación shimmer mientras descargan y un fade-in suave al completarse.
+ */
+export function initImageLoadAnimations(): void {
+  const images = document.querySelectorAll<HTMLImageElement>(
+    '.gallery-img, .pagina-product-image img, .trabajo-card-item img, img[loading="lazy"], .img-lazy-animate'
+  );
+
+  images.forEach((img) => {
+    const wrapper = img.closest(
+      '.gallery-img-wrapper, .pagina-product-image, .trabajo-card-item, .img-shimmer-wrapper'
+    );
+
+    const markLoaded = () => {
+      img.classList.add('is-loaded');
+      wrapper?.classList.add('is-loaded');
+    };
+
+    if (img.complete && img.naturalHeight !== 0) {
+      markLoaded();
+    } else {
+      img.classList.remove('is-loaded');
+      wrapper?.classList.remove('is-loaded');
+
+      img.addEventListener('load', markLoaded, { once: true });
+      img.addEventListener('error', markLoaded, { once: true });
+    }
+  });
 }

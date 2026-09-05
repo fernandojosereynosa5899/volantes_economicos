@@ -91,7 +91,13 @@ const trabajos = [
     </button>
     
     <div class="pagina-lightbox-container">
-      <img id="lb-target-image" src="" alt="Vista previa de trabajo" />
+      <div class="pagina-lightbox-media-box" style="position: relative; min-height: 280px; display: flex; align-items: center; justify-content: center;">
+        <div class="lightbox-loader hidden" id="trabajos-lightbox-loader">
+          <div class="lightbox-spinner-ring"></div>
+          <span class="lightbox-loader-text">Descargando imagen...</span>
+        </div>
+        <img id="lb-target-image" src="" alt="Vista previa de trabajo" class="img-lazy-animate" />
+      </div>
       <div class="pagina-lightbox-caption" id="lb-target-caption"></div>
       
       <div class="pagina-lightbox-cta">
@@ -117,6 +123,7 @@ const trabajos = [
     const cards = document.querySelectorAll<HTMLElement>('.trabajo-card-item');
     const lightbox = document.getElementById('trabajos-lightbox');
     const lbImg = document.getElementById('lb-target-image') as HTMLImageElement | null;
+    const lbLoader = document.getElementById('trabajos-lightbox-loader');
     const lbCaption = document.getElementById('lb-target-caption');
     const lbCta = document.getElementById('lb-whatsapp-cta') as HTMLAnchorElement | null;
     const closeBtn = document.getElementById('close-trabajos-lightbox');
@@ -146,6 +153,18 @@ const trabajos = [
         const title = card.getAttribute('data-title') || '';
         
         if (lbImg && lightbox) {
+          lbImg.classList.remove('is-loaded');
+          lbLoader?.classList.remove('hidden');
+
+          lbImg.onload = () => {
+            lbLoader?.classList.add('hidden');
+            lbImg.classList.add('is-loaded');
+          };
+          lbImg.onerror = () => {
+            lbLoader?.classList.add('hidden');
+            lbImg.classList.add('is-loaded');
+          };
+
           lbImg.src = imgSrc;
           lbImg.alt = title;
           if (lbCaption) lbCaption.textContent = title;

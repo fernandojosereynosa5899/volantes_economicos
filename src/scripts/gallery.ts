@@ -26,6 +26,7 @@ export function initGallery(): void {
   // Lightbox Modal
   const modal = document.getElementById('gallery-lightbox') as HTMLElement | null;
   const modalImg = document.getElementById('lightbox-target-img') as HTMLImageElement | null;
+  const modalLoader = document.getElementById('lightbox-loader');
   const modalTitle = document.getElementById('lightbox-target-title');
   const modalDesc = document.getElementById('lightbox-target-desc');
   const modalCategory = document.getElementById('lightbox-target-category');
@@ -40,7 +41,22 @@ export function initGallery(): void {
     const category = card.getAttribute('data-category') || 'Promociones';
     const desc = card.getAttribute('data-desc') || 'Diseño profesional optimizado para atracción de clientes y ventas.';
 
-    if (modalImg) modalImg.src = src;
+    if (modalImg) {
+      modalImg.classList.remove('is-loaded');
+      modalLoader?.classList.remove('hidden');
+
+      modalImg.onload = () => {
+        modalLoader?.classList.add('hidden');
+        modalImg.classList.add('is-loaded');
+      };
+      modalImg.onerror = () => {
+        modalLoader?.classList.add('hidden');
+        modalImg.classList.add('is-loaded');
+      };
+
+      modalImg.src = src;
+    }
+
     if (modalTitle) modalTitle.textContent = title;
     if (modalDesc) modalDesc.textContent = desc;
     if (modalCategory) modalCategory.textContent = category;
