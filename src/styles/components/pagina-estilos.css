@@ -56,6 +56,13 @@
   }
 }
 
+/* Ocultar carrusel en móviles para evitar imágenes recortadas y botones invasivos */
+@media (max-width: 768px) {
+  .hero-slider-section {
+    display: none !important;
+  }
+}
+
 .hero-slider-container {
   position: absolute;
   top: 0;

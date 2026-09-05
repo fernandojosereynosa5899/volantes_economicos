@@ -37,7 +37,9 @@ const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${e
         </a>
         <p class="pagina-brand-sub">
           <a href="https://maps.app.goo.gl/EnpYZEobB2J1ZGxe9" target="_blank" rel="noopener noreferrer">
-            Pte 54 3915, Azcapotzalco CDMX • Lun a Sáb 9:00 - 18:00 hrs
+            <span class="sub-address">Pte 54 3915, Azcapotzalco CDMX</span>
+            <span class="sub-separator">•</span>
+            <span class="sub-hours">Lun a Sáb 9:00 - 18:00 hrs</span>
           </a>
         </p>
       </div>
@@ -53,7 +55,7 @@ const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${e
       <input 
         type="text" 
         class="header-pill-search" 
-        placeholder="Buscar servicios (ej. volantes, tarjetas)..." 
+        placeholder="Buscar servicios..." 
         id="headerSearchInput"
         autocomplete="off"
         aria-label="Buscar servicios de imprenta"
@@ -150,6 +152,12 @@ const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${e
     color: #ffffff;
     margin: 0;
     font-family: 'Montserrat', sans-serif;
+    white-space: nowrap;
+  }
+
+  .sub-separator {
+    margin: 0 4px;
+    opacity: 0.85;
   }
 
   .pagina-brand-sub a {
@@ -359,11 +367,36 @@ const whatsappUrl = `https://wa.me/${siteConfig.general.whatsappNumber}?text=${e
     }
 
     .pagina-brand-sub {
-      font-size: clamp(0.7rem, 2.6vw, 0.8rem);
+      font-size: clamp(0.68rem, 2.5vw, 0.78rem);
+      line-height: 1.3;
+      white-space: normal;
+      overflow: visible;
+      opacity: 0.95;
+    }
+
+    .pagina-brand-sub a {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .sub-separator {
+      display: none;
+    }
+
+    .sub-address {
+      font-weight: 600;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      opacity: 0.95;
+    }
+
+    .sub-hours {
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: rgba(255, 255, 255, 0.92);
     }
 
     .pagina-menu-toggle {
