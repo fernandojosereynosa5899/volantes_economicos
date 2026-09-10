@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Proteger panel de edición gráfica del propietario
+Disallow: /configuracion
+
+# Mapa de sitio oficial
+Sitemap: https://volanteseconomicos.vercel.app/sitemap.xml
+Sitemap: https://volanteseconomicos.net/sitemap.xml

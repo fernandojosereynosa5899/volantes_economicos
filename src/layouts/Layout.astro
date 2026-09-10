@@ -15,6 +15,7 @@ interface Props {
   description?: string;
   currentPath?: string;
   keywords?: string;
+  noindex?: boolean;
 }
 
 const siteConfig = getActiveConfig();
@@ -23,7 +24,8 @@ const {
   title = 'Volantes Económicos - Impresión de Volantes y Flyers Publicitarios en México',
   description = 'Impresión de volantes publicitarios y folletos económicos con la mejor calidad offset de México. Envíos por mensajería a todo el país. Cotiza por WhatsApp.',
   currentPath = '/',
-  keywords = 'volantes economicos, impresion de volantes cdmx, volantes publicitarios, flyers baratos mexico, imprenta de volantes, 1000 volantes precio, volantes para pizzas, imprenta offset'
+  keywords = 'volantes economicos, impresion de volantes cdmx, volantes publicitarios, flyers baratos mexico, imprenta de volantes, 1000 volantes precio, volantes para pizzas, imprenta offset',
+  noindex = false
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, 'https://volanteseconomicos.net');
@@ -78,7 +80,11 @@ const schemaOrgJSONLD = {
   <title>{title}</title>
   <meta name="description" content={description} />
   <meta name="keywords" content={keywords} />
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  {noindex ? (
+    <meta name="robots" content="noindex, nofollow" />
+  ) : (
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  )}
   <link rel="canonical" href={canonicalURL} />
 
   <!-- Google Fonts Preconnect & Typographies (Oswald, Montserrat, Josefin Sans) -->
