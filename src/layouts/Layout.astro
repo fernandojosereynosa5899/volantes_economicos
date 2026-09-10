@@ -28,7 +28,7 @@ const {
   noindex = false
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, 'https://volanteseconomicos.net');
+const canonicalURL = new URL(Astro.url.pathname, 'https://volanteseconomicos.vercel.app');
 
 // Structured Data for Google SEO (LocalBusiness / PrintingService)
 const schemaOrgJSONLD = {
@@ -36,7 +36,7 @@ const schemaOrgJSONLD = {
   "@type": "LocalBusiness",
   "name": siteConfig.general.siteName,
   "description": siteConfig.general.siteSubtitle + " - Especialistas en diseño e impresión de volantes publicitarios y folletos económicos en México.",
-  "url": "https://volanteseconomicos.net",
+  "url": "https://volanteseconomicos.vercel.app",
   "telephone": "+52 1 55 4042 1232",
   "email": siteConfig.general.email,
   "image": getGithubImageUrl('inicio.jpg'),
